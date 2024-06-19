@@ -1,3 +1,14 @@
+"""
+imageSet.py
+
+修改时间: 2024-06-19
+作者: Jiaxin Li
+功能描述: 根据给定的数据分类以及对应的J_mean\ J_last_mean测分结果,
+        绘制不同类别的平均得分的柱状图以及不同action的柱状图,并保存成csv文件
+
+"""
+
+
 import pandas as pd
 import os
 import re
@@ -335,12 +346,16 @@ if __name__ == "__main__":
     # Plot the average scores for different categories
     plot_average_scores(average_scores=average_scores, save_dir=  os.path.join(res_path, method))
     # Plot the average scores for different actions within each category
-    plot_average_action_scores(average_scores=average_scores, save_dir=  os.path.join(res_path, method))
+    plot_average_action_scores(average_scores=average_scores, save_dir=os.path.join(res_path, method))
 
-    plot_action_scores(average_scores=action_scores, save_dir=  os.path.join(res_path, method))
+    # Plot the average scores for different actions
+    plot_action_scores(average_scores=action_scores, save_dir=os.path.join(res_path, method))
 
-    save_dict_to_csv(action_scores, csv_path= os.path.join(res_path, method, "action.csv"),is_action= True)
-    save_dict_to_csv(average_scores, csv_path= os.path.join(res_path, method, "category.csv"), is_action=False)
+    # Save the action scores to a CSV file
+    save_dict_to_csv(action_scores, csv_path=os.path.join(res_path, method, "action.csv"), is_action=True)
+
+    # Save the category scores to a CSV file
+    save_dict_to_csv(average_scores, csv_path=os.path.join(res_path, method, "category.csv"), is_action=False)
 
 
 
