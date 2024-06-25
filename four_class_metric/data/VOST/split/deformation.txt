@@ -1,0 +1,10 @@
+10625_knead_dough
+9383_spread_cement
+7866_squeeze_bag
+7359_fold_tape_measure
+5182_open_box
+8024_divide_dough
+9691_divide_dough
+6503_apply_paint
+4340_roll_dough
+5118_squeeze_bag
