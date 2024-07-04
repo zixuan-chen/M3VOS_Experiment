@@ -1,3 +1,11 @@
 **/data/** 
 **/tmp/** 
 **/package/** 
+methods/Cutie/.vscode/launch.json
+methods/Cutie/.vscode/settings.json
+methods/RMem/.vscode/launch.json
+methods/RMem/.vscode/tasks.json
+results
+pretrain
+methods/RMem/aot_plus/pretrain_models
+methods/RMem/aot_plus/slurm-367242.out
