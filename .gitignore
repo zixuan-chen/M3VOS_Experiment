@@ -1,6 +1,7 @@
 **/data/** 
 **/tmp/** 
 **/package/** 
+**/exp/** 
 methods/Cutie/.vscode/launch.json
 methods/Cutie/.vscode/settings.json
 methods/RMem/.vscode/launch.json
