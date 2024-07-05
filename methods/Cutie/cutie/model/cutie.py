@@ -16,7 +16,6 @@ log = logging.getLogger()
 
 
 class CUTIE(nn.Module):
-
     def __init__(self, cfg: DictConfig, *, single_object=False):
         super().__init__()
         self.cfg = cfg
