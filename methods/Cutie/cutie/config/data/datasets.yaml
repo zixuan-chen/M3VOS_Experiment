@@ -34,6 +34,13 @@ vos_datasets:
     frame_interval: 2
     subset: ./cutie/utils/subsets/davis_train.txt
     empty_masks: ./cutie/utils/subsets/davis_empty_masks.txt
+  VOST:
+    image_directory: VOST/JPEGImages
+    mask_directory: VOST/Annotations
+    multiplier: 2
+    frame_interval: 2
+    subset: ./cutie/utils/subsets/vost_train.txt
+    empty_masks: False
   YouTubeVOS:
     image_directory: YouTube/train/JPEGImages
     mask_directory: YouTube/train/Annotations
@@ -62,3 +69,5 @@ vos_datasets:
     frame_interval: 3
     subset: null
     empty_masks: ./cutie/utils/subsets/ovis_empty_masks.txt
+
+    

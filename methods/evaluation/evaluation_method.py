@@ -21,7 +21,7 @@ parser.add_argument('--results_path', type=str, help='Path to the folder contain
 parser.add_argument('--re', action='store_true')
 args, _ = parser.parse_known_args()
 dataset_path_dict = {
-    'vost': '../aot_plus/datasets/VOST',
+    'vost': '../RMem/aot_plus/datasets/VOST',
     'long_videos': '../aot_plus/datasets/long_videos',
 }
 args.dataset_path = dataset_path_dict[args.dataset_path]
