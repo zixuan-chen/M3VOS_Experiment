@@ -6,6 +6,8 @@ from PIL import Image
 def overlay_masks_on_video(video_path, masks_folder, output_path):
     # 打开原视频
     video_capture = cv2.VideoCapture(video_path)
+ 
+
     if not video_capture.isOpened():
         print("Error: Could not open video.")
         return
@@ -18,6 +20,7 @@ def overlay_masks_on_video(video_path, masks_folder, output_path):
     # 设置输出视频的编解码器和参数
     fourcc = cv2.VideoWriter_fourcc(*'mp4v')
     video_writer = cv2.VideoWriter(output_path, fourcc, fps, (frame_width, frame_height))
+    print("Save into:", output_path)
 
     # 获取掩码文件列表，并按顺序排序
     mask_files = sorted([f for f in os.listdir(masks_folder) if f.endswith('.png')])
