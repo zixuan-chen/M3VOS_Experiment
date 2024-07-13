@@ -24,5 +24,5 @@ class EngineConfig(DefaultEngineConfig):
             self.PRETRAIN_MODEL = os.path.join('pretrain_models', 'R50_DeAOTL_PRE_YTB_DAV.pth')
         else:
             raise NotImplementedError
-        self.ORACLE = True
+        # self.ORACLE = True
         self.DEBUG_FIX_RANDOM = False
