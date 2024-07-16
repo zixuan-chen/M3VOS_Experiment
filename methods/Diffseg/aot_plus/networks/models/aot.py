@@ -50,16 +50,37 @@ class AOT(nn.Module):
         decoder_indim = cfg.MODEL_ENCODER_EMBEDDING_DIM * \
             (cfg.MODEL_LSTT_NUM + 1) if cfg.MODEL_DECODER_INTERMEDIATE_LSTT else \
             cfg.MODEL_ENCODER_EMBEDDING_DIM
+        
 
-        self.decoder = build_decoder(
-            decoder,
-            in_dim=decoder_indim,
-            out_dim=cfg.MODEL_MAX_OBJ_NUM + 1,
-            decode_intermediate_input=cfg.MODEL_DECODER_INTERMEDIATE_LSTT,
-            hidden_dim=cfg.MODEL_ENCODER_EMBEDDING_DIM,
-            shortcut_dims=cfg.MODEL_ENCODER_DIM,
-            align_corners=cfg.MODEL_ALIGN_CORNERS,
-        )
+        self.decoder_name = decoder
+
+        if self.decoder_name == "diffuison":
+            self.decoder = build_decoder(
+                decoder,
+                in_dim=decoder_indim,
+                out_dim=cfg.MODEL_MAX_OBJ_NUM + 1,
+                decode_intermediate_input=cfg.MODEL_DECODER_INTERMEDIATE_LSTT,
+                hidden_dim=cfg.MODEL_ENCODER_EMBEDDING_DIM,
+                shortcut_dims=cfg.MODEL_ENCODER_DIM,
+                align_corners=cfg.MODEL_ALIGN_CORNERS,
+                # Add
+                schedule= cfg.MODEL_DECODER_SCHEDULE,
+                model= cfg.MODEL_DECODER_DIFF_MODEL,
+                timestep = cfg.MODEL_DECODER_TIMESTEP, 
+                condition_dim = cfg.MODEL_CONDITION_DIM,
+                generate_seed = cfg.MODEL_DECODER_GENERATE_SEED,
+                guidance_scale = cfg.MODEL_DECODER_GUIDANCE_SCALE
+            )
+        else:
+
+            self.decoder = build_decoder(
+                decoder,
+                in_dim=decoder_indim,
+                out_dim=cfg.MODEL_MAX_OBJ_NUM + 1,
+                decode_intermediate_input=cfg.MODEL_DECODER_INTERMEDIATE_LSTT,
+                hidden_dim=cfg.MODEL_ENCODER_EMBEDDING_DIM,
+                shortcut_dims=cfg.MODEL_ENCODER_DIM,
+            )
 
         id_dim = cfg.MODEL_MAX_OBJ_NUM + 1
         if cfg.MODEL_IGNORE_TOKEN:
@@ -132,18 +153,31 @@ class AOT(nn.Module):
             xs = self.encoder(img)
         xs[-1] = self.encoder_projector(xs[-1])
         return xs
+    
 
-    def decode_id_logits(self, lstt_emb, shortcuts):
-        
+
+    def decode_id_logits(self, lstt_emb, shortcuts, gt_mask=None):
+
         n, c, h, w = shortcuts[-1].size()
-
         decoder_inputs = [shortcuts[-1]]
-        # lstt_emb: [tensor(fea_H * fea_W , N, fea_C)]
         for emb in lstt_emb:
-            decoder_inputs.append(emb.view(h, w, n, c).permute(2, 3, 0, 1))
-        # decdoer_input: [tensor(N, fea_C, fea_H, fea_W)]
-        pred_logit = self.decoder(decoder_inputs, shortcuts) # (N,  fea_C = 11  , (fea_H * 2 - 1)*2 -1, (fea_H * 2 - 1)*2 -1   )
-        return pred_logit
+            decoder_inputs.append(emb.view(h, w, n, -1).permute(2, 3, 0, 1))
+        
+        if self.decoder_name == "diffusion":
+            with torch.no_grad():
+                pred_logit = self.decoder.inference(decoder_inputs, shortcuts)
+            if self.cfg.SPLIT == "train":
+                diffusion_loss = self.decoder.Diffusion_train(decoder_inputs, shortcuts, gt_mask)  
+            else:
+                diffusion_loss = None
+            return diffusion_loss,  pred_logit
+
+        elif  self.decoder_name == "fpn":
+            pred_logit = self.decoder(decoder_inputs, shortcuts)
+            return pred_logit
+        else:
+            raise NotImplementedError
+
 
     def LSTT_forward(
         self,

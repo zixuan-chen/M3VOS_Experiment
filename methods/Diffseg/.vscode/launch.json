@@ -1,0 +1,25 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python 调试程序: 当前文件",
+            "type": "debugpy",
+            "request": "launch", 
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "args": "  --amp  --exp_name pre_vost_diffusion --model aotdiff --gpu_num 1 --batch_size 2  --stage pre_vost_diffusion",
+
+            "cwd":"${workspaceFolder}/aot_plus",
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "2"
+            }
+        }
+    ]
+}
+
+// CUDA_VISIBLE_DEVICES=0  python tools/eval.py --result_path ./results/aotplus_R50_AOT
+// L/pre_vost    --dataset vost --split val  --gpu_num 1 --ms 1.0 --ckpt_path pretrain_models/R50_AOTL_PRE_YTB_DAV.pth --eval_name debug  --fix_random --debu
+// g_fix_random

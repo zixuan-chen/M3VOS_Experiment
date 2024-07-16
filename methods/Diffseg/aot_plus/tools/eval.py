@@ -14,6 +14,7 @@ import torch.multiprocessing as mp
 
 from networks.managers.evaluator import Evaluator
 
+
 def main_worker(gpu, cfg, seq_queue=None, info_queue=None, enable_amp=False):
     if cfg.FIX_RANDOM:
         random_seed = 1
