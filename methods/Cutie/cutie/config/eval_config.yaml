@@ -5,13 +5,13 @@ defaults:
 
 hydra:
   run:
-    dir: ../cutie_output/${exp_id}/${dataset}
+    dir: ./cutie_output/${exp_id}/${dataset}
   output_subdir: ${now:%Y-%m-%d_%H-%M-%S}-hydra
 
 exp_id: default
 dataset: d17-val
 amp: False
-weights: output/cutie-base-mega.pth
+weights: output/cutie-base-vost/cutie-base-vost_main_training_last.pth
 output_dir: null # defaults to run_dir; specify this to override
 flip_aug: False
 
@@ -147,10 +147,10 @@ datasets:
     use_all_masks: True
     use_long_term: True
     mem_every: 5
-  vost-val:
-    image_directory: /home/chenzixuan/datasets/VOST/JPEGImages
-    mask_directory: /home/chenzixuan/datasets/VOST/Annotations
-    subset: /home/chenzixuan/datasets/VOST/ImageSets/val.txt
+  vost-val: 
+    image_directory: /home/bingxing2/home/scx7kwl/dataset/VOST/JPEGImages
+    mask_directory: /home/bingxing2/home/scx7kwl/dataset/VOST/Annotations
+    subset: /home/bingxing2/home/scx7kwl/dataset/VOST/ImageSets/val.txt
     size: -1
     save_all: True
     use_all_masks: False

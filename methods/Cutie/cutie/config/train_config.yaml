@@ -24,7 +24,7 @@ save_checkpoint_interval: 10000
 
 pre_training:
   name: pre_training
-  enabled: True
+  enabled: False
   batch_size: 16
   amp: False
   num_iterations: 80000

@@ -1,6 +1,7 @@
 import os
 import time
 import math
+import sys
 
 import logging
 from omegaconf import DictConfig
@@ -11,7 +12,8 @@ import random
 import numpy as np
 import torch
 import torch.distributed as distributed
-
+sys.path.append("..")
+sys.path.append(".")
 from cutie.model.trainer import Trainer
 from cutie.dataset.setup_training_data import setup_pre_training_datasets, setup_main_training_datasets
 from cutie.utils.logger import TensorboardLogger

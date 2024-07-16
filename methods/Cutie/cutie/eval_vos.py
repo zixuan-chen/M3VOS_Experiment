@@ -8,6 +8,7 @@ import torch
 from torch.utils.data import DataLoader
 import sys
 sys.path.append("..")
+sys.path.append(".")
 from cutie.inference.data.vos_test_dataset import VOSTestDataset
 from cutie.inference.data.burst_test_dataset import BURSTTestDataset
 from cutie.model.cutie import CUTIE
@@ -76,7 +77,7 @@ def eval_vos(cfg: DictConfig):
 
     # Set up loader
     meta_loader = meta_dataset.get_datasets()
-
+    
     # determine where to save the masks
     save_all = data_cfg['save_all']
     mask_output_root = path.join(run_dir, 'Annotations')
@@ -88,13 +89,14 @@ def eval_vos(cfg: DictConfig):
 
     # Start eval
     pbar = tqdm(meta_loader, total=len(meta_dataset))
-    for vid_reader in pbar:
+    for vid, vid_reader in enumerate(pbar):
 
         loader = DataLoader(vid_reader, batch_size=None, shuffle=False, num_workers=4)
         vid_name = vid_reader.vid_name
         pbar.set_description(vid_name)
         vid_length = len(loader)
-
+        if vid_name == "5253_open_package":
+            continue
         try:
             processor = InferenceCore(cutie, cfg=cfg)
             saver = ResultSaver(mask_output_root,

@@ -1,7 +1,7 @@
 from os import path, listdir
 import re
 import sys
-sys.path.append("/home/chenzixuan/Cutie/cutie")
+sys.path.append("..")
 from omegaconf import DictConfig, open_dict
 from hydra import compose, initialize
 

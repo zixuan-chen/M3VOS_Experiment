@@ -107,6 +107,7 @@ class Evaluation(object):
                     sys.stdout.flush()
                 sema.release()
                 print(f"{seq} complete ! ")
+                
             sema.acquire()
             p = mp.Process(target=evaluate, args=())
             p.start()
