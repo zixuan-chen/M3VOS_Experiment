@@ -7,16 +7,17 @@
         {
             "name": "Python 调试程序: 当前文件",
             "type": "debugpy",
-            "request": "launch", 
+            "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
             "args": 
-            "  --amp  --exp_name pre_vost --model r50_aotl --gpu_num 1 --batch_size 2  --stage pre_vost",
-            // "  --amp  --exp_name pre_vost_diffusion --model aotdiff --gpu_num 1 --batch_size 2  --stage pre_vost_diffusion",
-
+            // " --result_path ./results/aotplus_R50_AOTL/pre_vost    --dataset vost --split val  --gpu_num 1 --ms 1.0 --ckpt_path /home/chenzixuan/jiaxin/DeformVOS/methods/RMem/aot_plus/pretrain/aotplus_R50_DeOTL_Temp_pe_Slot_4_ema_20000.pth --eval_name debug  --fix_random --debug_fix_random  ",
+                    // "--exp_name pre_vost --model r50_aotl --gpu_num 1 --batch_size 2  --stage pre_vost", 
+                    "",
             "cwd":"${workspaceFolder}/aot_plus",
             "env": {
-                "CUDA_VISIBLE_DEVICES": "2"
+                "CUDA_VISIBLE_DEVICES": "1",
+                "HF_ENDPOINT": "https://hf-mirror.com"
             }
         }
     ]
