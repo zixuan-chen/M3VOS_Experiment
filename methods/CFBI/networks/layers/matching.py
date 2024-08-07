@@ -298,6 +298,8 @@ def global_matching_for_eval(
             
 
                 reference_embeddings_flat = reference_embeddings.view(-1, embedding_dim)
+                # print('reference labels:')
+                # print(reference_labels.shape)
                 reference_labels_flat = reference_labels.view(-1, obj_nums)
 
                 all_reference_embeddings_flat.append(reference_embeddings_flat)

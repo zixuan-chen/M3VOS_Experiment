@@ -78,10 +78,18 @@ class VOS_Test(Dataset):
             current_label_name = img_name.split('.')[0] + '.png'
             if current_label_name in self.labels:
                 current_label = self.read_label(current_label_name)
+
+                # print("current_label:" , current_label.shape)
+                # print("current_label:" , np.unique(current_label) )
                 if temp_obj_num < np.unique(current_label)[-1]:
                     temp_obj_num = np.unique(current_label)[-1]
+                    # print(np.unique(current_label))
+                    # print("temp_obj_num:", temp_obj_num)
+
+                
 
     def __len__(self):
+        # print("[LEN] ", len(self.images))
         return len(self.images)
 
     def read_image(self, idx):
@@ -121,7 +129,249 @@ class VOS_Test(Dataset):
             sample = self.transform(sample)
         return sample
 
+class VOS_Test_forROVES(Dataset):
+    def __init__(self, image_root, label_root, seq_name, images, labels, rgb=False, transform=None, single_obj=False):
+        self.image_root = image_root
+        self.label_root = label_root
+        self.seq_name = seq_name
+        self.images = images
+        self.labels = labels
+        self.obj_num = 1
+        self.num_frame = len(self.images)
+        self.transform = transform
+        self.rgb = rgb
+        self.single_obj = single_obj
 
+        self.obj_nums = []
+        temp_obj_num = 0
+        for img_name in self.images:
+            self.obj_nums.append(temp_obj_num)
+            current_label_name = img_name.split('.')[0] + '.png'
+            if current_label_name in self.labels:
+                current_label = self.read_label(current_label_name)
+                # print( np.unique(current_label))
+                if temp_obj_num < np.unique(current_label)[-1]:
+                    temp_obj_num = np.unique(current_label)[-1]
+  
+
+    def __len__(self):
+        # print("[LEN] ", len(self.images))
+        return len(self.images)
+
+    def read_image(self, idx):
+        img_name = self.images[idx]
+        img_path = os.path.join(self.image_root, img_name)
+        img = cv2.imread(img_path)
+        img = np.array(img, dtype=np.float32)
+        if self.rgb:
+            img = img[:, :, [2, 1, 0]]
+        return img
+
+    def read_label(self, label_name):
+        label_path = os.path.join(self.label_root,  label_name)
+        label = Image.open(label_path)
+        label = np.array(label, dtype=np.uint8)
+        if self.single_obj:
+            label = (label > 0).astype(np.uint8)
+        return label
+
+    def __getitem__(self, idx):
+        img_name = self.images[idx]
+        current_img = self.read_image(idx)
+        height, width, channels = current_img.shape
+        current_label_name = img_name.split('.')[0] + '.png'
+        obj_num = self.obj_nums[idx]
+
+        if current_label_name in self.labels:
+            current_label = self.read_label(current_label_name)
+            sample = {'current_img':current_img, 'current_label':current_label}
+        else:
+            sample = {'current_img':current_img}
+        
+        sample['meta'] = {'seq_name':self.seq_name, 'frame_num':self.num_frame, 'obj_num':obj_num,
+                          'current_name':img_name, 'height':height, 'width':width, 'flip':False}
+
+        if self.transform is not None:
+            sample = self.transform(sample)
+        return sample
+
+
+
+class VOS_Test_forVOST(Dataset):
+    def __init__(self, image_root, label_root, seq_name, images, labels, rgb=False, transform=None, single_obj=False):
+        self.image_root = image_root
+        self.label_root = label_root
+        self.seq_name = seq_name
+        self.images = images
+        self.labels = labels
+        self.obj_num = 1
+        self.num_frame = len(self.images)
+        self.transform = transform
+        self.rgb = rgb
+        self.single_obj = single_obj
+
+        self.obj_nums = []
+        temp_obj_num = 0
+        for img_name in self.images:
+            self.obj_nums.append(temp_obj_num)
+            current_label_name = img_name.split('.')[0] + '.png'
+            if current_label_name in self.labels:
+                current_label = self.read_label(current_label_name)
+                # print(np.unique(current_label))
+                if 255 in np.unique(current_label):
+                    
+                    if temp_obj_num < np.unique(current_label)[-2]:
+                        temp_obj_num = np.unique(current_label)[-2]
+                else:
+                    if temp_obj_num < np.unique(current_label)[-1]:
+                        temp_obj_num = np.unique(current_label)[-1]          
+  
+
+    def __len__(self):
+        # print("[LEN] ", len(self.images))
+        return len(self.images)
+
+    def read_image(self, idx):
+        img_name = self.images[idx]
+        img_path = os.path.join(self.image_root, self.seq_name, img_name)
+        img = cv2.imread(img_path)
+        img = np.array(img, dtype=np.float32)
+        if self.rgb:
+            img = img[:, :, [2, 1, 0]]
+        return img
+
+    def read_label(self, label_name):
+        label_path = os.path.join(self.label_root, self.seq_name, label_name)
+        label = Image.open(label_path)
+        label = np.array(label, dtype=np.uint8)
+        if self.single_obj:
+            label = (label > 0).astype(np.uint8)
+        return label
+
+    def __getitem__(self, idx):
+        img_name = self.images[idx]
+        current_img = self.read_image(idx)
+        height, width, channels = current_img.shape
+        current_label_name = img_name.split('.')[0] + '.png'
+        obj_num = self.obj_nums[idx]
+
+        if current_label_name in self.labels:
+            current_label = self.read_label(current_label_name)
+            sample = {'current_img':current_img, 'current_label':current_label}
+        else:
+            sample = {'current_img':current_img}
+        
+        sample['meta'] = {'seq_name':self.seq_name, 'frame_num':self.num_frame, 'obj_num':obj_num,
+                          'current_name':img_name, 'height':height, 'width':width, 'flip':False}
+
+        if self.transform is not None:
+            sample = self.transform(sample)
+        return sample
+
+class ROVES_Test(object):
+    def __init__(self, root='/ROVES', transform=None, rgb=False, result_root=None, split = ["val"]):
+        self.db_root_dir = root
+        self.result_root = result_root
+        self.rgb = rgb
+        self.transform = transform
+        self.seqs = []
+
+        self.seqs = os.listdir(os.path.join(self.db_root_dir, "Annotations"))
+
+        self.annotations_root = os.path.join(self.db_root_dir, "Annotations")
+
+        self.seqs = list( map(lambda x: x.strip(), self.seqs  ))
+        self.seqs = [ seq for seq in self.seqs if seq != "chanlleng_label.json" ]
+
+        
+    def __len__(self):
+        # print("LEN:" , len(self.seqs))
+        return len(self.seqs)
+    
+
+    def __getitem__(self, idx):
+        seq_name = self.seqs[idx]
+
+        images = []
+        labels= []
+
+        image_root= os.path.join(self.annotations_root,seq_name ,"images")
+        label_root = os.path.join(self.annotations_root, seq_name,"masks")
+        # print(label_root)
+
+        # print( os.listdir(os.path.join(self.image_root)))
+
+        images = list( filter(lambda x: x.endswith(".jpg"), os.listdir( image_root)  )) 
+        labels =  list( filter(lambda x: x.endswith(".png"),os.listdir( label_root) ))  
+
+        images = np.sort(np.unique(images))
+        labels = np.sort(np.unique(labels))
+
+        # print("images:" , images)
+        # print("labels:" , labels)
+
+        if not os.path.isfile(os.path.join(self.result_root, seq_name, labels[0])):
+            if not os.path.exists(os.path.join(self.result_root, seq_name)):
+                os.makedirs(os.path.join(self.result_root, seq_name))
+            shutil.copy(os.path.join(label_root, labels[0]), os.path.join(self.result_root, seq_name, labels[0]))
+
+        seq_dataset = VOS_Test_forROVES(image_root, label_root, seq_name, images, labels, transform=self.transform, rgb=self.rgb)
+        return seq_dataset
+
+        
+        
+
+class VOST_Test(object):
+    def __init__(self, root='/VOST', transform=None, rgb=False, result_root=None, split = ["val"]):
+        self.db_root_dir = root
+        self.result_root = result_root
+        self.rgb = rgb
+        self.transform = transform
+        self.seqs = []
+
+        for spl in split:
+            with open(os.path.join(self.db_root_dir, "ImageSets", spl + ".txt"), "r") as file:
+                self.seqs += file.readlines()
+        # print(self.seqs)
+        self.seqs = list( map(lambda x: x.strip(), self.seqs  ))
+        print(self.seqs)
+
+        self.image_root = os.path.join(root, 'JPEGImages')
+        self.label_root = os.path.join(root, 'Annotations')
+
+        
+    def __len__(self):
+        # print("LEN:" , len(self.seqs))
+        return len(self.seqs)
+    
+
+    def __getitem__(self, idx):
+        seq_name = self.seqs[idx]
+
+        images = []
+        labels= []
+
+        # print( os.listdir(os.path.join(self.image_root)))
+
+        images = list( filter(lambda x: x.endswith(".jpg"), os.listdir(os.path.join(self.image_root, seq_name)) )) 
+        labels =  list( filter(lambda x: x.endswith(".png"), os.listdir(os.path.join(self.label_root,seq_name)) ))  
+
+        images = np.sort(np.unique(images))
+        labels = np.sort(np.unique(labels))
+
+        # print("images:" , images)
+        # print("labels:" , labels)
+
+        if not os.path.isfile(os.path.join(self.result_root, seq_name, labels[0])):
+            if not os.path.exists(os.path.join(self.result_root, seq_name)):
+                os.makedirs(os.path.join(self.result_root, seq_name))
+            shutil.copy(os.path.join(self.label_root, seq_name, labels[0]), os.path.join(self.result_root, seq_name, labels[0]))
+
+        seq_dataset = VOS_Test_forVOST(self.image_root, self.label_root, seq_name, images, labels, transform=self.transform, rgb=self.rgb)
+        return seq_dataset
+
+        
+        
 
 class YOUTUBE_VOS_Test(object):
     def __init__(self, root='./valid', transform=None, rgb=False, result_root=None):
@@ -157,6 +407,8 @@ class YOUTUBE_VOS_Test(object):
                 os.makedirs(os.path.join(self.result_root, seq_name))
             shutil.copy(os.path.join(self.label_root, seq_name, labels[0]), os.path.join(self.result_root, seq_name, labels[0]))
 
+        print("res path:", os.path.join(self.result_root, seq_name, labels[0]))
+
         seq_dataset = VOS_Test(self.image_root, self.label_root, seq_name, images, labels, transform=self.transform, rgb=self.rgb)
         return seq_dataset
 
@@ -171,6 +423,9 @@ class YOUTUBE_VOS_Test(object):
         else:
             self.ann_f = json.load(open(self.seq_list_file, 'r'))['videos']
             return True
+
+
+
     
 
 class DAVIS_Test(object):

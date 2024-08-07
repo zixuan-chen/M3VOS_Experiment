@@ -16,7 +16,7 @@
                     "",
             "cwd":"${workspaceFolder}/aot_plus",
             "env": {
-                "CUDA_VISIBLE_DEVICES": "1",
+                "CUDA_VISIBLE_DEVICES": "0",
                 "HF_ENDPOINT": "https://hf-mirror.com"
             }
         }

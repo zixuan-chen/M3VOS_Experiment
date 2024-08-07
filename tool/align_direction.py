@@ -43,7 +43,6 @@ def rotate_video_if_tall(video_path):
 
 
 
-
 if __name__ == "__main__":
     # rotate_and_save_image_if_tall("/home/chenzixuan/jiaxin/DeformVOS/tmp/mask_v.png")
     rotate_video_if_tall("/home/chenzixuan/jiaxin/DeformVOS/tmp/seq_5_cup.mp4")

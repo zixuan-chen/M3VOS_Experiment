@@ -126,6 +126,7 @@ class DefaultEngineConfig():
         self.DIR_VISOR = os.path.join(self.DIR_DATA, 'VISOR')
         self.DIR_YTB = os.path.join(self.DIR_DATA, 'YTB')
         self.DIR_STATIC = os.path.join(self.DIR_DATA, 'Static')
+        self.DIR_ROVES = os.path.join(self.DIR_DATA, 'ROVES')
 
         self.DIR_ROOT = './results'
 

@@ -1,0 +1,47 @@
+cuda-11.8 loaded successful
+gcc-9.3.0 loaded successful
+/home/bingxing2/home/scx8ah2/.conda/envs/LLMSeg_cp310/lib/python3.10/site-packages/bitsandbytes/cuda_setup/main.py:167: UserWarning: Welcome to bitsandbytes. For bug reports, please run
+
+python -m bitsandbytes
+
+
+  warn(msg)
+/home/bingxing2/home/scx8ah2/.conda/envs/LLMSeg_cp310/lib/python3.10/site-packages/bitsandbytes/cuda_setup/main.py:167: UserWarning: /home/bingxing2/home/scx8ah2/.conda/envs/LLMSeg_cp310 did not contain ['libcudart.so', 'libcudart.so.11.0', 'libcudart.so.12.0'] as expected! Searching further paths...
+  warn(msg)
+/home/bingxing2/home/scx8ah2/.conda/envs/LLMSeg_cp310/lib/python3.10/site-packages/bitsandbytes/cuda_setup/main.py:167: UserWarning: Found duplicate ['libcudart.so', 'libcudart.so.11.0', 'libcudart.so.12.0'] files: {PosixPath('/home/bingxing2/apps/compilers/cuda/cuda-11.8_dev230901/lib64/libcudart.so'), PosixPath('/home/bingxing2/apps/compilers/cuda/cuda-11.8_dev230901/lib64/libcudart.so.11.0')}.. We select the PyTorch default libcudart.so, which is {torch.version.cuda},but this might missmatch with the CUDA version that is needed for bitsandbytes.To override this behavior set the BNB_CUDA_VERSION=<version string, e.g. 122> environmental variableFor example, if you want to use the CUDA version 122BNB_CUDA_VERSION=122 python ...OR set the environmental variable in your .bashrc: export BNB_CUDA_VERSION=122In the case of a manual override, make sure you set the LD_LIBRARY_PATH, e.g.export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-11.2
+  warn(msg)
+/home/bingxing2/home/scx8ah2/.conda/envs/LLMSeg_cp310/lib/python3.10/site-packages/bitsandbytes/cuda_setup/main.py:167: UserWarning: /home/bingxing2/apps/compilers/gcc/9.3.0/lib64:/home/bingxing2/apps/cudnn/8.8.1.3_cuda11.x/lib:/home/bingxing2/apps/cudnn/8.8.1.3_cuda11.x/lib64:/home/bingxing2/apps/compilers/cuda/cuda-11.8_dev230901/extras/CUPTI/lib64:/home/bingxing2/apps/compilers/cuda/cuda-11.8_dev230901/lib64:/home/bingxing2/apps/anaconda/2021.11/lib did not contain ['libcudart.so', 'libcudart.so.11.0', 'libcudart.so.12.0'] as expected! Searching further paths...
+  warn(msg)
+/home/bingxing2/home/scx8ah2/.conda/envs/LLMSeg_cp310/lib/python3.10/site-packages/bitsandbytes/cuda_setup/main.py:167: UserWarning: Found duplicate ['libcudart.so', 'libcudart.so.11.0', 'libcudart.so.12.0'] files: {PosixPath('/usr/local/cuda/lib64/libcudart.so'), PosixPath('/usr/local/cuda/lib64/libcudart.so.11.0')}.. We select the PyTorch default libcudart.so, which is {torch.version.cuda},but this might missmatch with the CUDA version that is needed for bitsandbytes.To override this behavior set the BNB_CUDA_VERSION=<version string, e.g. 122> environmental variableFor example, if you want to use the CUDA version 122BNB_CUDA_VERSION=122 python ...OR set the environmental variable in your .bashrc: export BNB_CUDA_VERSION=122In the case of a manual override, make sure you set the LD_LIBRARY_PATH, e.g.export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-11.2
+  warn(msg)
+False
+
+===================================BUG REPORT===================================
+================================================================================
+The following directories listed in your path were found to be non-existent: {PosixPath('/home/bingxing2/apps/cudnn/8.8.1.3_cuda11.x/lib64')}
+The following directories listed in your path were found to be non-existent: {PosixPath('compilers/gcc/9.3.0&as|compilers/default&as|compilers/latest'), PosixPath('anaconda/2021.11&as|anaconda/default&as|anaconda/latest'), PosixPath('cmake/3.26.3&as|cmake/default&as|cmake/latest')}
+The following directories listed in your path were found to be non-existent: {PosixPath('compilers/cuda/11.8&compilers/cuda'), PosixPath('anaconda/2021.11&anaconda'), PosixPath('cudnn/8.8.1.3_cuda11.x&cudnn'), PosixPath('compilers/gcc/9.3.0&compilers/gcc')}
+The following directories listed in your path were found to be non-existent: {PosixPath('http'), PosixPath('EDvFuZTe@172.16.4.9'), PosixPath('3128'), PosixPath('//u-cEoRwn')}
+The following directories listed in your path were found to be non-existent: {PosixPath('/home/bingxing2/apps/cudnn/8.8.1.3_cuda11.x/lib64')}
+The following directories listed in your path were found to be non-existent: {PosixPath('anaconda/2021.11'), PosixPath('cmake/3.26.3'), PosixPath('cudnn/8.8.1.3_cuda11.x'), PosixPath('compilers/cuda/11.8'), PosixPath('compilers/gcc/9.3.0')}
+The following directories listed in your path were found to be non-existent: {PosixPath('http'), PosixPath('EDvFuZTe@172.16.4.9'), PosixPath('3128'), PosixPath('//u-cEoRwn')}
+The following directories listed in your path were found to be non-existent: {PosixPath('module use --append /home/bingxing2/apps/tools/modules/modulefiles')}
+The following directories listed in your path were found to be non-existent: {PosixPath('/home/bingxing2/apps/cudnn/8.8.1.3_cuda11.x/lib64')}
+The following directories listed in your path were found to be non-existent: {PosixPath('() {  eval "$(/usr/bin/tclsh \'/home/bingxing2/apps/tools/modules/libexec/modulecmd.tcl\' bash "$@")";\n _mlstatus=$?;\n return $_mlstatus\n}')}
+CUDA_SETUP: WARNING! libcudart.so not found in any environmental path. Searching in backup paths...
+DEBUG: Possible options found for libcudart.so: {PosixPath('/usr/local/cuda/lib64/libcudart.so'), PosixPath('/usr/local/cuda/lib64/libcudart.so.11.0')}
+CUDA SETUP: PyTorch settings found: CUDA_VERSION=118, Highest Compute Capability: 8.0.
+CUDA SETUP: To manually override the PyTorch CUDA version please see:https://github.com/TimDettmers/bitsandbytes/blob/main/how_to_use_nonpytorch_cuda.md
+CUDA SETUP: Loading binary /home/bingxing2/home/scx8ah2/.conda/envs/LLMSeg_cp310/lib/python3.10/site-packages/bitsandbytes/libbitsandbytes_cuda118.so...
+/home/bingxing2/home/scx8ah2/.conda/envs/LLMSeg_cp310/lib/python3.10/site-packages/bitsandbytes/libbitsandbytes_cuda118.so: cannot open shared object file: No such file or directory
+CUDA SETUP: Something unexpected happened. Please compile from source:
+git clone https://github.com/TimDettmers/bitsandbytes.git
+cd bitsandbytes
+CUDA_VERSION=118 make cuda11x
+python setup.py install
+Traceback (most recent call last):
+  File "/home/bingxing2/home/scx8ah2/jiaxin/DeformVOS/methods/RMem_LLM/test_llava.py", line 1, in <module>
+    from llava.model.builder import load_pretrained_model
+  File "/home/bingxing2/home/scx8ah2/jiaxin/DeformVOS/methods/RMem_LLM/aot_plus/networks/LLM/LLaVA/llava/__init__.py", line 1, in <module>
+    from .model import LlavaLlamaForCausalLM
+ImportError: cannot import name 'LlavaLlamaForCausalLM' from 'llava.model' (/home/bingxing2/home/scx8ah2/jiaxin/DeformVOS/methods/RMem_LLM/aot_plus/networks/LLM/LLaVA/llava/model/__init__.py)

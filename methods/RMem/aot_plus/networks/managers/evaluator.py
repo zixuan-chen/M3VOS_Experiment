@@ -15,7 +15,7 @@ from torchvision import transforms
 torch.set_printoptions(linewidth=328)
 from tqdm import tqdm
 
-from dataloaders.eval_datasets import YOUTUBEVOS_Test, YOUTUBEVOS_DenseTest, DAVIS_Test, EVAL_TEST, VOST_Test, LONG_VIDEOS_Test
+from dataloaders.eval_datasets import YOUTUBEVOS_Test, YOUTUBEVOS_DenseTest, DAVIS_Test, EVAL_TEST, VOST_Test, LONG_VIDEOS_Test, ROVES_Test
 import dataloaders.video_transforms as tr
 
 from utils.image import flip_tensor, save_mask
@@ -227,7 +227,24 @@ class Evaluator(object):
             # self.dataset.seqs = self.dataset.seqs[self.dataset.seqs.index('4030_cut_broccoli') : ]
             # self.dataset.seqs = os.listdir("./results/aotplus_R50_AOTL_No_mem_gap/pre_vost/eval/vost/test")
             # self.dataset.seqs = self.dataset.seqs[self.dataset.seqs.index('1210_cut_garlic') : ]
-            print(f"{self.dataset.seqs = }")
+            # print(f"{self.dataset.seqs = }")
+
+        
+        elif cfg.TEST_DATASET == 'roves':
+            eval_name = cfg.EVAL_NAME
+            self.result_root = os.path.join(
+                cfg.DIR_EVALUATION,
+                cfg.TEST_DATASET, eval_name,
+            )
+            self.dataset = VOST_Test(
+                split=[cfg.TEST_DATASET_SPLIT],
+                root=cfg.DIR_ROVES,
+                transform=eval_transforms,
+                result_root=self.result_root,
+                is_oracle= True,
+            )
+
+    
         elif cfg.TEST_DATASET == 'test':
             self.result_root = os.path.join(
                 cfg.DIR_EVALUATION,
@@ -355,6 +372,7 @@ class Evaluator(object):
 
                         engine = all_engines[aug_idx]
                         engine.long_term_mem_gap = gap
+                        # print("samples:", samples)
 
                         sample = samples[aug_idx]
 

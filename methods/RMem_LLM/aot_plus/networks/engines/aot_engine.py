@@ -311,6 +311,21 @@ class AOTEngine(nn.Module):
             temporal_pos_emb = torch.cat((self.AOT.cur_pos_emb, self.AOT.mem_pos_emb), dim=0) 
         else:
             temporal_pos_emb = None
+        
+        self.frame_hidden_LLM = self.AOT.get_embedding_from_LLM(query = self.config.PROMPT, frames = img)
+
+        # cross attention with 
+        if "LLM" in  self.cfg.MODEL_VOS:
+            curr_hidden_LLM = self.AOT.get_embedding_from_LLM(query = self.config.PROMPT, frames = img)
+            # self matching and propagation
+            if self.AOT.use_temporal_pe:
+                temporal_pos_emb = self.AOT.temporal_CA(temporal_pos_emb, self.frame_hidden_LLM)
+            else:
+                temporal_pos_emb = None
+
+            curr_enc_embs = self.AOT.frame_CA(curr_enc_embs, self.frame_hidden_LLM)
+            
+      
         curr_lstt_output = self.AOT.LSTT_forward(
             curr_enc_embs,
             curr_id_emb,
@@ -318,7 +333,7 @@ class AOTEngine(nn.Module):
             size_2d=self.enc_size_2d,
             temporal_encoding=temporal_pos_emb,
         )
-
+    
         self.last_mem_step = frame_step
         self.AOT.init_LSTT_memory(size_2d=self.enc_size_2d)
         self.long_memories_indexes.append(self.frame_step)
@@ -377,6 +392,8 @@ class AOTEngine(nn.Module):
                 long_memory_remove_1st = [
                     [mem_k_v[0][1:, ...], mem_k_v[1][1:, ...]] for mem_k_v in self.AOT.LSTT.long_term_memories
                 ]
+
+
                 curr_lstt_output = self.AOT.LSTT_forward(
                     curr_embs=self.ref_enc_embs,
                     curr_id_emb=None,
@@ -386,6 +403,7 @@ class AOTEngine(nn.Module):
                     outer_long_memories=long_memory_remove_1st,
                     outer_short_memories=self.first_short_memories,
                 )
+
                 pred_id_logits = self.decode_current_logits(self.ref_enc_embs, curr_lstt_output)
                 if self.training:
                     curr_loss, _ = self.generate_loss_mask(
@@ -411,6 +429,9 @@ class AOTEngine(nn.Module):
         else:
             curr_enc_embs = img_embs
 
+        if "LLM" in self.cfg.MODEL_VOS :
+            curr_enc_embs = self.AOT.frame_CA(curr_enc_embs, self.frame_hidden_LLM)
+
         if self.cfg.TIME_ENCODE_NORM:
             self.temporal_encoding = get_temporal_positional_encoding(
                 max_sequence_len=self.AOT.LSTT.long_term_memories[0][0].size(0)+1,
@@ -422,8 +443,12 @@ class AOTEngine(nn.Module):
             )
         if self.AOT.use_temporal_pe:
             temporal_pos_emb = torch.cat((self.AOT.cur_pos_emb, self.AOT.mem_pos_emb), dim=0) 
+
+            if "LLM" in self.cfg.MODEL_VOS :
+                curr_enc_embs = self.AOT.temporal_CA(curr_enc_embs, self.frame_hidden_LLM)
         else:
             temporal_pos_emb = None
+        
         curr_lstt_output = self.AOT.LSTT_forward(
             curr_enc_embs,
             None,

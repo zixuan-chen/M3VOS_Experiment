@@ -14,6 +14,9 @@ class Configuration():
         self.DIR_ROOT = './'
         self.DIR_DATA = os.path.join(self.DIR_ROOT, 'datasets')
         self.DIR_DAVIS =  os.path.join(self.DIR_DATA, 'DAVIS')
+        self.DIR_VOST =  os.path.join(self.DIR_DATA, 'VOST')
+        self.DIR_ROVES =  os.path.join(self.DIR_DATA, 'ROVES')
+        
         self.DIR_YTB =  os.path.join(self.DIR_DATA, 'YTB/train')
         self.DIR_YTB_EVAL =  os.path.join(self.DIR_DATA, 'YTB/valid')
         self.DIR_RESULT = os.path.join(self.DIR_ROOT, 'result', self.EXP_NAME)
@@ -107,7 +110,7 @@ class Configuration():
         self.TEST_MIN_SIZE = None
         self.TEST_MAX_SIZE = 800 * 1.3 if self.TEST_MULTISCALE == [1.] else 800
         self.TEST_WORKERS = 4
-        self.TEST_GLOBAL_CHUNKS = 4
+        self.TEST_GLOBAL_CHUNKS = 16 # init value is 4
         self.TEST_GLOBAL_ATROUS_RATE = 1
         self.TEST_LOCAL_ATROUS_RATE = 1
         self.TEST_LOCAL_PARALLEL = True

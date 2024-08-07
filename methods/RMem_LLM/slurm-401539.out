@@ -1,0 +1,37 @@
+cuda-11.8 loaded successful
+gcc-9.3.0 loaded successful
+Could not find the bitsandbytes CUDA binary at PosixPath('/home/bingxing2/home/scx8ah2/.conda/envs/LLMSeg_cp310/lib/python3.10/site-packages/bitsandbytes-0.43.2.dev0-py3.10-linux-aarch64.egg/bitsandbytes/libbitsandbytes_cuda118.so')
+Could not load bitsandbytes native library: /home/bingxing2/home/scx8ah2/.conda/envs/LLMSeg_cp310/lib/python3.10/site-packages/bitsandbytes-0.43.2.dev0-py3.10-linux-aarch64.egg/bitsandbytes/libbitsandbytes_cpu.so: cannot open shared object file: No such file or directory
+Traceback (most recent call last):
+  File "/home/bingxing2/home/scx8ah2/.conda/envs/LLMSeg_cp310/lib/python3.10/site-packages/bitsandbytes-0.43.2.dev0-py3.10-linux-aarch64.egg/bitsandbytes/cextension.py", line 109, in <module>
+    lib = get_native_library()
+  File "/home/bingxing2/home/scx8ah2/.conda/envs/LLMSeg_cp310/lib/python3.10/site-packages/bitsandbytes-0.43.2.dev0-py3.10-linux-aarch64.egg/bitsandbytes/cextension.py", line 96, in get_native_library
+    dll = ct.cdll.LoadLibrary(str(binary_path))
+  File "/home/bingxing2/home/scx8ah2/.conda/envs/LLMSeg_cp310/lib/python3.10/ctypes/__init__.py", line 452, in LoadLibrary
+    return self._dlltype(name)
+  File "/home/bingxing2/home/scx8ah2/.conda/envs/LLMSeg_cp310/lib/python3.10/ctypes/__init__.py", line 374, in __init__
+    self._handle = _dlopen(self._name, mode)
+OSError: /home/bingxing2/home/scx8ah2/.conda/envs/LLMSeg_cp310/lib/python3.10/site-packages/bitsandbytes-0.43.2.dev0-py3.10-linux-aarch64.egg/bitsandbytes/libbitsandbytes_cpu.so: cannot open shared object file: No such file or directory
+
+CUDA Setup failed despite CUDA being available. Please run the following command to get more information:
+
+python -m bitsandbytes
+
+Inspect the output of the command and see if you can locate CUDA libraries. You might need to add them
+to your LD_LIBRARY_PATH. If you suspect a bug, please take the information from python -m bitsandbytes
+and open an issue at: https://github.com/TimDettmers/bitsandbytes/issues
+
+[2024-07-23 20:40:49,136] [INFO] [real_accelerator.py:161:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+/home/bingxing2/home/scx8ah2/.conda/envs/LLMSeg_cp310/lib/python3.10/site-packages/huggingface_hub/file_download.py:1150: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+You are using a model of type llava to instantiate a model of type llava_llama. This is not supported for all configurations of models and can yield errors.
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]/home/bingxing2/home/scx8ah2/.conda/envs/LLMSeg_cp310/lib/python3.10/site-packages/torch/_utils.py:831: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  return self.fget.__get__(instance, owner)()
+Loading checkpoint shards:  50%|█████     | 1/2 [00:07<00:07,  7.39s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:09<00:00,  4.56s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:09<00:00,  4.98s/it]
+You are using a model of type llava to instantiate a model of type llava_llama. This is not supported for all configurations of models and can yield errors.
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:02<00:02,  2.40s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:03<00:00,  1.49s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:03<00:00,  1.62s/it]
+/home/bingxing2/home/scx8ah2/.conda/envs/LLMSeg_cp310/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:392: UserWarning: `do_sample` is set to `False`. However, `temperature` is set to `0` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `temperature`.
+  warnings.warn(
+/home/bingxing2/home/scx8ah2/.conda/envs/LLMSeg_cp310/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:397: UserWarning: `do_sample` is set to `False`. However, `top_p` is set to `None` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_p`.
+  warnings.warn(
+When visiting this location, which features a pier extending over a large body of water, there are a few things to be cautious about. First, be mindful of the weather conditions, as the pier may be affected by strong winds or storms, which could make it unsafe to walk on. Second, be aware of the water depth and any potential hazards, such as submerged rocks or debris, that could pose a risk to your safety. Additionally, be cautious of the presence of wildlife in the area, as there might be birds or other animals that could pose a threat or disturbance. Finally, be respectful of the environment and other visitors, and follow any posted rules or guidelines to ensure a safe and enjoyable experience for everyone.

@@ -38,6 +38,12 @@ class VOSTest(Dataset):
         self.obj_indices = []
 
         curr_objs = [0]
+
+        assert self.fps <= 24
+        compress_ratio = int(24 / self.fps)
+        self.images = self.image_root[: : compress_ratio]
+
+
         for img_name in self.images:
             self.obj_nums.append(len(curr_objs) - 1)
             current_label_name = img_name.split('.')[0] + '.png'
@@ -113,9 +119,60 @@ class VOSTest(Dataset):
             'obj_idx': obj_idx
         }
 
+        # print("sample：" , sample)
+
         if self.transform is not None:
             sample = self.transform(sample)
         return sample
+    
+class VOSTEST_FOR_ROVES(VOSTest):
+    def __init__(self,
+                 image_root,
+                 label_root,
+                 seq_name,
+                 images,
+                 labels,
+                 rgb=True,
+                 transform=None,
+                 single_obj=False,
+                 resolution=None):
+        super().__init__(
+                 image_root,
+                 label_root,
+                 seq_name,
+                 images,
+                 labels,
+                 rgb=True,
+                 transform=None,
+                 single_obj=False,
+                 resolution=None)
+        
+    def read_image(self, idx):
+        img_name = self.images[idx]
+        img_path = os.path.join(self.image_root, img_name)
+        img = cv2.imread(img_path)
+        img = np.array(img, dtype=np.float32)
+        if self.rgb:
+            img = img[:, :, [2, 1, 0]]
+        return img
+
+    def read_label(self, label_name, squeeze_idx=None):
+        label_path = os.path.join(self.label_root, label_name)
+        label = Image.open(label_path)
+        label = np.array(label, dtype=np.uint8)
+        if self.single_obj:
+            label = (label > 0).astype(np.uint8)
+        elif squeeze_idx is not None:
+            squeezed_label = label * 0
+            for idx in range(len(squeeze_idx)):
+                obj_id = squeeze_idx[idx]
+                if obj_id == 0:
+                    continue
+                mask = label == obj_id
+                squeezed_label += (mask * idx).astype(np.uint8)
+            label = squeezed_label
+        return label
+
 
 
 class YOUTUBEVOS_Test(object):
@@ -270,6 +327,86 @@ class YOUTUBEVOS_DenseTest(object):
         else:
             self.ann_f = json.load(open(self.seq_list_file, 'r'))['videos']
             return True
+        
+
+
+class ROVES_Test(object):
+    def __init__(self,
+                 split=['balanced_val'],
+                 root='./ROVES',
+                 transform=None,
+                 rgb=True,
+                 result_root=None
+                 ):
+        self.transform = transform
+        self.rgb = rgb
+        self.result_root = result_root
+        self.single_obj = False
+        self.root = root
+
+        self.seqs = os.listdir(os.path.join(self.root, "Annotations"))
+        self.seqs = list( map(lambda x: x.strip(), self.seqs  ))
+        self.annotations_root = os.path.join(self.root, "Annotations")
+
+
+       
+
+    def __len__(self):
+        return len(self.seqs)
+
+    def __getitem__(self, idx):
+        seq_name = self.seqs[idx]
+
+        images_root = os.path.join(self.annotations_root, seq_name, "images")
+        masks_root =  os.path.join(self.annotations_root, seq_name, "masks")
+
+
+        images = list( filter(lambda x: x.endswith(".jpg"), os.listdir( images_root)  )) 
+        labels =  list( filter(lambda x: x.endswith(".png"),os.listdir( masks_root) ))  
+
+        # print(images_root, ":" , images)
+
+
+        images = np.sort(np.unique(images))
+        labels = np.sort(np.unique(labels))
+
+        if not os.path.isfile(
+                os.path.join(self.result_root, seq_name, labels[0])):
+            seq_result_folder = os.path.join(self.result_root, seq_name)
+            try:
+                if not os.path.exists(seq_result_folder):
+                    os.makedirs(seq_result_folder)
+            except Exception as inst:
+                print(inst)
+                print(
+                    'Failed to create a result folder for sequence {}.'.format(
+                        seq_name))
+            source_label_path = os.path.join(masks_root, 
+                                             labels[0])
+            result_label_path = os.path.join(self.result_root, seq_name,
+                                             labels[0])
+            if self.single_obj:
+                label = Image.open(source_label_path)
+                label = np.array(label, dtype=np.uint8)
+                label = (label > 0).astype(np.uint8)
+                label = Image.fromarray(label).convert('P')
+                label.putpalette(_palette)
+                label.save(result_label_path)
+            else:
+                shutil.copy(source_label_path, result_label_path)
+
+        seq_dataset = VOSTEST_FOR_ROVES(images_root,
+                              masks_root,
+                              seq_name,
+                              images,
+                              labels,
+                              transform=self.transform,
+                              rgb=self.rgb,
+                              single_obj=self.single_obj)#,
+                              #resolution=480)
+        return seq_dataset
+    
+
 
 class VOST_Test(object):
     def __init__(self,
@@ -342,7 +479,10 @@ class VOST_Test(object):
                               rgb=self.rgb,
                               single_obj=self.single_obj)#,
                               #resolution=480)
+
         return seq_dataset
+    
+
 
 class DAVIS_Test(object):
     def __init__(self,

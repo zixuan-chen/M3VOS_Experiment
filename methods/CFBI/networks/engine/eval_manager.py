@@ -8,7 +8,7 @@ import torch.optim as optim
 from torch.utils.data import DataLoader
 from torchvision import transforms 
 import numpy as np
-from dataloaders.datasets import YOUTUBE_VOS_Test, DAVIS_Test, EVAL_TEST
+from dataloaders.datasets import YOUTUBE_VOS_Test, DAVIS_Test, EVAL_TEST, VOST_Test, ROVES_Test
 import dataloaders.custom_transforms as tr
 from networks.deeplab.deeplab import DeepLab
 from utils.meters import AverageMeter
@@ -88,6 +88,22 @@ class Evaluator(object):
                 root=cfg.DIR_YTB_EVAL, 
                 transform=eval_transforms,  
                 result_root=self.result_root)
+            
+        elif cfg.TEST_DATASET == 'roves':
+            self.result_root = os.path.join(cfg.DIR_EVALUATION, cfg.TEST_DATASET, eval_name, 'Annotations')
+            self.dataset = ROVES_Test(
+                root=cfg.DIR_ROVES, 
+                split=cfg.TEST_DATASET_SPLIT,
+                transform=eval_transforms,  
+                result_root=self.result_root)
+
+        elif cfg.TEST_DATASET == 'VOST':
+            self.result_root = os.path.join(cfg.DIR_EVALUATION, cfg.TEST_DATASET, eval_name, 'Annotations')
+            self.dataset = VOST_Test(
+                root=cfg.DIR_VOST, 
+                split=cfg.TEST_DATASET_SPLIT,
+                transform=eval_transforms,  
+                result_root=self.result_root)
 
         elif cfg.TEST_DATASET == 'davis2017':
             resolution = 'Full-Resolution' if cfg.TEST_DATASET_FULL_RESOLUTION else '480p'
@@ -110,6 +126,8 @@ class Evaluator(object):
                 transform=eval_transforms,
                 full_resolution=cfg.TEST_DATASET_FULL_RESOLUTION, 
                 result_root=self.result_root)
+
+        
         elif cfg.TEST_DATASET == 'test':
             self.result_root = os.path.join(cfg.DIR_EVALUATION, cfg.TEST_DATASET, eval_name, 'Annotations')
             self.dataset = EVAL_TEST(eval_transforms, self.result_root)
@@ -132,7 +150,18 @@ class Evaluator(object):
         total_frame = 0
         total_sfps = 0
         total_video_num = len(self.dataset)
+        # print("total_video_num : ", total_video_num )
+        # print("seq_dataset:" , len(self.dataset[0]))
+        # print(len((self.dataset)[0]))
+
+        # print(len((self.dataset)[1]))
+        
         for seq_idx, seq_dataset in enumerate(self.dataset):
+            print(seq_idx , ": " , len((self.dataset)[seq_idx]))
+       
+    
+        for seq_idx, seq_dataset in enumerate(self.dataset):
+            
             video_num += 1
             seq_name = seq_dataset.seq_name
             print('Prcessing Seq {} [{}/{}]:'.format(seq_name, video_num, total_video_num))
@@ -253,7 +282,9 @@ class Evaluator(object):
 
         zip_folder(self.source_folder, self.zip_dir)
         self.print_log('Save result to {}.'.format(self.zip_dir))
-        
+
+    
+
 
     def print_log(self, string):
         print(string)
