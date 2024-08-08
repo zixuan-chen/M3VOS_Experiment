@@ -56,3 +56,43 @@ in the `./tool`
   - `output_video`：a target folder contains  merge videos : `exp/merge_videos`
 - `align_direction.py`: If you find the width of your video is more than its height , it will rotate it 90 degree  counterclockwisely.
 
+
+
+## predict segment
+
+### CFBI
+
+```
+# modify the week_num in ./method/CFBI/roves_eval_fast.sh
+cd ./method/CFBI
+sbatch --gpus=1 roves_eval_fast.sh 
+```
+
+- the prediction result in `methods/CFBI/result/resnet101_cfbi/eval/roves/roves_test_roves_week_{week_num}_ckpt_unknown`
+
+
+
+### AOT
+
+```
+#  modify the week_num in ./methods/RMem/aot_plus/eval_roves.sh
+cd methods/RMem/aot_plus
+sbatch --gpus=1 eval_roves.sh
+```
+
+
+
+
+
+### DeAOT + Rmem
+
+tips: the key parameter to decide whether use Rmem is `cfg.USE_TEMPORAL_POSITIONAL_EMBEDDING = True`
+
+```
+#  modify the week_num in ./methods/RMem/aot_plus/eval_roves_deaot.sh
+cd methods/RMem/aot_plus
+sbatch --gpus=1 eval_roves_deaot.sh
+```
+
+
+
