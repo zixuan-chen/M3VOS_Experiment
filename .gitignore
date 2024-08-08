@@ -39,3 +39,7 @@ __pycache__/video_mask_compose.cpython-38.pyc
 *.pth
 *.png
 *.jpg
+
+*.out
+
+**/result/** 

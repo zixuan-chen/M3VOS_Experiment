@@ -236,12 +236,13 @@ class Evaluator(object):
                 cfg.DIR_EVALUATION,
                 cfg.TEST_DATASET, eval_name,
             )
-            self.dataset = VOST_Test(
+            self.dataset = ROVES_Test(
                 split=[cfg.TEST_DATASET_SPLIT],
                 root=cfg.DIR_ROVES,
                 transform=eval_transforms,
                 result_root=self.result_root,
                 is_oracle= True,
+                week_num=cfg.WEEK_NUM
             )
 
     

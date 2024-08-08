@@ -17,7 +17,8 @@ echo "result_path=$result_path"
 dataset="roves"
 # dataset="vost"
 split="val"
-eval_name="aot_week_1_5"
+week_num=1
+eval_name="test_roves_in_aot_week_${week_num}"
 
 
 
@@ -26,7 +27,8 @@ CUDA_VISIBLE_DEVICES=${devices} python tools/eval.py --result_path "${result_pat
 	--eval_name ${eval_name} \
 	--latter_mem_len 8 \
 	--fix_random \
-    --ckpt_path pretrain_models/aotplus_R50_AOTL_ema_20000_492_370.pth 
+    --ckpt_path pretrain_models/aotplus_R50_AOTL_ema_20000_492_370.pth \
+	--week_num ${week_num}
 
 # result_path="${result_path}/eval/${dataset}/${eval_name}/"
 # echo "result_path=$result_path"

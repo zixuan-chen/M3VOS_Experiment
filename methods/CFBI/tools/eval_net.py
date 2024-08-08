@@ -29,6 +29,7 @@ def main():
     parser.add_argument('--global_chunks', type=int, default=4)
     parser.add_argument('--min_matching_pixels', type=int, default=0)
     parser.add_argument('--no_local_parallel', dest='local_parallel', action='store_false')
+    parser.add_argument('--week_num', type=int, default=0)
     parser.set_defaults(local_parallel=True)
     args = parser.parse_args()
 
@@ -36,6 +37,7 @@ def main():
     cfg = config.cfg
     
     cfg.TEST_GPU_ID = args.gpu_id
+    cfg.WEEK_NUM = args.week_num
     if args.exp_name != '':
         cfg.EXP_NAME = args.exp_name
 
@@ -46,6 +48,9 @@ def main():
 
     if args.dataset != '':
         cfg.TEST_DATASET = args.dataset
+    
+
+    
 
     cfg.TEST_FLIP = args.flip
     cfg.TEST_MULTISCALE = args.ms

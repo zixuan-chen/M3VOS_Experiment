@@ -88,6 +88,8 @@ def main():
     parser.add_argument('--former_mem_len', type=int, default=1)
     parser.add_argument('--latter_mem_len', type=int, default=9999)
 
+    parser.add_argument("--week_num",  type=int, default=0)
+
     args = parser.parse_args()
 
     sys.path.append(f"{args.result_path}/")
@@ -102,6 +104,7 @@ def main():
 
     cfg.TEST_GPU_ID = args.gpu_id
     cfg.TEST_GPU_NUM = args.gpu_num
+    cfg.WEEK_NUM = args.week_num
 
     if args.ckpt_path != '':
         cfg.TEST_CKPT_PATH = args.ckpt_path

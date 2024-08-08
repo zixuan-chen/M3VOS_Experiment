@@ -21,7 +21,8 @@ class VOSTest(Dataset):
                  rgb=True,
                  transform=None,
                  single_obj=False,
-                 resolution=None):
+                 resolution=None,
+                 fps=24):
         self.image_root = image_root
         self.label_root = label_root
         self.seq_name = seq_name
@@ -33,6 +34,7 @@ class VOSTest(Dataset):
         self.rgb = rgb
         self.single_obj = single_obj
         self.resolution = resolution
+        self.fps = fps
 
         self.obj_nums = []
         self.obj_indices = []
@@ -41,7 +43,7 @@ class VOSTest(Dataset):
 
         assert self.fps <= 24
         compress_ratio = int(24 / self.fps)
-        self.images = self.image_root[: : compress_ratio]
+        self.images = self.images[: :  compress_ratio]
 
 
         for img_name in self.images:
@@ -64,6 +66,7 @@ class VOSTest(Dataset):
         img_name = self.images[idx]
         img_path = os.path.join(self.image_root, self.seq_name, img_name)
         img = cv2.imread(img_path)
+        
         img = np.array(img, dtype=np.float32)
         if self.rgb:
             img = img[:, :, [2, 1, 0]]
@@ -330,45 +333,124 @@ class YOUTUBEVOS_DenseTest(object):
         
 
 
+# class ROVES_Test(object):
+#     def __init__(self,
+#                  split=['balanced_val'],
+#                  root='./ROVES',
+#                  transform=None,
+#                  rgb=True,
+#                  result_root=None
+#                  ):
+#         self.transform = transform
+#         self.rgb = rgb
+#         self.result_root = result_root
+#         self.single_obj = False
+#         self.root = root
+
+#         self.seqs = os.listdir(os.path.join(self.root, "Annotations"))
+#         self.seqs = list( map(lambda x: x.strip(), self.seqs  ))
+#         self.annotations_root = os.path.join(self.root, "Annotations")
+
+       
+
+#     def __len__(self):
+#         return len(self.seqs)
+
+#     def __getitem__(self, idx):
+#         seq_name = self.seqs[idx]
+
+#         images_root = os.path.join(self.annotations_root, seq_name, "images")
+#         masks_root =  os.path.join(self.annotations_root, seq_name, "masks")
+
+
+#         images = list( filter(lambda x: x.endswith(".jpg"), os.listdir( images_root)  )) 
+#         labels =  list( filter(lambda x: x.endswith(".png"),os.listdir( masks_root) ))  
+
+#         # print(images_root, ":" , images)
+
+
+#         images = np.sort(np.unique(images))
+#         labels = np.sort(np.unique(labels))
+
+#         if not os.path.isfile(
+#                 os.path.join(self.result_root, seq_name, labels[0])):
+#             seq_result_folder = os.path.join(self.result_root, seq_name)
+#             try:
+#                 if not os.path.exists(seq_result_folder):
+#                     os.makedirs(seq_result_folder)
+#             except Exception as inst:
+#                 print(inst)
+#                 print(
+#                     'Failed to create a result folder for sequence {}.'.format(
+#                         seq_name))
+#             source_label_path = os.path.join(masks_root, 
+#                                              labels[0])
+#             result_label_path = os.path.join(self.result_root, seq_name,
+#                                              labels[0])
+#             if self.single_obj:
+#                 label = Image.open(source_label_path)
+#                 label = np.array(label, dtype=np.uint8)
+#                 label = (label > 0).astype(np.uint8)
+#                 label = Image.fromarray(label).convert('P')
+#                 label.putpalette(_palette)
+#                 label.save(result_label_path)
+#             else:
+#                 shutil.copy(source_label_path, result_label_path)
+
+#         seq_dataset = VOSTEST_FOR_ROVES(images_root,
+#                               masks_root,
+#                               seq_name,
+#                               images,
+#                               labels,
+#                               transform=self.transform,
+#                               rgb=self.rgb,
+#                               single_obj=self.single_obj)#,
+#                               #resolution=480)
+#         return seq_dataset
+    
+
 class ROVES_Test(object):
     def __init__(self,
                  split=['balanced_val'],
-                 root='./ROVES',
+                 root='./ROVES_summary',
                  transform=None,
                  rgb=True,
-                 result_root=None
+                 result_root=None,
+                 is_oracle=False,
+                 week_num = 0
                  ):
+        root = os.path.join(root, "ROVES_week_" + str(week_num))
         self.transform = transform
         self.rgb = rgb
         self.result_root = result_root
         self.single_obj = False
-        self.root = root
+        self.image_root = os.path.join(root, 'JPEGImages' if is_oracle else 'JPEGImages_10fps')
+        self.label_root = os.path.join(root, 'Annotations')
+        # seq_names = []
 
-        self.seqs = os.listdir(os.path.join(self.root, "Annotations"))
-        self.seqs = list( map(lambda x: x.strip(), self.seqs  ))
-        self.annotations_root = os.path.join(self.root, "Annotations")
-
-
-       
+        self.seqs = os.listdir(self.label_root)
+        # print("self.seqs：",self.seqs)
+        # for spt in split:
+        #     with open(os.path.join(root, 'ImageSets',
+        #                            spt + '.txt')) as f:
+        #         seqs_tmp = f.readlines()
+        #     seqs_tmp = list(map(lambda elem: elem.strip(), seqs_tmp))
+        #     seq_names.extend(seqs_tmp)
+        # self.seqs = list(np.unique(seq_names))
+        self.is_oracle = is_oracle
 
     def __len__(self):
         return len(self.seqs)
 
     def __getitem__(self, idx):
         seq_name = self.seqs[idx]
-
-        images_root = os.path.join(self.annotations_root, seq_name, "images")
-        masks_root =  os.path.join(self.annotations_root, seq_name, "masks")
-
-
-        images = list( filter(lambda x: x.endswith(".jpg"), os.listdir( images_root)  )) 
-        labels =  list( filter(lambda x: x.endswith(".png"),os.listdir( masks_root) ))  
-
-        # print(images_root, ":" , images)
-
-
-        images = np.sort(np.unique(images))
-        labels = np.sort(np.unique(labels))
+        images = list(
+            np.sort(os.listdir(os.path.join(self.image_root, seq_name))))
+        # print("images:", images)
+        if self.is_oracle:
+            labels = [i.replace('jpg', 'png') for i in images]
+        else:
+            labels = [images[0].replace('jpg', 'png')]
 
         if not os.path.isfile(
                 os.path.join(self.result_root, seq_name, labels[0])):
@@ -381,7 +463,7 @@ class ROVES_Test(object):
                 print(
                     'Failed to create a result folder for sequence {}.'.format(
                         seq_name))
-            source_label_path = os.path.join(masks_root, 
+            source_label_path = os.path.join(self.label_root, seq_name,
                                              labels[0])
             result_label_path = os.path.join(self.result_root, seq_name,
                                              labels[0])
@@ -395,8 +477,8 @@ class ROVES_Test(object):
             else:
                 shutil.copy(source_label_path, result_label_path)
 
-        seq_dataset = VOSTEST_FOR_ROVES(images_root,
-                              masks_root,
+        seq_dataset = VOSTest(self.image_root,
+                              self.label_root,
                               seq_name,
                               images,
                               labels,
@@ -404,10 +486,9 @@ class ROVES_Test(object):
                               rgb=self.rgb,
                               single_obj=self.single_obj)#,
                               #resolution=480)
+
         return seq_dataset
     
-
-
 class VOST_Test(object):
     def __init__(self,
                  split=['balanced_val'],

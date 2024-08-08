@@ -1,4 +1,4 @@
-#！/bin/bash
+#!/bin/bash
 
 
 source activate LLMSeg_cp310
@@ -17,15 +17,17 @@ echo "result_path=$result_path"
 dataset="roves"
 # dataset="vost"
 split="val"
-eval_name="test_deaot_debug_tempory_true_rmm"
-
+week_num=1
+eval_name="test_roves_week_in_deaotRmem_${week_num}"
 
 CUDA_VISIBLE_DEVICES=${devices} python tools/eval.py --result_path "${result_path}" \
 	--dataset ${dataset} --split ${split} --gpu_num ${gpu_num} --ms 1.0 \
 	--eval_name ${eval_name} \
 	--latter_mem_len 8 \
 	--fix_random \
-    --ckpt_path pretrain_models/aotplus_R50_DeOTL_Temp_pe_Slot_4_ema_20000.pth
+    --ckpt_path pretrain_models/aotplus_R50_DeOTL_Temp_pe_Slot_4_ema_20000.pth \
+	--week_num  ${week_num}
+
 
 # result_path="${result_path}/eval/${dataset}/${eval_name}/"
 # echo "result_path=$result_path"
