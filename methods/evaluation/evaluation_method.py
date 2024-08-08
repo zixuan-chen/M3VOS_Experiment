@@ -18,13 +18,20 @@ parser.add_argument('--dataset_path', type=str, help='Path to the dataset folder
 parser.add_argument('--set', type=str, help='Subset to evaluate the results', default='val')
 parser.add_argument('--results_path', type=str, help='Path to the folder containing the sequences folders',
                     required=True)
+parser.add_argument('--week_num', type=int)
 parser.add_argument('--re', action='store_true')
 args, _ = parser.parse_known_args()
+
 dataset_path_dict = {
     'vost': '../RMem/aot_plus/datasets/VOST',
     'long_videos': '../aot_plus/datasets/long_videos',
+    'roves': '../datasets/ROVES_summary',
 }
 args.dataset_path = dataset_path_dict[args.dataset_path]
+if 'ROVES' in args.dataset_path :
+    args.dataset_path = os.path.join(args.dataset_path, f"ROVES_week_{args.week_num}")
+
+
 csv_name_global = f'global_results-{args.set}.csv'
 csv_name_per_sequence = f'per-sequence_results-{args.set}.csv'
 

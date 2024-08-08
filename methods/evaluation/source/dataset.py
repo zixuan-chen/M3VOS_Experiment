@@ -61,9 +61,12 @@ class Dataset(object):
             # self.sequences[seq]['masks'] = masks
 
     def _check_directories(self):
+
         if not os.path.exists(self.root):
-            raise FileNotFoundError(f'Dataset not found in the specified directory')
+
+            raise FileNotFoundError(f'Dataset path({self.root}) not found in the specified directory')
         if not os.path.exists(os.path.join(self.imagesets_path, f'{self.subset}.txt')):
+            # print(os.path.join(self.imagesets_path, f'{self.subset}.txt'))
             raise FileNotFoundError(f'Subset sequences list for {self.subset} not found')
         if self.subset in ['train', 'val'] and not os.path.exists(self.mask_path):
             raise FileNotFoundError(f'Annotations folder not found')

@@ -96,3 +96,12 @@ sbatch --gpus=1 eval_roves_deaot.sh
 
 
 
+## Eval code
+
+```
+#  modify the week_num in ./methods/evaluation/eval.sh 
+# choose the result path of model
+cd /methods
+sbatch --gpus=1 evaluation/eval.sh 
+```
+
