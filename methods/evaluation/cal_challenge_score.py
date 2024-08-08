@@ -58,11 +58,14 @@ def calculate_averages_from_dir(dir_path, csv_file_path):
     if 'Sequence' not in df.columns or 'J-Mean' not in df.columns or 'J_last-Mean' not in df.columns:
         raise ValueError("CSV file must contain 'Sequence', 'J-Mean', and 'J_last-Mean' columns.")
     
+    
     # 初始化一个空列表来存储结果
     results = []
     
     # 遍历文件夹中的每个文件
     for filename in os.listdir(dir_path):
+        if filename == "val.txt":
+            continue
         # 构建文件的完整路径
         file_path = os.path.join(dir_path, filename)
         
@@ -84,10 +87,35 @@ def calculate_averages_from_dir(dir_path, csv_file_path):
             
     # 将结果列表转换为DataFrame
     results_df = pd.DataFrame(results)
+
+    directory = os.path.dirname(csv_file_path)
+
+    # 构建新的文件路径
+    new_csv_path = os.path.join(directory, "challenge_score.csv")
+
+    # 保存 results_df 到新的文件路径
+    results_df.to_csv(new_csv_path, index=False)
     
     return results_df
 
 if __name__ == "__main__":
-    week1_5_filename = "/home/bingxing2/home/scx8ah2/jiaxin/DeformVOS/methods/RMem/aot_plus/results/aotplus_R50_AOTL/pre_vost/eval/roves/aot_week_1_5/per-sequence_results-val.csv"
-    subset_dir = "/home/bingxing2/home/scx8ah2/zixuan/DeformVOS/tmp"
-    print(calculate_averages_from_dir(subset_dir, week1_5_filename))
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--datasets_root', type=str)
+    parser.add_argument('--week_num', type=int)
+    parser.add_argument('--result_csv_path', type=str)
+    args, _ = parser.parse_known_args()
+
+    if "ROVES" in args.datasets_root:
+        args.ImageSets_path = os.path.join(args.datasets_root , "ROVES_week_" + str(args.week_num), "ImageSets"  ) 
+    else:
+        args.ImageSets_path = os.path.join(args.datasets_root ,"ImageSets"  ) 
+    
+
+
+    week_filename =  args.result_csv_path
+    subset_dir =args.ImageSets_path 
+    # week1_5_filename = "/home/bingxing2/home/scx8ah2/jiaxin/DeformVOS/methods/RMem/aot_plus/results/aotplus_R50_AOTL/pre_vost/eval/roves/aot_week_1_5/per-sequence_results-val.csv"
+    # subset_dir = "/home/bingxing2/home/scx8ah2/zixuan/DeformVOS/tmp"
+
+    print(calculate_averages_from_dir(subset_dir, week_filename))

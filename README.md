@@ -98,10 +98,27 @@ sbatch --gpus=1 eval_roves_deaot.sh
 
 ## Eval code
 
+### get  $J_st$ and $J$ for each instance and global average
+
 ```
 #  modify the week_num in ./methods/evaluation/eval.sh 
 # choose the result path of model
 cd /methods
 sbatch --gpus=1 evaluation/eval.sh 
 ```
+
+
+
+
+
+### get $J_st$ and $J$ for each challenge
+
+```
+#  modify the week_num in ./methods/evaluation/cal_challenge_score.sh 
+# choose the result path of model
+cd /methods
+sbatch --gpus=1 evaluation/eval.sh 
+```
+
+
 
