@@ -80,7 +80,7 @@ cd methods/RMem/aot_plus
 sbatch --gpus=1 eval_roves.sh
 ```
 
-
+- the prediction result in `methods/RMem/aot_plus/results/aotplus_R50_AOTL/pre_vost/eval/roves/test_roves_in_aot_week_${week_num}`
 
 
 
@@ -93,6 +93,10 @@ tips: the key parameter to decide whether use Rmem is `cfg.USE_TEMPORAL_POSITION
 cd methods/RMem/aot_plus
 sbatch --gpus=1 eval_roves_deaot.sh
 ```
+
+the prediction result in `methods/RMem/aot_plus/results/aotplus_R50_AOTL/pre_vost/eval/roves/test_roves_week_in_deaotRmem_${week_num}`
+
+
 
 
 
@@ -109,8 +113,6 @@ sbatch --gpus=1 evaluation/eval.sh
 
 
 
-
-
 ### get $J_st$ and $J$ for each challenge
 
 ```
@@ -121,4 +123,6 @@ sbatch --gpus=1 evaluation/eval.sh
 ```
 
 
+
+:rocket: TIP: Three result `csv` will be store in the `result_path`
 
