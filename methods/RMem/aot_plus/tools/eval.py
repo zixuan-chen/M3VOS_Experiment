@@ -89,6 +89,7 @@ def main():
     parser.add_argument('--latter_mem_len', type=int, default=9999)
 
     parser.add_argument("--week_num",  type=int, default=0)
+    parser.add_argument("--dataset_fps",  type=int, default=24)
 
     args = parser.parse_args()
 
@@ -105,6 +106,7 @@ def main():
     cfg.TEST_GPU_ID = args.gpu_id
     cfg.TEST_GPU_NUM = args.gpu_num
     cfg.WEEK_NUM = args.week_num
+    cfg.FPS  = args.dataset_fps
 
     if args.ckpt_path != '':
         cfg.TEST_CKPT_PATH = args.ckpt_path

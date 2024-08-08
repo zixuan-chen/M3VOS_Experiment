@@ -417,7 +417,8 @@ class ROVES_Test(object):
                  rgb=True,
                  result_root=None,
                  is_oracle=False,
-                 week_num = 0
+                 week_num = 0,
+                 fps=24
                  ):
         root = os.path.join(root, "ROVES_week_" + str(week_num))
         self.transform = transform
@@ -426,6 +427,7 @@ class ROVES_Test(object):
         self.single_obj = False
         self.image_root = os.path.join(root, 'JPEGImages' if is_oracle else 'JPEGImages_10fps')
         self.label_root = os.path.join(root, 'Annotations')
+        self.fps=fps
         # seq_names = []
 
         self.seqs = os.listdir(self.label_root)
@@ -484,7 +486,9 @@ class ROVES_Test(object):
                               labels,
                               transform=self.transform,
                               rgb=self.rgb,
-                              single_obj=self.single_obj)#,
+                              single_obj=self.single_obj,
+                              fps=self.fps)
+
                               #resolution=480)
 
         return seq_dataset

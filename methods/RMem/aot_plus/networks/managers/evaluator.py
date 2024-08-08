@@ -97,6 +97,7 @@ class Evaluator(object):
             self.print_log(
                 f'Load latest checkpoint from {cfg.TEST_CKPT_PATH}')
         else:
+        
             self.ckpt = 'unknown'
             self.model, removed_dict = load_network(
                 self.model,
@@ -242,7 +243,8 @@ class Evaluator(object):
                 transform=eval_transforms,
                 result_root=self.result_root,
                 is_oracle= True,
-                week_num=cfg.WEEK_NUM
+                week_num=cfg.WEEK_NUM,
+                fps=cfg.FPS
             )
 
     
@@ -254,6 +256,7 @@ class Evaluator(object):
             )
             self.dataset = EVAL_TEST(eval_transforms, self.result_root)
         else:
+            # print( cfg.TEST_DATASET)
             self.print_log('Unknown dataset!')
             exit()
 
