@@ -11,8 +11,17 @@ week_num=0
 # AOT
 # results_path="./RMem/aot_plus/results/aotplus_R50_AOTL/pre_vost/eval/roves/test_roves_in_aot_week_${week_num}/per-sequence_results-val.csv"
 
+# XMem
+# result_path="/home/bingxing2/home/scx8ah2/zixuan/DeformVOS/methods/XMem/output/roves/per-sequence_results-val.csv" # week_0
+# results_path="/home/bingxing2/home/scx8ah2/zixuan/DeformVOS/methods/XMem/output/roves_week${week_num}/per-sequence_results-val.csv"
+
+# Cutie
+# results_path="/home/bingxing2/home/scx8ah2/zixuan/DeformVOS/methods/Cutie/cutie_output/roves_week${week_num}/roves-val/Annotations/per-sequence_results-val.csv" # week_0
+# results_path="/home/bingxing2/home/scx8ah2/zixuan/DeformVOS/methods/Cutie/cutie_output/roves/roves-val/Annotations/per-sequence_results-val.csv"
+
+
 # DeAOT + RMEM
-results_path="./RMem/aot_plus/results/aotplus_R50_AOTL/pre_vost/eval/roves/test_roves_week_in_deaotRmem_${week_num}/per-sequence_results-val.csv"
+# results_path="./RMem/aot_plus/results/aotplus_R50_AOTL/pre_vost/eval/roves/test_roves_week_in_deaotRmem_${week_num}/per-sequence_results-val.csv"
 dataset="roves"
 
 python ./evaluation/cal_challenge_score.py  --datasets_root ${dataset_root} --week_num ${week_num} --result_csv_path ${results_path}

@@ -602,12 +602,16 @@ class AOTInferEngine(nn.Module):
         self.obj_nums = None
 
     def separate_mask(self, mask):
+
         if mask is None:
             return [None] * len(self.aot_engines)
         if len(self.aot_engines) == 1:
             return [mask]
+        
 
+        
         if len(mask.size()) == 3 or mask.size()[0] == 1:
+        # mask里面物体数量超过AOT的极限（ID的极限）,就把mask分成多个mask
             separated_masks = []
             for idx in range(len(self.aot_engines)):
                 start_id = idx * self.max_aot_obj_num + 1
@@ -617,6 +621,7 @@ class AOTInferEngine(nn.Module):
                 separated_masks.append(separated_mask)
             return separated_masks
         else:
+            # 输入的是prob的时候，也按照相同的方式划分prob(在batch维度上)
             prob = mask
             separated_probs = []
             for idx in range(len(self.aot_engines)):
@@ -644,13 +649,11 @@ class AOTInferEngine(nn.Module):
             keepdim=True,
         )
         merged_logit = torch.cat([bg_logit] + fg_logits, dim=1)
-
         return merged_logit
 
     def soft_logit_aggregation(self, all_logits):
         if len(all_logits) == 1:
             return all_logits[0]
-
         fg_probs = []
         bg_probs = []
 
@@ -669,7 +672,6 @@ class AOTInferEngine(nn.Module):
             dim=1,
         ).clamp(1e-5, 1 - 1e-5)
         merged_logit = torch.logit(merged_prob)
-
         return merged_logit
 
     def add_reference_frame(self, img, mask, obj_nums, frame_step=-1):

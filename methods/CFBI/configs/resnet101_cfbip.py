@@ -12,9 +12,13 @@ class Configuration():
 
         self.DIR_ROOT = './'
         self.DIR_DATA = os.path.join(self.DIR_ROOT, 'datasets')
+        self.DIR_TMP = os.path.join(self.DIR_ROOT, 'tmp')
+
         self.DIR_DAVIS =  os.path.join(self.DIR_DATA, 'DAVIS')
         self.DIR_VOST =  os.path.join(self.DIR_DATA, 'VOST')
         self.DIR_ROVES =  os.path.join(self.DIR_DATA, 'ROVES_summary')
+        self.DIR_ROVES_Debug =  os.path.join(self.DIR_TMP, 'ROVES_debug')
+        
         self.DIR_YTB =  os.path.join(self.DIR_DATA, 'YTB/train')
         self.DIR_YTB_EVAL =  os.path.join(self.DIR_DATA, 'YTB/valid')
         self.DIR_RESULT = os.path.join(self.DIR_ROOT, 'result', self.EXP_NAME)

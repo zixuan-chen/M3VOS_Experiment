@@ -14,12 +14,13 @@ class DefaultEngineConfig():
 
         self.DATASETS = ['youtubevos']
         self.DATA_WORKERS = 8
+        # dataloader in training preprocess parameter
         self.DATA_RANDOMCROP = (465,
                                 465) if self.MODEL_ALIGN_CORNERS else (464,
                                                                        464)
-        self.DATA_RANDOMFLIP = 0.5
+        self.DATA_RANDOMFLIP = 0.5 
         self.DATA_MAX_CROP_STEPS = 10
-        self.DATA_SHORT_EDGE_LEN = 480
+        self.DATA_SHORT_EDGE_LEN = 480 
         self.DATA_MIN_SCALE_FACTOR = 0.7
         self.DATA_MAX_SCALE_FACTOR = 1.3
         self.DATA_RANDOM_REVERSE_SEQ = True
@@ -38,6 +39,7 @@ class DefaultEngineConfig():
         self.DATA_VISOR_REPEAT = 1
         self.DATA_VISOR_IGNORE_THRESH = 0.2
 
+        # the parameter of load the checkpoint 
         self.PRETRAIN = True
         self.PRETRAIN_FULL = False  # if False, load encoder only
         self.PRETRAIN_MODEL = ''
@@ -127,9 +129,12 @@ class DefaultEngineConfig():
         self.DIR_YTB = os.path.join(self.DIR_DATA, 'YTB')
         self.DIR_STATIC = os.path.join(self.DIR_DATA, 'Static')
         self.DIR_ROVES = os.path.join(self.DIR_DATA, 'ROVES_summary')
-
+        self.DIR_ROVES_DEBUG = os.path.join(self.DIR_DATA, 'ROVES_summary')
+    
+        self.DIR_TMP_ROOT = "./tmp"
+        self.DIR_ROVES_DEBUG = os.path.join(self.DIR_TMP_ROOT, 'debug_dataset')
+        
         self.DIR_ROOT = './results'
-
         self.DIR_RESULT = os.path.join(self.DIR_ROOT, self.EXP_NAME,
                                        self.STAGE_NAME)
         self.DIR_CKPT = os.path.join(self.DIR_RESULT, 'ckpt')

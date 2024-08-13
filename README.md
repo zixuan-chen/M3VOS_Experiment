@@ -97,8 +97,21 @@ sbatch --gpus=1 eval_roves_deaot.sh
 the prediction result in `methods/RMem/aot_plus/results/aotplus_R50_AOTL/pre_vost/eval/roves/test_roves_week_in_deaotRmem_${week_num}`
 
 
+### XMem
+```
+# modify the week_num in ./methods/XMem/eval.sh
+cd methods/XMem
+sbatch --gpus=1 -o eval.out eval.sh
+```
+the prediction result in `methods/XMem/output/roves_week${week_num}`
 
-
+### Cutie
+```
+# modify the week_num in ./methods/Cutie/eval.sh
+cd methods/Cutie
+sbatch --gpus=1 -o eval.out eval.sh
+```
+the prediction result in `methods/Cutie/cutie_output/roves_week${week_num}`
 
 ## Eval code
 

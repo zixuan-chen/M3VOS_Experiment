@@ -103,13 +103,16 @@ class VOSTest(Dataset):
         obj_idx = self.obj_indices[idx]
 
         if current_label_name in self.labels:
+
             current_label = self.read_label(current_label_name, obj_idx)
             sample = {
                 'current_img': current_img,
-                'current_label': current_label
+                'current_label': current_label # （h,w）
             }
         else:
             sample = {'current_img': current_img}
+
+        
 
         sample['meta'] = {
             'seq_name': self.seq_name,
@@ -333,82 +336,6 @@ class YOUTUBEVOS_DenseTest(object):
         
 
 
-# class ROVES_Test(object):
-#     def __init__(self,
-#                  split=['balanced_val'],
-#                  root='./ROVES',
-#                  transform=None,
-#                  rgb=True,
-#                  result_root=None
-#                  ):
-#         self.transform = transform
-#         self.rgb = rgb
-#         self.result_root = result_root
-#         self.single_obj = False
-#         self.root = root
-
-#         self.seqs = os.listdir(os.path.join(self.root, "Annotations"))
-#         self.seqs = list( map(lambda x: x.strip(), self.seqs  ))
-#         self.annotations_root = os.path.join(self.root, "Annotations")
-
-       
-
-#     def __len__(self):
-#         return len(self.seqs)
-
-#     def __getitem__(self, idx):
-#         seq_name = self.seqs[idx]
-
-#         images_root = os.path.join(self.annotations_root, seq_name, "images")
-#         masks_root =  os.path.join(self.annotations_root, seq_name, "masks")
-
-
-#         images = list( filter(lambda x: x.endswith(".jpg"), os.listdir( images_root)  )) 
-#         labels =  list( filter(lambda x: x.endswith(".png"),os.listdir( masks_root) ))  
-
-#         # print(images_root, ":" , images)
-
-
-#         images = np.sort(np.unique(images))
-#         labels = np.sort(np.unique(labels))
-
-#         if not os.path.isfile(
-#                 os.path.join(self.result_root, seq_name, labels[0])):
-#             seq_result_folder = os.path.join(self.result_root, seq_name)
-#             try:
-#                 if not os.path.exists(seq_result_folder):
-#                     os.makedirs(seq_result_folder)
-#             except Exception as inst:
-#                 print(inst)
-#                 print(
-#                     'Failed to create a result folder for sequence {}.'.format(
-#                         seq_name))
-#             source_label_path = os.path.join(masks_root, 
-#                                              labels[0])
-#             result_label_path = os.path.join(self.result_root, seq_name,
-#                                              labels[0])
-#             if self.single_obj:
-#                 label = Image.open(source_label_path)
-#                 label = np.array(label, dtype=np.uint8)
-#                 label = (label > 0).astype(np.uint8)
-#                 label = Image.fromarray(label).convert('P')
-#                 label.putpalette(_palette)
-#                 label.save(result_label_path)
-#             else:
-#                 shutil.copy(source_label_path, result_label_path)
-
-#         seq_dataset = VOSTEST_FOR_ROVES(images_root,
-#                               masks_root,
-#                               seq_name,
-#                               images,
-#                               labels,
-#                               transform=self.transform,
-#                               rgb=self.rgb,
-#                               single_obj=self.single_obj)#,
-#                               #resolution=480)
-#         return seq_dataset
-    
-
 class ROVES_Test(object):
     def __init__(self,
                  split=['balanced_val'],
@@ -425,7 +352,7 @@ class ROVES_Test(object):
         self.rgb = rgb
         self.result_root = result_root
         self.single_obj = False
-        self.image_root = os.path.join(root, 'JPEGImages' if is_oracle else 'JPEGImages_10fps')
+        self.image_root = os.path.join(root, 'JPEGImages' )
         self.label_root = os.path.join(root, 'Annotations')
         self.fps=fps
         # seq_names = []

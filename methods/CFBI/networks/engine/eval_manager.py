@@ -97,6 +97,15 @@ class Evaluator(object):
                 transform=eval_transforms,  
                 result_root=self.result_root,
                 week_num= cfg.WEEK_NUM)
+    
+        elif cfg.TEST_DATASET == 'roves_debug':
+            self.result_root = os.path.join(cfg.DIR_EVALUATION, cfg.TEST_DATASET, eval_name, 'Annotations')
+            self.dataset = ROVES_Test(
+                root=cfg.DIR_ROVES_Debug, 
+                split=cfg.TEST_DATASET_SPLIT,
+                transform=eval_transforms,  
+                result_root=self.result_root,
+                week_num= cfg.WEEK_NUM)
 
         elif cfg.TEST_DATASET == 'VOST':
             self.result_root = os.path.join(cfg.DIR_EVALUATION, cfg.TEST_DATASET, eval_name, 'Annotations')

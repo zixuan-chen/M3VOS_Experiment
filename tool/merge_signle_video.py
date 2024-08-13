@@ -63,9 +63,10 @@ def merge_mask_images(original_image_folder: str, mask_image_folder: str, output
 
     # 创建一个列表来存储合成后的图片
     composite_images = []
+    bar = tqdm( zip(original_images, mask_images))
 
     # 遍历每对原图和mask
-    for orig_path, mask_path in zip(original_images, mask_images):
+    for orig_path, mask_path in bar:
         # 读取原图和mask图像
         orig_image = cv2.imread(orig_path)
         mask_image = cv2.imread(mask_path, cv2.IMREAD_UNCHANGED)
@@ -86,6 +87,7 @@ def merge_mask_images(original_image_folder: str, mask_image_folder: str, output
 
         # 添加到合成图片列表
         composite_images.append(composite_image)
+
 
     # 使用moviepy将合成后的图片生成视频
     clip = ImageSequenceClip([cv2.cvtColor(img, cv2.COLOR_BGR2RGB) for img in composite_images], fps=fps)
@@ -153,11 +155,18 @@ if __name__ == "__main__":
     images_folder = args.images_folder
     masks_folder = args.masks_folder
     output_exp = args.output_exp
-    images_folder = "/home/bingxing2/home/scx8ah2/jiaxin/DeformVOS/methods/RMem/aot_plus/datasets/ROVES/JPEGImages/break_egg_1" 
+    images_folder = "/home/bingxing2/home/scx8ah2/jiaxin/DeformVOS/datasets/ROVES_summary/ROVES_week_1/JPEGImages/clipoff_wood_2" 
+
 
     # masks_folder = "/home/bingxing2/home/scx8ah2/jiaxin/DeformVOS/methods/RMem/aot_plus/results/aotplus_R50_AOTL/pre_vost/eval/roves/test_deaot_deaot/mv_lime_2" 
-    masks_folder = "/home/bingxing2/home/scx8ah2/jiaxin/DeformVOS/methods/RMem/aot_plus/results/aotplus_R50_AOTL/pre_vost/eval/roves/debug/break_egg_1" 
+    # masks_folder = "/home/bingxing2/home/scx8ah2/jiaxin/DeformVOS/methods/RMem/aot_plus/results/aotplus_R50_AOTL/pre_vost/eval/roves/debug/break_egg_1" 
+    # masks_folder = "/home/bingxing2/home/scx8ah2/jiaxin/DeformVOS/methods/RMem/aot_plus/results/aotplus_R50_AOTL/pre_vost/eval/roves/test_roves_in_aot_week_1/cut_cucumber_1"
+    masks_folder = "/home/bingxing2/home/scx8ah2/jiaxin/DeformVOS/methods/RMem/aot_plus/results/aotplus_R50_AOTL/pre_vost/eval/roves/testAOT_bug_again/clipoff_wood_2"
+    # masks_folder = "/home/bingxing2/home/scx8ah2/jiaxin/DeformVOS/methods/CFBI/result/resnet101_cfbi/eval/roves/roves_test_roves_week_1_ckpt_unknown/Annotations/cut_celery_2"
+
+    
     # masks_folder = "/home/bingxing2/home/scx8ah2/jiaxin/DeformVOS/methods/RMem/aot_plus/datasets/ROVES/Annotations/cut_green_pepper_4"
-    output_video = "/home/bingxing2/home/scx8ah2/jiaxin/DeformVOS/tmp/break_egg_1_AOT.mp4"
+    output_video = "/home/bingxing2/home/scx8ah2/jiaxin/DeformVOS/tmp/clipoff_wood_2_debug.mp4"
 
     merge_mask_images(images_folder, masks_folder, output_video)
+    print(output_video)

@@ -86,6 +86,7 @@ class Evaluator(object):
                 cfg.DIR_CKPT,
                 f'save_step_{ckpt}.pth',
             )
+            
             self.model, removed_dict = load_network(
                 self.model,
                 cfg.TEST_CKPT_PATH,
@@ -242,7 +243,25 @@ class Evaluator(object):
                 root=cfg.DIR_ROVES,
                 transform=eval_transforms,
                 result_root=self.result_root,
-                is_oracle= True,
+                is_oracle= True if hasattr(
+                    cfg, "ORACLE") and cfg.ORACLE else False,
+                week_num=cfg.WEEK_NUM,
+                fps=cfg.FPS
+            )
+
+        elif cfg.TEST_DATASET == "roves_debug":
+            eval_name = cfg.EVAL_NAME
+            self.result_root = os.path.join(
+                cfg.DIR_EVALUATION,
+                cfg.TEST_DATASET, eval_name,
+            )
+            self.dataset = ROVES_Test(
+                split=[cfg.TEST_DATASET_SPLIT],
+                root=cfg.DIR_ROVES_DEBUG,
+                transform=eval_transforms,
+                result_root=self.result_root,
+                is_oracle= True if hasattr(
+                    cfg, "ORACLE") and cfg.ORACLE else False,
                 week_num=cfg.WEEK_NUM,
                 fps=cfg.FPS
             )
@@ -361,6 +380,7 @@ class Evaluator(object):
                     all_preds = []
                     new_obj_label = None
 
+                    # ??? batch_size = 1 应该不会有aug_idx >= 1的时候吧
                     for aug_idx in range(len(samples)):
                         if len(all_engines) <= aug_idx:
                             all_engines.append(
@@ -403,7 +423,6 @@ class Evaluator(object):
                                 self.gpu, non_blocking=True).float()
                         else:
                             current_label = None
-
                         #############################################################
 
                         if frame_idx == 0:
@@ -430,7 +449,7 @@ class Evaluator(object):
                                 if self.cfg.PREV_PROBE:
                                     pred_logit = engine.match_propogate_one_frame(
                                         current_img, mask=pred_prob, output_size=(ori_height, ori_width))
-                                elif self.cfg.ORACLE:
+                                elif self.cfg.ORACLE:  # 预先知道每一帧的mask,编码img的时候，只编码目标object
                                     _current_label = F.interpolate(
                                         current_label,
                                         size=current_img.size()[2:],

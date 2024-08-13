@@ -19,6 +19,7 @@ parser.add_argument('--set', type=str, help='Subset to evaluate the results', de
 parser.add_argument('--results_path', type=str, help='Path to the folder containing the sequences folders',
                     required=True)
 parser.add_argument('--week_num', type=int)
+parser.add_argument('--fps', type=int)
 parser.add_argument('--re', action='store_true')
 args, _ = parser.parse_known_args()
 
@@ -47,7 +48,7 @@ if os.path.exists(csv_name_global_path) and os.path.exists(csv_name_per_sequence
 else:
     print(f'Evaluating sequences ...')
     # Create dataset and evaluate
-    dataset_eval = Evaluation(dataset_root=args.dataset_path, gt_set=args.set)
+    dataset_eval = Evaluation(dataset_root=args.dataset_path, gt_set=args.set, fps= args.fps)
     metrics_res = dataset_eval.evaluate(args.results_path)
     J = metrics_res['J']
     J_last = None

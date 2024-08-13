@@ -15,7 +15,7 @@ from multiprocessing import Manager
 
 
 class Evaluation(object):
-    def __init__(self, dataset_root, gt_set, sequences='all'):
+    def __init__(self, dataset_root, gt_set, sequences='all', fps=24):
         """
         Class to evaluate sequences from a certain set
         :param dataset_root: Path to the dataset folder that contains JPEGImages, Annotations, etc. folders.
@@ -25,6 +25,7 @@ class Evaluation(object):
         self.dataset_root = dataset_root
         print(f"Evaluate on dataset = {self.dataset_root}")
         self.dataset = Dataset(root=dataset_root, subset=gt_set, sequences=sequences)
+        self.compress_ratio = int(24 / fps)
 
     @staticmethod
     def _evaluate_semisupervised(all_gt_masks, all_res_masks, all_void_masks, metric):
@@ -80,10 +81,16 @@ class Evaluation(object):
             def evaluate():
                 print(f"\n{seq}")
                 all_gt_masks, all_void_masks, all_masks_id = self.dataset.get_all_masks(seq, True)
+
                 num_objects = all_gt_masks.shape[0]
+
+                all_gt_masks = all_gt_masks[:, : :  self.compress_ratio]
+                all_masks_id = all_masks_id[: : self.compress_ratio]
                 all_gt_masks, all_masks_id = all_gt_masks[:, 1:-1, :, :], all_masks_id[1:-1]
                 num_eval_frames = len(all_masks_id)
                 last_quarter_ind = int(floor(num_eval_frames * 0.75))
+       
+
                 all_res_masks = results.read_masks(seq, all_masks_id)
                 j_metrics_res = self._evaluate_semisupervised(all_gt_masks, all_res_masks, None, metric)
                 for ii in range(all_gt_masks.shape[0]):

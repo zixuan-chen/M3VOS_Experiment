@@ -10,15 +10,18 @@
             "request": "launch",
             "program": "./tools/eval.py",
             "console": "integratedTerminal",
-            "args": [  "--result_path","/home/bingxing2/home/scx8ah2/jiaxin/DeformVOS/methods/RMem/aot_plus/tmp",
-                    "--dataset","roves",
+            "args": [  "--result_path","/home/bingxing2/home/scx8ah2/jiaxin/DeformVOS/methods/RMem/aot_plus/tmp/debug",
+                    "--dataset","roves_debug",
                     "--split","val" , 
                     "--gpu_num","1",
                     "--ms","1.0" , 
-                    "--eval_name","test_deaot_debug_8_7", 
+                    "--eval_name","test_deaot_debug_8_11", 
                     "--latter_mem_len","8", 
                     "--fix_random" ,
-                    "--ckpt_path","pretrain_models/aotplus_R50_DeOTL_Temp_pe_Slot_4_ema_20000.pth"],
+                    "--ckpt_path","pretrain_models/aotplus_R50_DeOTL_Temp_pe_Slot_4_ema_20000.pth",
+                    "--model","r50_deaotl",
+                    "--stage","pre_vost",
+                    "--week_num","98" ],
         }
     ]
 }

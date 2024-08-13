@@ -320,7 +320,7 @@ class VOS_Test_forVOST(Dataset):
 
         
 class ROVES_Test(object):
-    def __init__(self, root='/VOST', transform=None, rgb=False, result_root=None, split = [""], week_num = 0):
+    def __init__(self, root='/VOST', transform=None, rgb=False, result_root=None, split = [""], oracle = False, week_num = 0):
         self.db_root_dir = os.path.join(root ,"ROVES_week_" + str(week_num ) )
         self.result_root = result_root
         self.rgb = rgb
@@ -335,6 +335,8 @@ class ROVES_Test(object):
 
         self.image_root = os.path.join(self.db_root_dir, 'JPEGImages')
         self.label_root = os.path.join(self.db_root_dir, 'Annotations')
+
+        self.oracle = oracle
 
         
     def __len__(self):
@@ -355,6 +357,9 @@ class ROVES_Test(object):
 
         images = np.sort(np.unique(images))
         labels = np.sort(np.unique(labels))
+
+        if not self.oracle:
+            labels = [labels[0]]
 
         # print("images:" , images)
         # print("labels:" , labels)
