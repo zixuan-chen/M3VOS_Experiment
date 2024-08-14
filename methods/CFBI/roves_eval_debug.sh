@@ -9,4 +9,5 @@ datasets="roves_debug"
 ckpt_path="./pretrain_models/resnet101_cfbi.pth"
 week_num=1
 exp_name="debug_oracle_roves_week_${week_num}"
+
 python tools/eval_net.py --config ${config} --dataset ${datasets} --ckpt_path ${ckpt_path}   --float16 --global_atrous_rate 8 --week_num ${week_num} --exp_name ${exp_name}

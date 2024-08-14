@@ -27,10 +27,12 @@ dataset_path_dict = {
     'vost': '../RMem/aot_plus/datasets/VOST',
     'long_videos': '../aot_plus/datasets/long_videos',
     'roves': '../datasets/ROVES_summary',
+    "roves_debug_cfbi": "./CFBI/tmp/ROVES_debug"
 }
 args.dataset_path = dataset_path_dict[args.dataset_path]
 if 'ROVES' in args.dataset_path :
     args.dataset_path = os.path.join(args.dataset_path, f"ROVES_week_{args.week_num}")
+
 
 
 csv_name_global = f'global_results-{args.set}.csv'
@@ -54,10 +56,12 @@ else:
     J_last = None
     if 'J_last' in metrics_res:
         J_last = metrics_res['J_last']
+    if 'J_cc' in metrics_res:
+        J_cc =  metrics_res['J_cc']
 
     # Generate dataframe for the general results
-    g_measures = ['J-Mean', 'J-Recall', 'J-Decay', 'J_last-Mean', 'J_last-Recall', 'J_last-Decay']
-    g_res = np.array([np.mean(J["M"]), np.mean(J["R"]), np.mean(J["D"]), np.mean(J_last["M"]), np.mean(J_last["R"]), np.mean(J_last["D"])])
+    g_measures = ['J-Mean', 'J-Recall', 'J-Decay', 'J_last-Mean', 'J_last-Recall', 'J_last-Decay', "J_cc-Mean"]
+    g_res = np.array([np.mean(J["M"]), np.mean(J["R"]), np.mean(J["D"]), np.mean(J_last["M"]), np.mean(J_last["R"]), np.mean(J_last["D"]) , np.mean(J_cc['M'])])
     g_res = np.reshape(g_res, [1, len(g_res)])
     table_g = pd.DataFrame(data=g_res, columns=g_measures)
     with open(csv_name_global_path, 'w') as f:
@@ -66,10 +70,11 @@ else:
 
     # Generate a dataframe for the per sequence results
     seq_names = list(J['M_per_object'].keys())
-    seq_measures = ['Sequence', 'J-Mean', 'J_last-Mean']
+    seq_measures = ['Sequence', 'J-Mean', 'J_last-Mean', 'J_cc-Mean']
     J_per_object = [J['M_per_object'][x] for x in seq_names]
     J_last_per_object = [J_last['M_per_object'][x] for x in seq_names]
-    table_seq = pd.DataFrame(data=list(zip(seq_names, J_per_object, J_last_per_object)), columns=seq_measures)
+    J_cc_per_object = [J_cc['M_per_object'][x] for x in seq_names  ]
+    table_seq = pd.DataFrame(data=list(zip(seq_names, J_per_object, J_last_per_object, J_cc_per_object)), columns=seq_measures)
     with open(csv_name_per_sequence_path, 'w') as f:
         table_seq.to_csv(f, index=False, float_format="%.6f")
     print(f'Per-sequence results saved in {csv_name_per_sequence_path}')

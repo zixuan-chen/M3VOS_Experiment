@@ -1,0 +1,21 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python 调试程序: 包含参数的当前文件",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "args": [
+                "--results_path" ,"./CFBI/tmp/evaluation_method_debug" ,
+                "--dataset_path" ,"roves_debug_cfbi" ,
+                "--re" ,"--week_num" ,"99" ,"--fps" ,"24"
+                // "${command:pickArgs}"
+            ]
+        }
+    ]
+}
