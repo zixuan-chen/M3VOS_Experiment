@@ -21,13 +21,11 @@ def db_eval_blob_torch(annotations, segmentations, void_pixels=None):
     annotations = annotations.astype(bool)
     segmentations = segmentations.astype(bool)
     blob_ious = []
-    start = time.time()
-    cnt = 0
+
     
     
     for annotation, segmentation in zip(annotations, segmentations):
-        if cnt == 772 or cnt == 841:
-            print("Attention !")
+ 
         blob_annotation = measure.label(annotation, connectivity = 2)
         blob_segmentation = measure.label(segmentation, connectivity = 2)
         
@@ -57,8 +55,6 @@ def db_eval_blob_torch(annotations, segmentations, void_pixels=None):
         blob_ious.append(max_iou_values.sum()/ one_hot_anno_wo_bg.shape[0])
         cnt += 1
 
-    print("torch consume:" , time.time() - start)
-    print("torch res:", blob_ious)
     return blob_ious
 
 
@@ -77,11 +73,8 @@ def db_eval_blob(annotations, segmentations, void_pixels=None):
     annotations = annotations.astype(bool)
     segmentations = segmentations.astype(bool)
     blob_ious = []
-    start = time.time()
-    cnt = 0
+ 
     for annotation, segmentation in zip(annotations, segmentations):
-        if cnt == 772 or cnt == 841:
-            print("Attention !")
         blob_annotation = measure.label(annotation, connectivity = 2)
         blob_segmentation = measure.label(segmentation, connectivity = 2)
         
@@ -117,8 +110,7 @@ def db_eval_blob(annotations, segmentations, void_pixels=None):
         else:
             blob_ious.append(0)
         cnt += 1
-    print("torch consume:" , time.time() - start)
-    print("torch res:", blob_ious)
+
     return blob_ious
 
 
