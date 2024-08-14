@@ -8,7 +8,7 @@ from scipy.optimize import linear_sum_assignment
 import time 
 
 def db_eval_blob_torch(annotations, segmentations, void_pixels=None):
-    """ Compute instance similarity as the Blob Index.
+    """ Compute instance similarity as the Blob Index. By Li jiaxin 
     Arguments:
         annotation   (ndarray): binary annotation map.
         segmentation (ndarray): binary segmentation map.
@@ -53,7 +53,6 @@ def db_eval_blob_torch(annotations, segmentations, void_pixels=None):
         # Here, if the number of the correspond region of gt mask is more than pred mask , the result is need to be divided by the  the number of the correspond region of gt mask 
         # instead of the number of match as VSCOS
         blob_ious.append(max_iou_values.sum()/ one_hot_anno_wo_bg.shape[0])
-        cnt += 1
 
     return blob_ious
 
@@ -109,7 +108,7 @@ def db_eval_blob(annotations, segmentations, void_pixels=None):
             blob_ious.append(np.mean(instance_iou))
         else:
             blob_ious.append(0)
-        cnt += 1
+
 
     return blob_ious
 
