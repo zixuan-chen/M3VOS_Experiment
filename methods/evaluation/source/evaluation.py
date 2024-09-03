@@ -100,26 +100,25 @@ class Evaluation(object):
                 print(f"\n{seq}")
                 try:
                     all_gt_masks, all_void_masks, all_masks_id = self.dataset.get_all_masks(seq, True)
-                    # print(f"\n{seq} DONE 1")
-
+                    print(f"\n{seq} DONE 1")
                     num_objects = all_gt_masks.shape[0]
-                    # print(f"\n{seq} DONE 1.4")
+                    print(f"\n{seq} DONE 1.4")
                     all_gt_masks = all_gt_masks[:, : :  self.compress_ratio]
-                    # print(f"\n{seq} DONE 1.5")
+                    print(f"\n{seq} DONE 1.5")
                     all_masks_id = all_masks_id[: : self.compress_ratio]
-                    # print(f"\n{seq} DONE 1.6")
+                    print(f"\n{seq} DONE 1.6")
                     all_gt_masks, all_masks_id = all_gt_masks[:, 1:-1, :, :], all_masks_id[1:-1]
-                    # print(f"\n{seq} DONE 1.7")
+                    print(f"\n{seq} DONE 1.7")
                     num_eval_frames = len(all_masks_id)
-                    # print(f"\n{seq} DONE 1.8")
+                    print(f"\n{seq} DONE 1.8")
                     last_quarter_ind = int(floor(num_eval_frames * 0.75))
-                    # print(f"\n{seq} DONE 1.9")
+                    print(f"\n{seq} DONE 1.9")
         
 
                     all_res_masks = results.read_masks(seq, all_masks_id)
-                    # print(f"\n{seq} DONE 2")
+                    print(f"\n{seq} DONE 2")
                     j_metrics_res, blob_metrics_res = self._evaluate_semisupervised(all_gt_masks, all_res_masks, None, metric)
-                    # print(f"\n{seq} DONE 3")
+                    print(f"\n{seq} DONE 3")
         
 
                     for ii in range(all_gt_masks.shape[0]):
@@ -140,7 +139,7 @@ class Evaluation(object):
                             metrics_res['J_cc']["M"].append(np.mean(blob_metrics_res[ii]))
                             metrics_res['J_cc']["M_per_object"][seq_name] = np.mean(blob_metrics_res[ii])
 
-                    # print(f"\n{seq} DONE 4")
+                    print(f"\n{seq} DONE 4")
 
                     # Show progress
                     if debug:

@@ -2,7 +2,7 @@
 source activate zixuan
 module load compilers/cuda/11.6
 
-week_num=99
+week_num=1
 # fps=1
 # fps=4
 # fps=6
@@ -12,7 +12,8 @@ fps=24
 
 
 # CFBI
-results_path="./CFBI/tmp/evaluation_method_debug"
+results_path="./CFBI/tmp/evaluation_method_debug_2/roves_test_roves_week_1_ckpt_unknown/Annotations"
+# results_path="./CFBI/tmp/evaluation_method_debug"
 # results_path="./CFBI/result/resnet101_cfbi/eval/roves/roves_test_roves_week_${week_num}_ckpt_unknown/Annotations"
 
 # AOT
@@ -24,7 +25,8 @@ results_path="./CFBI/tmp/evaluation_method_debug"
 # AOT_different_fps
 # results_path="./RMem/aot_plus/results/aotplus_R50_AOTL/pre_vost/eval/roves/test_different_fps_roves_in_aot_week_0_fps_${fps}"
 
-dataset="roves_debug_cfbi"
+# dataset="roves_debug_cfbi"
+dataset="roves"
 
 echo python  ./evaluation/evaluation_method.py  --results_path ${results_path} --dataset_path ${dataset} --re --week_num ${week_num} --fps ${fps}
 python  ./evaluation/evaluation_method.py  --results_path ${results_path} --dataset_path ${dataset} --re --week_num ${week_num} --fps ${fps}

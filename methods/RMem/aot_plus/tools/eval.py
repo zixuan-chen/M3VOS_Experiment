@@ -3,6 +3,7 @@ import sys
 import importlib
 import sys
 import os
+from pathlib import Path
 
 sys.path.append('.')
 sys.path.append('..')
@@ -13,6 +14,7 @@ import torch
 import torch.multiprocessing as mp
 
 from networks.managers.evaluator import Evaluator
+from get_config import get_config
 
 def main_worker(gpu, cfg, seq_queue=None, info_queue=None, enable_amp=False):
     if cfg.FIX_RANDOM:
@@ -95,8 +97,14 @@ def main():
 
     sys.path.append(f"{args.result_path}/")
 
-    from get_config import get_config
-    cfg = get_config(args.stage, args.exp_name, args.model)
+    if Path(f"{args.result_path}/config.py").is_file():
+        import config
+        cfg = config.Config()
+    else:
+        cfg = get_config(args.stage, args.exp_name, args.model)
+
+    # from get_config import get_config
+    # cfg = get_config(args.stage, args.exp_name, args.model)
 
     log_dir = make_log_dir(args.log, cfg.EXP_NAME)
     sys.stdout = Tee(os.path.join(log_dir, "print.log"))

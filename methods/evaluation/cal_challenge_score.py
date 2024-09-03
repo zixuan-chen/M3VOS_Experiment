@@ -45,8 +45,9 @@ def calculate_subset_average(df, subset):
     # 计算J-Mean和J_last-Mean的平均值
     j_mean_average = filtered_df['J-Mean'].mean()
     j_last_mean_average = filtered_df['J_last-Mean'].mean()
+    j_cc_mean_average = filtered_df['J_cc-Mean'].mean()
     
-    return j_mean_average, j_last_mean_average
+    return j_mean_average, j_last_mean_average, j_cc_mean_average
 
 
 
@@ -55,8 +56,8 @@ def calculate_averages_from_dir(dir_path, csv_file_path):
     df = pd.read_csv(csv_file_path)
     
     # 检查输入的DataFrame是否包含必要的列
-    if 'Sequence' not in df.columns or 'J-Mean' not in df.columns or 'J_last-Mean' not in df.columns:
-        raise ValueError("CSV file must contain 'Sequence', 'J-Mean', and 'J_last-Mean' columns.")
+    if 'Sequence' not in df.columns or 'J-Mean' not in df.columns or 'J_last-Mean' not in df.columns or "J_cc-Mean" not in df.columns:
+        raise ValueError("CSV file must contain 'Sequence', 'J-Mean', and 'J_last-Mean' , and 'J_cc-Mean' columns.")
     
     
     # 初始化一个空列表来存储结果
@@ -75,13 +76,14 @@ def calculate_averages_from_dir(dir_path, csv_file_path):
             with open(file_path, 'r') as f:
                 subset = [line.strip().replace('_id', '') for line in f.readlines()]
             # 计算该subset的J-Mean和J_last-Mean的平均值
-            j_mean_average, j_last_mean_average = calculate_subset_average(df, subset)
+            j_mean_average, j_last_mean_average, j_cc_mean_average = calculate_subset_average(df, subset)
             
             # 将结果添加到列表中
             results.append({
                 'subset': filename,
                 'j_mean_average': j_mean_average,
-                'j_last_mean_average': j_last_mean_average
+                'j_last_mean_average': j_last_mean_average,
+                "J_cc_mean_average": j_cc_mean_average
             })
             
             
@@ -118,4 +120,6 @@ if __name__ == "__main__":
     # week1_5_filename = "/home/bingxing2/home/scx8ah2/jiaxin/DeformVOS/methods/RMem/aot_plus/results/aotplus_R50_AOTL/pre_vost/eval/roves/aot_week_1_5/per-sequence_results-val.csv"
     # subset_dir = "/home/bingxing2/home/scx8ah2/zixuan/DeformVOS/tmp"
 
-    print(calculate_averages_from_dir(subset_dir, week_filename))
+    result_df = calculate_averages_from_dir(subset_dir, week_filename)
+    
+    print(result_df)
