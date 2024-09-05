@@ -36,9 +36,9 @@ We unify the file structure of file like `VOST` , as follow in `./datasets`:
 
 tip: This folder `datasets` should be linked in the every method folder in  `./methods` 
 
-​	for example, in CFBI， `datasets -> ../../datasets/`
-
-​	In order to share the datasets in different which make it convenient to manager the datasets
+	for example, in CFBI， `datasets -> ../../datasets/`
+	
+	In order to share the datasets in different which make it convenient to manager the datasets
 
 
 
@@ -98,19 +98,23 @@ the prediction result in `methods/RMem/aot_plus/results/aotplus_R50_AOTL/pre_vos
 
 
 ### XMem
+
 ```
 # modify the week_num in ./methods/XMem/eval.sh
 cd methods/XMem
 sbatch --gpus=1 -o eval.out eval.sh
 ```
+
 the prediction result in `methods/XMem/output/roves_week${week_num}`
 
 ### Cutie
+
 ```
 # modify the week_num in ./methods/Cutie/eval.sh
 cd methods/Cutie
 sbatch --gpus=1 -o eval.out eval.sh
 ```
+
 the prediction result in `methods/Cutie/cutie_output/roves_week${week_num}`
 
 ## Eval code
@@ -135,7 +139,20 @@ cd /methods
 sbatch --gpus=1 evaluation/eval.sh 
 ```
 
-
-
 :rocket: TIP: Three result `csv` will be store in the `result_path`
+
+
+
+### Calculate the scores of rover for all weeks
+
+```
+cd /methods
+python evaluation/get_all_score_in_ROVES.py  --week_num {max_week_num}
+```
+
+:rocket: TIP:  The result `csv` will be store in the `./evaluation/all_result`
+
+​	You can add the case name in  `./evaluation/meta/exclude_case.json` to exclude some case
+
+
 
