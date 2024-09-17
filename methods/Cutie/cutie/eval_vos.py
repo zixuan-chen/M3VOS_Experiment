@@ -58,6 +58,7 @@ def eval_vos(cfg: DictConfig):
     else:
         # DAVIS/YouTubeVOS/MOSE style -- masks stored as PNGs
         mask_dir = data_cfg.mask_directory
+        print("mask dir:", mask_dir)
         subset = data_cfg.get('subset')
         meta_dataset = VOSTestDataset(image_dir,
                                       mask_dir,

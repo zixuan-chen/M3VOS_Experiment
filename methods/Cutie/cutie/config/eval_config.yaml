@@ -12,6 +12,7 @@ exp_id: default
 dataset: d17-val
 amp: False
 weights: output/cutie-base-vost/cutie-base-vost_main_training_last.pth
+roves_week: 0
 output_dir: null # defaults to run_dir; specify this to override
 flip_aug: False
 
@@ -148,9 +149,18 @@ datasets:
     use_long_term: True
     mem_every: 5
   vost-val: 
-    image_directory: /home/bingxing2/home/scx7kwl/dataset/VOST/JPEGImages
-    mask_directory: /home/bingxing2/home/scx7kwl/dataset/VOST/Annotations
-    subset: /home/bingxing2/home/scx7kwl/dataset/VOST/ImageSets/val.txt
+    image_directory: ~/dataset/VOST/JPEGImages
+    mask_directory: ~/dataset/VOST/Annotations
+    subset: ~/dataset/VOST/ImageSets/val.txt
+    size: -1
+    save_all: True
+    use_all_masks: False
+    use_long_term: False
+    mem_every: 5
+  roves-val:
+    image_directory: /home/bingxing2/home/scx8ah2/dataset/ROVES_summary/ROVES_week_${roves_week}/JPEGImages
+    mask_directory:  /home/bingxing2/home/scx8ah2/dataset/ROVES_summary/ROVES_week_${roves_week}/Annotations
+    subset:          /home/bingxing2/home/scx8ah2/dataset/ROVES_summary/ROVES_week_${roves_week}/ImageSets/val.txt
     size: -1
     save_all: True
     use_all_masks: False

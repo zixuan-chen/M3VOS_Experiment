@@ -14,3 +14,8 @@ def load_sub_yv(path='util/yv_subset.txt'):
     with open(path, mode='r') as f:
         subset = set(f.read().splitlines())
     return subset
+
+def load_sub_vost(path="../VOST/ImageSets/train.txt"):
+    with open(path, mode='r') as f:
+        subset = set(f.read().splitlines())
+    return subset
