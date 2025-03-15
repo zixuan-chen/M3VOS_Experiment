@@ -7,8 +7,7 @@
 We unify the file structure of file like `VOST` , as follow in `./datasets`:
 
 ```
-- ROVES_summary
-	- ROVES_week_0 
+- M3VOS
     	- JPEGIMages
       		- seq_0
         		- 0000000.jpg
@@ -25,13 +24,11 @@ We unify the file structure of file like `VOST` , as follow in `./datasets`:
       		-seq_0.mp4
       		-seq_1.mp4
     		...
-		-challenge_label.json
+	- ImageSets
+		- val.txt
+	- meta
 	...
         
-        
-- VOST (just_like ROVES_week_0)
-
-- ...
 ```
 
 tip: This folder `datasets` should be linked in the every method folder in  `./methods` 
