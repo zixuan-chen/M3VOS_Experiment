@@ -1,0 +1,124 @@
+############ TUBEDETR DEFAULTS ############
+
+###### DATASETS
+data:
+  vq2d:
+    path: /datasets/ego4d_episodic_memory/vq2d_root/
+
+  nlq:
+    path: /datasets/ego4d_episodic_memory/nlq_root/
+
+  mq:
+    path: /datasets/ego4d_episodic_memory/mq_root/
+
+
+# combine_datasets: []                # List of datasets to combine for training
+# combine_datasets_val: []            # List of datasets to combine for eval
+
+
+###### Training hyper-parameters
+lr: 5e-5
+lr_backbone: 1e-5
+text_encoder_lr: 5e-5
+batch_size: 1
+weight_decay: 1e-4
+epochs: 25
+lr_min: 0.
+lr_drop: 10
+lr_refine_epochs: 0                 # Number of epochs to refine the model with a lower learning rate (this only support multistep_linear_with_warmup schedule)
+# epoch_chunks: -1                    # If greater than 0, will split the training set into chunks and validate/checkpoint after each chunk
+optimizer: adam
+clip_max_norm: 0.1                  # gradient clipping max norm
+eval_skip: 1                        # do evaluation every "eval_skip" epochs
+eval_full_set: false                # evaluate on the full validation set whlie training
+schedule: linear_with_warmup        # ("step", "multistep", "linear_with_warmup", "all_linear_with_warmup", "multistep_linear_with_warmup")
+ema: false
+ema_decay: 0.9998
+fraction_warmup_steps: 0.01         # Fraction of total number of steps
+
+
+
+###### Model parameters
+freeze_text_encoder: False          # Whether to freeze the weights of the text encoder
+freeze_backbone: False              # Whether to freeze the weights of the visual encoder
+text_encoder_type: roberta-base     # ("roberta-base", "distilroberta-base", "roberta-large")
+
+
+
+###### Backbone
+backbone: resnet101                 # Name of the convolutional backbone to use such as resnet50 resnet101 timm_tf_efficientnet_b3_ns
+dilation: False                     # If true, we replace stride with dilation in the last convolutional block (DC5)
+position_embedding: sine            # ("sine", "learned") Type of positional embedding to use on top of the image features
+
+
+
+###### Transformer
+enc_layers: 6                       # Number of encoding layers in the transformer
+dec_layers: 6                       # Number of decoding layers in the transformer
+dim_feedforward: 2048               # Intermediate size of the feedforward layers in the transformer blocks
+hidden_dim: 256                     # Size of the embeddings (dimension of the transformer)
+dropout: 0.1                        # Dropout applied in the transformer
+nheads: 8                           # Number of attention heads inside the transformer's attentions
+num_queries: 1                      # Number of object query slots per image         
+pass_pos_and_query: True            # Pass the positional encodings to each attention layers
+
+
+###### Loss
+aux_loss: True  # auxiliary decoding losses (loss at each layer)
+sigma: 1  # standard deviation for the quantized gaussian law used for the kullback leibler divergence loss
+guided_attn: True  # use the guided attention loss
+sted: True  # use start end KL loss
+boxes: True
+
+
+# Loss coefficients
+bbox_loss_coef: 5
+giou_loss_coef: 2
+sted_loss_coef: 10
+guided_attn_loss_coef: 1
+
+
+# Run specific
+debug: False  # debug mode
+eval: False  # Only run evaluation
+test: False  # Whether to run evaluation on val or test set
+output_dir: "outputs/trial"  # path where to save, empty for no saving
+device: cuda
+seed: 42
+resume: ""  # resume from checkpoint
+auto_resume: "" # resume from checkpoint automatically if it exists (this has less priority than resume)
+load: ""  # resume from checkpoint
+start_epoch: 0
+num_workers: 4
+world_size: 1  # number of distributed processes
+dist_url: env://  # url used to set up distributed training
+
+
+# Video parameters
+resolution: 224  # spatial resolution of the images
+no_spatial_feature_map: False  # whether to use spatial part of feature map
+# video_max_len: 200  # maximum number of frames for a video
+# video_max_len_train: 200  # maximum number of frames used by the model - may it differ from video_max_len, the model ensembles start-end probability predictions at eval time
+# stride: 5  # temporal stride k
+fps: 5  # number of frames per second extracted from videos
+tmp_crop: True  # whether to use random temporal cropping during training
+fast: False  # whether to use the fast branch in the encoder
+learn_time_embed: False  # whether to learn time embeddings or use frozen sinusoidal ones
+no_time_embed: False  # whether to deactivate the time encodings or not
+no_tsa: False  # whether to deactivate the temporal self-attention in the decoder
+rd_init_tsa: False  # whether to randomly initialize the temporal self-attention in the decoder
+fast_mode: ""  # ["", "gating", "transformer", "pool", "noslow"]
+caption_example: ""  # caption example for STVG demo
+video_example: ""  # path to a video example for STVG demo
+start_example: -1  # potential start (seconds) for STVG demo, =0s if <0
+end_example: -1  # potential start (seconds) for STVG demo, =end of the video if <0
+port: 80  # port for the STVG online demo
+
+
+###### MISC FROM TUBEDETR
+tb_dir: ""
+run_name: ""
+v2: true                           # whether to use the second version of HC-STVG or not
+
+###### Stochastic
+deterministic_algorithms: false

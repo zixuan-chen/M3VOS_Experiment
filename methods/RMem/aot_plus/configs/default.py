@@ -122,17 +122,17 @@ class DefaultEngineConfig():
 
     def init_dir(self):
         self.DIR_DATA = './datasets'
-        self.DIR_DAVIS = os.path.join(self.DIR_DATA, 'DAVIS')
+        self.DIR_DAVIS = os.path.join(self.DIR_DATA, '2017')
         self.DIR_LONG_VIDEOS = os.path.join(self.DIR_DATA, 'long_videos')
         self.DIR_VOST = os.path.join(self.DIR_DATA, 'VOST')
         self.DIR_VISOR = os.path.join(self.DIR_DATA, 'VISOR')
-        self.DIR_YTB = os.path.join(self.DIR_DATA, 'YTB')
+        self.DIR_YTB = os.path.join(self.DIR_DATA, 'YouTube')
         self.DIR_STATIC = os.path.join(self.DIR_DATA, 'Static')
         self.DIR_ROVES = os.path.join(self.DIR_DATA, 'ROVES_summary')
-        self.DIR_ROVES_DEBUG = os.path.join(self.DIR_DATA, 'ROVES_summary')
+        self.DIR_ROVES_DEBUG = os.path.join(self.DIR_DATA, 'ROVES_summary_debug')
     
-        self.DIR_TMP_ROOT = "./tmp"
-        self.DIR_ROVES_DEBUG = os.path.join(self.DIR_TMP_ROOT, 'debug_dataset')
+        # self.DIR_TMP_ROOT = "./tmp"
+        # self.DIR_ROVES_DEBUG = os.path.join(self.DIR_DATA, 'debug_dataset')
         
         self.DIR_ROOT = './results'
         self.DIR_RESULT = os.path.join(self.DIR_ROOT, self.EXP_NAME,

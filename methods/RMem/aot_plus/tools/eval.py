@@ -94,7 +94,7 @@ def main():
     parser.add_argument("--dataset_fps",  type=int, default=24)
 
     args = parser.parse_args()
-
+    
     sys.path.append(f"{args.result_path}/")
 
     if Path(f"{args.result_path}/config.py").is_file():
@@ -140,6 +140,10 @@ def main():
     cfg.FORMER_MEM_LEN = args.former_mem_len
     cfg.LATTER_MEM_LEN = args.latter_mem_len
 
+    print("!!!gpu_num:" , args.gpu_num)
+
+
+
     if args.gpu_num > 1:
         mp.set_start_method('spawn')
         seq_queue = mp.Queue()
@@ -148,6 +152,7 @@ def main():
                  nprocs=cfg.TEST_GPU_NUM,
                  args=(cfg, seq_queue, info_queue, args.amp))
     else:
+        
         main_worker(0, cfg, enable_amp=args.amp)
 
 

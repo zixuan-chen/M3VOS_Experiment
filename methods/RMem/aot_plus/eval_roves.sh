@@ -17,7 +17,7 @@ echo "result_path=$result_path"
 dataset="roves"
 # dataset="vost"
 split="val"
-week_num=4
+week_num=8
 eval_name="test_roves_in_aot_week_${week_num}"
 
 

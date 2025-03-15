@@ -7,6 +7,57 @@ import torch.nn.functional as F
 from scipy.optimize import linear_sum_assignment
 import time 
 
+
+def db_eval_blob_origin(annotations, segmentations, void_pixels=None):
+    """ Compute instance similarity as the Blob Index.
+    Arguments:
+        annotation   (ndarray): binary annotation map.
+        segmentation (ndarray): binary segmentation map.
+        void_pixels  (ndarray): optional mask with void pixels
+    Return:
+        blob (float): region similarity
+    """
+    assert annotations.shape == segmentations.shape, \
+        f'Annotation({annotations.shape}) and segmentation:{segmentations.shape} dimensions do not match.'
+    annotations = annotations.astype(np.bool_)
+    segmentations = segmentations.astype(np.bool_)
+    blob_ious = []
+    for annotation, segmentation in zip(annotations, segmentations):
+        blob_annotation = measure.label(annotation, connectivity = 2)
+        blob_segmentation = measure.label(segmentation, connectivity = 2)
+        
+        one_hot_anno = F.one_hot(torch.tensor(blob_annotation).to(torch.int64), num_classes=np.max(blob_annotation)+1).permute(2, 0, 1)
+        one_hot_anno_wo_bg = np.array(one_hot_anno[1:])
+        one_hot_segm = F.one_hot(torch.tensor(blob_segmentation).to(torch.int64), num_classes=np.max(blob_segmentation)+1).permute(2, 0, 1)
+        one_hot_segm_wo_bg = np.array(one_hot_segm[1:])
+
+        instance_iou = []
+        if one_hot_anno_wo_bg.shape[0] == 0:
+            blob_ious.append(0)
+            continue
+        for i in range(one_hot_anno_wo_bg.shape[0]):
+            gt_instance = one_hot_anno_wo_bg[i]
+            max_iou = 0
+            max_iou_idx = -1
+            if one_hot_segm_wo_bg.shape[0] == 0:
+                break
+            for j in range(one_hot_segm_wo_bg.shape[0]):
+                pred_instance = one_hot_segm_wo_bg[j]
+                inter = np.sum((pred_instance & gt_instance), axis=(-2, -1))
+                union = np.sum((pred_instance | gt_instance), axis=(-2, -1))
+                iou = (inter / union)
+                if iou > max_iou:
+                    max_iou = iou
+                    max_iou_idx = j
+            instance_iou.append(max_iou)
+            one_hot_segm_wo_bg = np.concatenate([one_hot_segm_wo_bg[:max_iou_idx],one_hot_segm_wo_bg[(max_iou_idx+1):]])
+        if len(instance_iou) != 0:
+            blob_ious.append(np.mean(instance_iou))
+        else:
+            blob_ious.append(0)
+    return blob_ious
+
+
 def db_eval_blob_torch(annotations, segmentations, void_pixels=None):
     """ Compute instance similarity as the Blob Index. By Li jiaxin 
     Arguments:
@@ -24,7 +75,7 @@ def db_eval_blob_torch(annotations, segmentations, void_pixels=None):
 
     
     
-    for annotation, segmentation in zip(annotations, segmentations):
+    for id , (annotation, segmentation) in enumerate( zip(annotations, segmentations)):
  
         blob_annotation = measure.label(annotation, connectivity = 2)
         blob_segmentation = measure.label(segmentation, connectivity = 2)
@@ -34,7 +85,12 @@ def db_eval_blob_torch(annotations, segmentations, void_pixels=None):
         one_hot_segm = F.one_hot(torch.tensor(blob_segmentation).to(torch.int64), num_classes=np.max(blob_segmentation)+1).permute(2, 0, 1)
         one_hot_segm_wo_bg = (one_hot_segm[1:]).to(torch.float64)
 
- 
+        if void_pixels is not None:
+            void_pixel = 1 - void_pixels[id]
+            one_hot_anno_wo_bg = one_hot_anno_wo_bg * void_pixel 
+            one_hot_segm_wo_bg = one_hot_segm_wo_bg * void_pixel
+       
+
         if one_hot_anno_wo_bg.shape[0] == 0 or one_hot_segm_wo_bg.shape[0] == 0:
             blob_ious.append(0)
             continue

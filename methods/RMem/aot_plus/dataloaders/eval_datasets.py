@@ -191,12 +191,14 @@ class YOUTUBEVOS_Test(object):
                  result_root=None):
         if split == 'val':
             split = 'valid'
-        root = os.path.join(root, str(year), split)
+        root = os.path.join(root,  split) # 这里为了适配文件结构去掉了year
         self.db_root_dir = root
         self.result_root = result_root
         self.rgb = rgb
         self.transform = transform
         self.seq_list_file = os.path.join(self.db_root_dir, 'meta.json')
+
+        print("meta:",os.path.join(self.db_root_dir, 'meta.json'))
         self._check_preprocess()
         self.seqs = list(self.ann_f.keys())
         self.image_root = os.path.join(root, 'JPEGImages')
@@ -354,18 +356,24 @@ class ROVES_Test(object):
         self.single_obj = False
         self.image_root = os.path.join(root, 'JPEGImages' )
         self.label_root = os.path.join(root, 'Annotations')
+        print("self.imagg_root:",self.image_root )
         self.fps=fps
-        # seq_names = []
+        seq_names = []
 
-        self.seqs = os.listdir(self.label_root)
+        # self.seqs = os.listdir(self.label_root)
         # print("self.seqs：",self.seqs)
-        # for spt in split:
-        #     with open(os.path.join(root, 'ImageSets',
-        #                            spt + '.txt')) as f:
-        #         seqs_tmp = f.readlines()
-        #     seqs_tmp = list(map(lambda elem: elem.strip(), seqs_tmp))
-        #     seq_names.extend(seqs_tmp)
-        # self.seqs = list(np.unique(seq_names))
+        # print("self.seqs：",len(self.seqs))
+
+        for spt in split:
+            with open(os.path.join(root, 'ImageSets',
+                                   spt + '.txt'), "r") as f:
+                seqs_tmp = f.readlines()
+            seqs_tmp = list(map(lambda elem: elem.strip(), seqs_tmp))
+            seq_names.extend(seqs_tmp)
+            # print("seq_names:",seq_names )
+        self.seqs = list(np.unique(seq_names))
+        print("self.seqs:", len(self.seqs))
+        print("self.seqs:", (self.seqs))
         self.is_oracle = is_oracle
 
     def __len__(self):
@@ -373,9 +381,10 @@ class ROVES_Test(object):
 
     def __getitem__(self, idx):
         seq_name = self.seqs[idx]
+
         images = list(
             np.sort(os.listdir(os.path.join(self.image_root, seq_name))))
-        # print("images:", images)
+        print(seq_name, "-images:", images)
         if self.is_oracle:
             labels = [i.replace('jpg', 'png') for i in images]
         else:
@@ -516,13 +525,13 @@ class DAVIS_Test(object):
             resolution = 'Full-Resolution'
         else:
             resolution = '480p'
-        self.image_root = os.path.join(root, 'JPEGImages')
-        self.label_root = os.path.join(root, 'Annotations')
+        self.image_root = os.path.join(root, 'JPEGImages' , resolution)
+        self.label_root = os.path.join(root, 'Annotations',resolution)
         seq_names = []
         for spt in split:
             if spt == 'test':
                 spt = 'test-dev'
-            with open(os.path.join(root, 'ImageSets',
+            with open(os.path.join(root, 'ImageSets', str(year),
                                    spt + '.txt')) as f:
                 seqs_tmp = f.readlines()
             seqs_tmp = list(map(lambda elem: elem.strip(), seqs_tmp))

@@ -314,6 +314,12 @@ class Evaluator(object):
         total_video_num = len(self.dataset)
         start_eval_time = time.time()
 
+        print("total_video_num:" , total_video_num)
+
+        print(self.dataset[0])
+
+        # print("!!!seq_queue:", self.seq_queue)
+
         if self.seq_queue is not None:
             if self.rank == 0:
                 for seq_idx in range(total_video_num):
@@ -321,11 +327,13 @@ class Evaluator(object):
                 for _ in range(self.gpu_num):
                     self.seq_queue.put('END')
             coming_seq_idx = self.seq_queue.get()
-
+       
         all_engines: List[AOTInferEngine] = []
+
         with torch.no_grad():
             for seq_idx, seq_dataset in enumerate(self.dataset):
                 video_num += 1
+             
 
                 if self.seq_queue is not None:
                     if coming_seq_idx == 'END':
@@ -385,7 +393,7 @@ class Evaluator(object):
                     all_preds = []
                     new_obj_label = None
 
-                    # ??? batch_size = 1 应该不会有aug_idx >= 1的时候吧
+                    # ??? batch_size = 1 应该不会有aug_idx >= 1的时候吧(确实，写的太傻逼了)
                     for aug_idx in range(len(samples)):
                         if len(all_engines) <= aug_idx:
                             all_engines.append(

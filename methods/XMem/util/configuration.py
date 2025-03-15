@@ -17,7 +17,6 @@ class Configuration():
         parser.add_argument('--bl_root', help='Blender training data root', default='../BL30K')
         parser.add_argument('--yv_root', help='YouTubeVOS data root', default='../YouTube')
         parser.add_argument('--davis_root', help='DAVIS data root', default='../DAVIS')
-        parser.add_argument('--vost_root', help='VOST data root', default='../VOST')
         parser.add_argument('--num_workers', help='Total number of dataloader workers across all GPUs processes', type=int, default=16)
 
         parser.add_argument('--key_dim', default=64, type=int)
@@ -55,7 +54,7 @@ class Configuration():
         parser.add_argument('--s1_start_warm', default=20000, type=int)
         parser.add_argument('--s1_end_warm', default=70000, type=int)
 
-        # Stage 2, DAVIS+YoutubeVOS+VOST, longer
+        # Stage 2, DAVIS+YoutubeVOS, longer
         parser.add_argument('--s2_batch_size', default=8, type=int)
         parser.add_argument('--s2_iterations', default=150000, type=int)
         # fine-tune means fewer augmentations to train the sensory memory
@@ -67,7 +66,7 @@ class Configuration():
         parser.add_argument('--s2_start_warm', default=20000, type=int)
         parser.add_argument('--s2_end_warm', default=70000, type=int)
 
-        # Stage 3, DAVIS+YoutubeVOS+VOST, shorter
+        # Stage 3, DAVIS+YoutubeVOS, shorter
         parser.add_argument('--s3_batch_size', default=8, type=int)
         parser.add_argument('--s3_iterations', default=100000, type=int)
         # fine-tune means fewer augmentations to train the sensory memory

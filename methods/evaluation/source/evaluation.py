@@ -4,19 +4,22 @@ import warnings
 warnings.filterwarnings("ignore", category=RuntimeWarning)
 
 import numpy as np
-from source.dataset import Dataset
+from source.dataset import Dataset, DAVIS2017_Dataset
 from source.metrics import db_eval_boundary, db_eval_iou
-from  source.metrics import db_eval_blob_torch as db_eval_blob
+
+
 from source import utils
 from source.results import Results
 from scipy.optimize import linear_sum_assignment
 from math import floor
 import multiprocessing as mp
 from multiprocessing import Manager
+import torch
+import torch.nn.functional as F
 
 
 class Evaluation(object):
-    def __init__(self, dataset_root, gt_set, sequences='all', fps=24):
+    def __init__(self, dataset_root, gt_set, sequences='all', fps=24, origin_Jcc = False):
         """
         Class to evaluate sequences from a certain set
         :param dataset_root: Path to the dataset folder that contains JPEGImages, Annotations, etc. folders.
@@ -24,12 +27,24 @@ class Evaluation(object):
         :param sequences: Sequences to consider for the evaluation, 'all' to use all the sequences in a set.
         """
         self.dataset_root = dataset_root
-        print(f"Evaluate on dataset = {self.dataset_root}")        
-        self.dataset = Dataset(root=dataset_root, subset=gt_set, sequences=sequences)
+        print(f"Evaluate on dataset = {self.dataset_root}")       
+        if "2017" in dataset_root:
+            self.dataset = DAVIS2017_Dataset(root=dataset_root, subset=gt_set, sequences=sequences)
+
+        else:
+            self.dataset = Dataset(root=dataset_root, subset=gt_set, sequences=sequences)
         self.compress_ratio = int(24 / fps)
+        self.origin_Jcc = origin_Jcc
 
     @staticmethod
-    def _evaluate_semisupervised(all_gt_masks, all_res_masks, all_void_masks, metric):
+    def _evaluate_semisupervised(all_gt_masks, all_res_masks, all_void_masks, metric, origin_Jcc = False):
+
+        if origin_Jcc:
+            from  source.metrics import db_eval_blob_origin as db_eval_blob
+            print(">>>>>>>>>> Using Origin Jcc")
+        else:
+            from  source.metrics import db_eval_blob_torch as db_eval_blob
+
         if all_res_masks.shape[0] > all_gt_masks.shape[0]:
             print("\nIn your PNG files there is an index higher than the number of objects in the sequence!")
             all_res_masks = all_res_masks[:all_gt_masks.shape[0]]
@@ -100,25 +115,38 @@ class Evaluation(object):
                 print(f"\n{seq}")
                 try:
                     all_gt_masks, all_void_masks, all_masks_id = self.dataset.get_all_masks(seq, True)
-                    print(f"\n{seq} DONE 1")
+                    # print(f"\n{seq} DONE 1")
                     num_objects = all_gt_masks.shape[0]
-                    print(f"\n{seq} DONE 1.4")
+                    # print(f"\n{seq} DONE 1.4")
                     all_gt_masks = all_gt_masks[:, : :  self.compress_ratio]
-                    print(f"\n{seq} DONE 1.5")
+                    # print(f"\n{seq} DONE 1.5")
                     all_masks_id = all_masks_id[: : self.compress_ratio]
-                    print(f"\n{seq} DONE 1.6")
+                    # print(f"\n{seq} DONE 1.6")
                     all_gt_masks, all_masks_id = all_gt_masks[:, 1:-1, :, :], all_masks_id[1:-1]
-                    print(f"\n{seq} DONE 1.7")
+                    # print(f"\n{seq} DONE 1.7")
                     num_eval_frames = len(all_masks_id)
-                    print(f"\n{seq} DONE 1.8")
+                    # print(f"\n{seq} DONE 1.8")
                     last_quarter_ind = int(floor(num_eval_frames * 0.75))
-                    print(f"\n{seq} DONE 1.9")
+                    # print(f"\n{seq} DONE 1.9")
         
 
                     all_res_masks = results.read_masks(seq, all_masks_id)
-                    print(f"\n{seq} DONE 2")
-                    j_metrics_res, blob_metrics_res = self._evaluate_semisupervised(all_gt_masks, all_res_masks, None, metric)
-                    print(f"\n{seq} DONE 3")
+
+
+                    if all_res_masks.shape[-2:] != all_gt_masks.shape[-2:]:
+                        all_res_masks = np.transpose(all_res_masks, (1,0,2,3))
+                        all_res_masks = torch.tensor(all_res_masks).float()
+                        # print("all masks:", all_res_masks.shape)
+                        
+                        all_res_masks = F.interpolate(all_res_masks, size=all_gt_masks.shape[-2:], mode='bilinear', align_corners=False)
+
+                        all_res_masks = np.transpose(np.array(all_res_masks), (1,0,2,3))
+                        # print("all masks:", all_res_masks.shape)
+                        
+
+                    # print(f"\n{seq} DONE 2")
+                    j_metrics_res, blob_metrics_res = self._evaluate_semisupervised(all_gt_masks, all_res_masks, None, metric, self.origin_Jcc)
+                    # print(f"\n{seq} DONE 3")
         
 
                     for ii in range(all_gt_masks.shape[0]):
@@ -139,7 +167,7 @@ class Evaluation(object):
                             metrics_res['J_cc']["M"].append(np.mean(blob_metrics_res[ii]))
                             metrics_res['J_cc']["M_per_object"][seq_name] = np.mean(blob_metrics_res[ii])
 
-                    print(f"\n{seq} DONE 4")
+                    # print(f"\n{seq} DONE 4")
 
                     # Show progress
                     if debug:

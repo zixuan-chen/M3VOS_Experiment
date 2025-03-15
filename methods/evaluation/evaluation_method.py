@@ -19,15 +19,18 @@ parser.add_argument('--set', type=str, help='Subset to evaluate the results', de
 parser.add_argument('--results_path', type=str, help='Path to the folder containing the sequences folders',
                     required=True)
 parser.add_argument('--week_num', type=int)
-parser.add_argument('--fps', type=int)
+parser.add_argument('--fps', type=int, default=24)
 parser.add_argument('--re', action='store_true')
+parser.add_argument('--origin_Jcc', action='store_true')
 args, _ = parser.parse_known_args()
 
 dataset_path_dict = {
-    'vost': '../RMem/aot_plus/datasets/VOST',
+    'vost': '/home/bingxing2/home/scx8ah2/dataset/VOST',
     'long_videos': '../aot_plus/datasets/long_videos',
     'roves': '../datasets/ROVES_summary',
-    "roves_debug_cfbi": "./CFBI/tmp/ROVES_debug"
+    "roves_debug_cfbi": "./CFBI/tmp/ROVES_debug",
+    'davis2017': "/home/bingxing2/home/scx8ah2/jiaxin/DeformVOS/datasets/2017",
+    'youtube19': "/home/bingxing2/home/scx8ah2/dataset/YouTube",
 }
 args.dataset_path = dataset_path_dict[args.dataset_path]
 if 'ROVES' in args.dataset_path :
@@ -50,7 +53,7 @@ if os.path.exists(csv_name_global_path) and os.path.exists(csv_name_per_sequence
 else:
     print(f'Evaluating sequences ...')
     # Create dataset and evaluate
-    dataset_eval = Evaluation(dataset_root=args.dataset_path, gt_set=args.set, fps= args.fps)
+    dataset_eval = Evaluation(dataset_root=args.dataset_path, gt_set=args.set, fps= args.fps, origin_Jcc = args.origin_Jcc)
     metrics_res = dataset_eval.evaluate(args.results_path)
     J = metrics_res['J']
     J_last = None

@@ -15,7 +15,7 @@ from dataset.vos_dataset import VOSDataset
 
 from util.logger import TensorboardLogger
 from util.configuration import Configuration
-from util.load_subset import load_sub_davis, load_sub_yv, load_sub_vost
+from util.load_subset import load_sub_davis, load_sub_yv
 
 
 """
@@ -33,7 +33,7 @@ if raw_config['benchmark']:
     torch.backends.cudnn.benchmark = True
 
 # Get current git info
-repo = git.Repo("/home/bingxing2/home/scx8ah2/zixuan/DeformVOS")
+repo = git.Repo(".")
 git_info = str(repo.active_branch)+' '+str(repo.head.commit.hexsha)
 
 local_rank = torch.distributed.get_rank()
@@ -124,17 +124,14 @@ for si, stage in enumerate(stages_to_perform):
 
     def renew_vos_loader(max_skip, finetune=False):
         # //5 because we only have annotation for every five frames
-        # yv_dataset = VOSDataset(path.join(yv_root, 'JPEGImages'), 
-        #                     path.join(yv_root, 'Annotations'), max_skip//5, is_bl=False, subset=load_sub_yv(), num_frames=config['num_frames'], finetune=finetune)
-        # davis_dataset = VOSDataset(path.join(davis_root, 'JPEGImages', '480p'), 
-        #                     path.join(davis_root, 'Annotations', '480p'), max_skip, is_bl=False, subset=load_sub_davis(), num_frames=config['num_frames'], finetune=finetune)
-        vost_dataset = VOSDataset(path.join(vost_root, "JPEGImages"),
-                            path.join(vost_root, 'Annotations'), max_skip, is_bl=False, subset=load_sub_vost(), num_frames=config['num_frames'], finetune=finetune)
-        train_dataset = ConcatDataset([vost_dataset])
+        yv_dataset = VOSDataset(path.join(yv_root, 'JPEGImages'), 
+                            path.join(yv_root, 'Annotations'), max_skip//5, is_bl=False, subset=load_sub_yv(), num_frames=config['num_frames'], finetune=finetune)
+        davis_dataset = VOSDataset(path.join(davis_root, 'JPEGImages', '480p'), 
+                            path.join(davis_root, 'Annotations', '480p'), max_skip, is_bl=False, subset=load_sub_davis(), num_frames=config['num_frames'], finetune=finetune)
+        train_dataset = ConcatDataset([davis_dataset]*5 + [yv_dataset])
 
-        # print(f'YouTube dataset size: {len(yv_dataset)}')
-        # print(f'DAVIS dataset size: {len(davis_dataset)}')
-        print(f'DAVIS dataset size: {len(vost_dataset)}')
+        print(f'YouTube dataset size: {len(yv_dataset)}')
+        print(f'DAVIS dataset size: {len(davis_dataset)}')
         print(f'Concat dataset size: {len(train_dataset)}')
         print(f'Renewed with {max_skip=}')
 
@@ -188,7 +185,7 @@ for si, stage in enumerate(stages_to_perform):
         # VOS dataset, 480p is used for both datasets
         yv_root = path.join(path.expanduser(config['yv_root']), 'train_480p')
         davis_root = path.join(path.expanduser(config['davis_root']), '2017', 'trainval')
-        vost_root = path.join(path.expanduser(config['vost_root']))
+
         train_sampler, train_loader = renew_vos_loader(5)
         renew_loader = renew_vos_loader
 

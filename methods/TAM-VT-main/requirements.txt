@@ -1,0 +1,8 @@
+omegaconf==2.3.0 
+submitit==1.5.0
+hostlist
+opencv-python==4.8.1.78
+scikit-image==0.22.0
+einops==0.7.0
+matplotlib==3.8.0
+timm==0.9.7

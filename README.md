@@ -36,9 +36,9 @@ We unify the file structure of file like `VOST` , as follow in `./datasets`:
 
 tip: This folder `datasets` should be linked in the every method folder in  `./methods` 
 
-	for example, in CFBI， `datasets -> ../../datasets/`
-	
-	In order to share the datasets in different which make it convenient to manager the datasets
+​	for example, in CFBI， `datasets -> ../../datasets/`
+
+​	In order to share the datasets in different which make it convenient to manager the datasets
 
 
 
@@ -64,7 +64,7 @@ in the `./tool`
 
 ```
 # modify the week_num in ./method/CFBI/roves_eval_fast.sh
-cd ./method/CFBI
+cd ./methods/CFBI
 sbatch --gpus=1 roves_eval_fast.sh 
 ```
 
@@ -94,28 +94,31 @@ cd methods/RMem/aot_plus
 sbatch --gpus=1 eval_roves_deaot.sh
 ```
 
-the prediction result in `methods/RMem/aot_plus/results/aotplus_R50_AOTL/pre_vost/eval/roves/test_roves_week_in_deaotRmem_${week_num}`
+the prediction result in `methods/RMem/aot_plus/results/aotplus_R50_DeAOTL_Temp_pe_Slot_4/pre_vost/eval/roves/test_roves_week_in_deaotRmem_${week_num}`
 
 
 ### XMem
-
 ```
 # modify the week_num in ./methods/XMem/eval.sh
 cd methods/XMem
 sbatch --gpus=1 -o eval.out eval.sh
 ```
-
 the prediction result in `methods/XMem/output/roves_week${week_num}`
 
 ### Cutie
-
 ```
 # modify the week_num in ./methods/Cutie/eval.sh
 cd methods/Cutie
 sbatch --gpus=1 -o eval.out eval.sh
 ```
-
 the prediction result in `methods/Cutie/cutie_output/roves_week${week_num}`
+
+### SAM2
+```
+# modify the week_num in ./methods/segment-anything-2/eval_roves.sh
+cd methods/segment-anything-2
+sbatch -x paraai-n32-h-01-agent-[1,4,7-8,16-17]    --gpus=1 -o eval.out eval_roves.sh
+```
 
 ## Eval code
 
@@ -136,23 +139,14 @@ sbatch --gpus=1 evaluation/eval.sh
 #  modify the week_num in ./methods/evaluation/cal_challenge_score.sh 
 # choose the result path of model
 cd /methods
-sbatch --gpus=1 evaluation/eval.sh 
+sbatch --gpus=1 evaluation/cal_challenge_score.sh 
 ```
+
+
 
 :rocket: TIP: Three result `csv` will be store in the `result_path`
 
 
+### Merge Video
 
-### Calculate the scores of rover for all weeks
-
-```
-cd /methods
-python evaluation/get_all_score_in_ROVES.py  --week_num {max_week_num}
-```
-
-:rocket: TIP:  The result `csv` will be store in the `./evaluation/all_result`
-
-​	You can add the case name in  `./evaluation/meta/exclude_case.json` to exclude some case
-
-
-
+In A100, using the `LLMSeg_cp310` conda env

@@ -1,0 +1,152 @@
+_BASE_: code/efficient-memory-net/TubeDETR_3c32cc9/config/all_tasks/BASE.yaml
+
+data:
+  static:
+      path: data/static_processed
+
+
+# Hyperparams
+lr: 1e-4                                            # modded for 16 GPUs
+lr_backbone: 2e-5                                   # modded for 16 GPUs
+# text_encoder_lr: 1e-4
+
+lr_drop: 20
+
+flop_count_mode: False
+
+# Model
+model:
+  name: 
+    tubedetr: tubedetr_static_multi_scale_memory
+    transformer: transformer_static_multi_scale_memory
+    backbone: backbone
+
+  segment_types: ["fg", "left_trun", "right_trun", "bg"]
+  use_score_per_frame: True                           # to predict score per frame
+
+  use_single_query_embed: False
+
+  static:
+    max_num_objects: 16
+    video_max_len: 6
+    use_projection_layer: True
+    freeze_backbone_during_query_projection: False
+    use_text_encoder: False
+
+    # use_mask_for_visual_crop: false
+    # use_rel_pos_enc_for_visual_crop: false
+    train_seg_head_only: false
+
+    # mask_at_full_image_level:
+    #   enable: false
+    #   type: "image_level"
+
+    reuse_input_proj_for_image_in_memory: False
+    separate_input_proj_for_all: False
+
+    attention_encoder: "space"
+    attention_decoder: "cross_attention"
+    use_second_last_feature: False
+
+    video_query_concat_at_feature_level: False
+
+
+    pixel_decoder:
+      name: "PixelDecoderUsingTransformerEncodedFeatures"  # (BasePixelDecoder,MSDeformAttnPixelDecoder)
+      conv_dim: 256
+      mask_dim: 256
+      norm: "GN"
+      in_features: ["res2", "res3", "res4", "res5"]
+
+      decode_mask_image_too: False
+
+    memory:
+      clip_length: 3
+      bank_size: 2
+
+      teacher_forcing:
+        enable: False
+
+
+joint:
+  scale_loss:
+    static: 1.0
+
+
+
+# tasks
+tasks:
+  names: ['static']
+train_strategy: "concat"                            # ['round_robin']
+
+
+
+# Train arguments
+train_flags:
+  print_freq: 100
+  
+  static:
+    stride: 0
+    eval_set_size:
+      train: 20
+      debug: 10
+    sample_query_mask_not_necessarily_from_first_frame: false
+    train_mask_head_in_ft_mode: false
+
+    multi_object:
+      enable: False
+      num_objects: 2
+      unified_encoding: False
+      iterate_over_all_clips: False
+
+    memory:
+      preseve_0th_frame: False
+
+    
+
+
+
+# Eval arguments
+eval_flags:
+  print_freq: 100
+  use_full_video_for_eval: True                     # flag for using full videos or not
+  plot_pred: False                                  # to plot predictions
+
+  static:
+    stride: 0
+    # window_step_size: 5
+    use_fg_score_to_mask_bg:
+      enable: False
+      lower_thres: 0.3
+      # upper_thres: 0.0
+    eval_first_window_only: False
+    eval_second_window_only: False
+    w_reference_slide: True
+    use_gt_intermediates: False
+
+    multi_object:
+      enable: False
+
+
+
+# Loss coefficients
+loss_coef:
+  score_per_frame_loss_coef: 2
+  static:
+    mask: 5
+    dice: 5
+    mask_alpha: 0.25
+
+
+flops_exp:
+  enable: False
+  downsample_factor: 1
+
+
+
+
+misc:
+  # MISC - MQ
+  mq:
+    extract_backbone_features: False        # flag for extracting mq backbone features
+    path_extract_backbone_features: data/mq_root/extracted_backbone_features/dummy

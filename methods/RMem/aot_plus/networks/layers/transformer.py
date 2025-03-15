@@ -952,7 +952,9 @@ class DualBranchGPM(nn.Module):
             add_item = 8
             mul_item = 1.5
             frame_times_param = mul_item * torch.sqrt(torch.log(frame_times_np.sum()) / (frame_times_np + add_item))
-            # print(f"{frame_times_param = }  +  {add_item = }  *  {mul_item = }")
+            print(f"{frame_times_param = }  +  {add_item = }  *  {mul_item = }")
+            print("!!!:", attn_weight.shape)
+            print("!!!:", frame_times_param.shape)
             attn_weight = attn_weight + frame_times_param
             # print(f"{attn_weight = }")
 

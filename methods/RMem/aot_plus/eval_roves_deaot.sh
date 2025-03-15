@@ -17,9 +17,8 @@ echo "result_path=$result_path"
 dataset="roves"
 # dataset="vost"
 split="val"
-week_num=3
+week_num=8
 eval_name="test_roves_week_in_deaotRmem_${week_num}"
-
 
 CUDA_VISIBLE_DEVICES=${devices} python tools/eval.py --result_path "${result_path}" \
 	--dataset ${dataset} --split ${split} --gpu_num ${gpu_num} --ms 1.0 \
@@ -30,7 +29,6 @@ CUDA_VISIBLE_DEVICES=${devices} python tools/eval.py --result_path "${result_pat
 	--week_num  ${week_num} \
 	--model ${model} \
 	--stage ${stage}
-
 
 
 # result_path="${result_path}/eval/${dataset}/${eval_name}/"

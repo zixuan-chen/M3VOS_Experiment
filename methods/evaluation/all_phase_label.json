@@ -1,0 +1,3297 @@
+{
+    "0049_clipoff_wood_1": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "twist"
+        }
+    },
+    "0050_clipoff_wood_2": {
+        "1": {
+            "before_state": "solid:non_particulate",
+            "after_state": "solid:non_particulate",
+            "phase transition": "separate"
+        }
+    },
+    "0051_disassemble_firework_1": {
+        "1": {
+            "before_state": "solid:non_particulate",
+            "after_state": "solid:non_particulate",
+            "phase transition": "separate"
+        }
+    },
+    "0052_assemble_firework_2": {
+        "1": {
+            "before_state": "solid:non_particulate",
+            "after_state": "solid:non_particulate",
+            "phase transition": "merge"
+        },
+        "2": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "merge"
+        }
+    },
+    "0053_assemble_firework_3": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "merge"
+        },
+        "2": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "merge"
+        }
+    },
+    "0054_cut_carrot_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "separate"
+        }
+    },
+    "0055_cut_carrot_2": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:particulate",
+            "phase transition": "break"
+        }
+    },
+    "0056_cut_celery_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "separate"
+        }
+    },
+    "0057_cut_celery_2": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:particulate",
+            "phase transition": "break"
+        }
+    },
+    "0058_cut_chili_pepper_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "separate"
+        }
+    },
+    "0059_cut_cucumber_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "separate"
+        }
+    },
+    "0060_cut_spinach_1": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "separate"
+        }
+    },
+    "0061_cut_spinach_2": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "separate"
+        }
+    },
+    "0062_peel_garlic_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:particulate",
+            "phase transition": "break"
+        },
+        "2": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:particulate",
+            "phase transition": "break"
+        }
+    },
+    "0063_pull_noodles_1": {
+        "1": {
+            "before_state": "solid:particulate",
+            "after_state": "solid:particulate",
+            "phase transition": "split"
+        }
+    },
+    "0064_knitting_sweater_1": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "twist"
+        },
+        "2": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "twist"
+        }
+    },
+    "0065_knitting_sweater_2": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "twist"
+        },
+        "2": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "twist"
+        }
+    },
+    "0066_knitting_sweater_3": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "twist"
+        },
+        "2": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "twist"
+        }
+    },
+    "0067_knitting_sweater_4": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "twist"
+        }
+    },
+    "0068_knitting_sweater_5": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "twist"
+        }
+    },
+    "0097_pour_water_2": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0250_evaporate_water_2": {
+        "1": {
+            "before_state": "liquid",
+            "after_state": "aerosol/gas",
+            "phase transition": "vaporize"
+        }
+    },
+    "0244_condensation_iodine_1": {
+        "1": {
+            "before_state": "aerosol/gas",
+            "after_state": "solid:particulate",
+            "phase transition": "deposition"
+        }
+    },
+    "0241_break_glass_2": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:particulate",
+            "phase transition": "split"
+        }
+    },
+    "0242_break_glass_3": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:particulate",
+            "phase transition": "split"
+        }
+    },
+    "0246_crystallize_liquid_1": {
+        "1": {
+            "before_state": "liquid",
+            "after_state": "solid",
+            "phase transition": "separate_out"
+        }
+    },
+    "0247_crystallize_liquid_2": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "solid:particulate",
+            "phase transition": "separate_out"
+        }
+    },
+    "0256_sublime_iodine_1": {
+        "1": {
+            "before_state": "solid:particulate",
+            "after_state": "aerosol/gas",
+            "phase transition": "sublimate"
+        }
+    },
+    "0243_coagulate_water_1": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:viscous",
+            "phase transition": "deposition"
+        }
+    },
+    "0245_condensation_water_1": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "solidify"
+        }
+    },
+    "0248_dissolve_drug_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "liquid:non viscous",
+            "phase transition": "dissolve"
+        }
+    },
+    "0249_evaporate_water_1": {
+        "1": {
+            "before_state": "aerosol/gas",
+            "after_state": "aerosol/gas",
+            "phase transition": "diffusion"
+        }
+    },
+    "0251_forge_steel_1": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "twist"
+        }
+    },
+    "0252_liquefied_bromine_1": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0253_melt_crystals_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "liquid:non viscous",
+            "phase transition": "melt"
+        }
+    },
+    "0254_soften_hair_1": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "twist"
+        }
+    },
+    "0255_sublime_dryice_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "aerosol/gas",
+            "phase transition": "vaporize"
+        }
+    },
+    "0276_boil_dry_watermelon_juice_1": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "solid:particulate",
+            "phase transition": "vaporize"
+        }
+    },
+    "0277_twist_rubber_2": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "twist"
+        }
+    },
+    "0278_scrape_cheese_7": {
+        "1": {
+            "before_state": "liquid:viscous",
+            "after_state": "liquid:viscous",
+            "phase transition": "paint"
+        }
+    },
+    "0279_knead_plasticine_4": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "twist"
+        }
+    },
+    "0280_knead_plasticine_5": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "twist"
+        }
+    },
+    "0281_make_glass_2": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "stretch"
+        }
+    },
+    "0284_make_glass_5": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "twist"
+        }
+    },
+    "0285_make_glass_6": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "stretch"
+        }
+    },
+    "0286_make_glass_7": {
+        "1": {
+            "phase transition": "stretch",
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body"
+        }
+    },
+    "0287_make_glass_8": {
+        "1": {
+            "before_state": "liquid:viscous",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "solidify"
+        }
+    },
+    "0288_make_glass_9": {
+        "1": {
+            "before_state": "liquid:viscous",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "solidify"
+        }
+    },
+    "0289_make_glass_10": {
+        "1": {
+            "before_state": "liquid:viscous",
+            "after_state": "liquid:viscous",
+            "phase transition": "stretch"
+        }
+    },
+    "0290_make_glass_11": {
+        "1": {
+            "before_state": "liquid:viscous",
+            "after_state": "liquid:viscous",
+            "phase transition": "stretch"
+        }
+    },
+    "0291_make_glass_12": {
+        "1": {
+            "before_state": "liquid:viscous",
+            "after_state": "liquid:viscous",
+            "phase transition": "stretch"
+        }
+    },
+    "0292_knead_plasticine_6": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "stretch"
+        }
+    },
+    "0293_crush_stress_ball_1": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "stretch"
+        }
+    },
+    "0294_crush_stress_ball_2": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "stretch"
+        }
+    },
+    "0296_crush_stress_ball_4": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "stretch"
+        }
+    },
+    "0298_exhaust_smoke_1": {
+        "1": {
+            "before_state": "aerosol/gas",
+            "after_state": "aerosol/gas",
+            "phase transition": "diffusion"
+        }
+    },
+    "0299_exhaust_smoke_2": {
+        "1": {
+            "before_state": "aerosol/gas",
+            "after_state": "aerosol/gas",
+            "phase transition": "diffusion"
+        }
+    },
+    "0301_smoke_dry_ice_1": {
+        "1": {
+            "before_state": "aerosol/gas",
+            "after_state": "aerosol/gas",
+            "phase transition": "diffusion"
+        }
+    },
+    "0300_exhaust_smoke_3": {
+        "1": {
+            "before_state": "aerosol/gas",
+            "after_state": "aerosol/gas",
+            "phase transition": "diffusion"
+        }
+    },
+    "0295_crush_stress_ball_3": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "stretch"
+        }
+    },
+    "0297_crush_stress_ball_5": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "stretch"
+        }
+    },
+    "0309_splash_liquid_2": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "splash"
+        }
+    },
+    "0310_puncture_balloon_5": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "aerosol/gas",
+            "phase transition": "break"
+        }
+    },
+    "0313_heat_corns_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "split"
+        }
+    },
+    "0314_heat_corns_2": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "split"
+        }
+    },
+    "0315_sharpen_pencil_2": {
+        "1": {
+            "before_state": "solid:non_particulate",
+            "after_state": "solid:non_particulate",
+            "phase transition": "separate"
+        }
+    },
+    "0316_burn_snacks_1": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "liquid:viscous",
+            "phase transition": "melt"
+        }
+    },
+    "0332_splash_liquid_4": {},
+    "0333_splash_liquid_5": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "splash"
+        }
+    },
+    "0334_splash_liquid_6": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "splash"
+        }
+    },
+    "0336_dissolve_drug_2": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "liquid:non viscous",
+            "phase transition": "dissolve"
+        }
+    },
+    "0338_dissolve_drug_4": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "liquid:non viscous",
+            "phase transition": "dissolve"
+        }
+    },
+    "0339_dissolve_drug_5": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "liquid:non viscous",
+            "phase transition": "dissolve"
+        }
+    },
+    "0340_dissolve_drug_6": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "liquid:non viscous",
+            "phase transition": "dissolve"
+        }
+    },
+    "0341_dissolve_drug_7": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "liquid:non viscous",
+            "phase transition": "dissolve"
+        }
+    },
+    "0343_burn_candy_4": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "liquid:viscous",
+            "phase transition": "melt"
+        }
+    },
+    "0344_burn_candy_5": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "liquid:viscous",
+            "phase transition": "melt"
+        }
+    },
+    "0345_burn_candy_5": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "liquid:viscous",
+            "phase transition": "melt"
+        }
+    },
+    "0346_pour_beer_2": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0317_burn_candle_1": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "liquid:viscous",
+            "phase transition": "melt"
+        }
+    },
+    "0318_strike_match_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "split"
+        }
+    },
+    "0319_slide_pen_1": {
+        "1": {
+            "before_state": "liquid:viscous",
+            "after_state": "liquid:viscous",
+            "phase transition": "paint"
+        }
+    },
+    "0320_slide_pencil_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:particulate",
+            "phase transition": "break"
+        }
+    },
+    "0321_slide_pen_2": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "liquid:viscous",
+            "phase transition": "melt"
+        }
+    },
+    "0322_burn_paperclip_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "liquid:viscous",
+            "phase transition": "melt"
+        }
+    },
+    "0323_burn_metal_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "liquid:viscous",
+            "phase transition": "melt"
+        }
+    },
+    "0324_cut_pencil_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "split"
+        }
+    },
+    "0325_burn_candy_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "split"
+        }
+    },
+    "0327_burn_candy_2": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "liquid:viscous",
+            "phase transition": "melt"
+        }
+    },
+    "0257_pour_ointment_1": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0258_knead_plasticine_1": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "stretch"
+        }
+    },
+    "0259_knead_plasticine_2": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "stretch"
+        }
+    },
+    "0260_knead_plasticine_3": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "stretch"
+        }
+    },
+    "0261_twist_rubber_1": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "liquid:non viscous",
+            "phase transition": "twist"
+        }
+    },
+    "0263_melt_cheese_5": {
+        "1": {
+            "before_state": "solid:non_particulate",
+            "after_state": "liquid:viscous",
+            "phase transition": "melt"
+        }
+    },
+    "0264_scrape_cheese_6": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "liquid:viscous",
+            "phase transition": "seperate"
+        }
+    },
+    "0265_cut_chocolate_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow out"
+        }
+    },
+    "0266_squeeze_ice_cream_1": {
+        "1": {
+            "before_state": "liquid:viscous",
+            "after_state": "liquid:viscous",
+            "phase transition": "paint"
+        }
+    },
+    "0267_cut_cheese_2": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "liquid:viscous",
+            "phase transition": "melt"
+        }
+    },
+    "0268_cut_onion_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:particulate",
+            "phase transition": "break"
+        }
+    },
+    "0269_melt_chocolate_2": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "liquid:non viscous",
+            "phase transition": "melt"
+        }
+    },
+    "0270_cut_candy_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:particulate",
+            "phase transition": "break"
+        }
+    },
+    "0271_knead_candy_2": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "twist"
+        }
+    },
+    "0305_break_bubble_5": {
+        "1": {
+            "before_state": "aerosol/gas",
+            "after_state": "aerosol/gas",
+            "phase transition": "split"
+        }
+    },
+    "0307_break_candy_jar_2": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "separate"
+        }
+    },
+    "0311_break_glass_7": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:particulate",
+            "phase transition": "break"
+        }
+    },
+    "0312_splash_liquid_3": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:viscous",
+            "phase transition": "vaporize"
+        }
+    },
+    "0272_knead_candy_3": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "twist"
+        }
+    },
+    "0273_make_glass_1": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "stretch"
+        }
+    },
+    "0274_pour_cream_1": {
+        "1": {
+            "before_state": "liquid:viscous",
+            "after_state": "liquid:viscous",
+            "phase transition": "paint"
+        }
+    },
+    "0275_boil_dry_tea_1": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "solid:particulate",
+            "phase transition": "vaporize"
+        }
+    },
+    "0282_make_glass_3": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "stretch"
+        }
+    },
+    "0283_make_glass_4": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "stretch"
+        }
+    },
+    "0328_burn_candy_2": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "liquid:viscous",
+            "phase transition": "melt"
+        }
+    },
+    "0329_press_pencil_1": {
+        "1": {
+            "before_state": "solid:non_particulate",
+            "after_state": "solid:particulate",
+            "phase transition": "break"
+        }
+    },
+    "0330_burn_metal_2": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "liquid:non-viscous",
+            "phase transition": "melt"
+        }
+    },
+    "0331_puncture_balloon_6": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:particulate",
+            "phase transition": "split"
+        }
+    },
+    "0302_tie_shoelaces_2": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "twist"
+        }
+    },
+    "0069_shake_chemical_liquid_1": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0070_shake_chemical_liquid_2": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0071_shake_chemical_liquid_3": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0072_peel_electricwire_1": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "break"
+        }
+    },
+    "0073_peel_electricwire_2": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "break"
+        }
+    },
+    "0074_peel_electricwire_3": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "break"
+        }
+    },
+    "0075_melt_cheese_1": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "liquid:viscous",
+            "phase transition": "melt"
+        },
+        "2": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "liquid:viscous",
+            "phase transition": "melt"
+        }
+    },
+    "0076_melt_oil_1": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "liquid:viscous",
+            "phase transition": "melt"
+        }
+    },
+    "0077_twist_mop_1": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "twist"
+        }
+    },
+    "0078_shake_wine_1": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0079_shake_wine_2": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0080_pour_milk_1": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "mix"
+        }
+    },
+    "0081_cut_garlic_1": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:particulate",
+            "phase transition": "break"
+        }
+    },
+    "0082_cut_green_olives_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "separate"
+        },
+        "2": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "separate"
+        },
+        "3": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "separate"
+        },
+        "4": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "separate"
+        }
+    },
+    "0083_cut_tomato_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "separate"
+        },
+        "2": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "separate"
+        }
+    },
+    "0084_disassemble_gun_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "separate"
+        }
+    },
+    "0085_disassemble_gun_2": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "separate"
+        }
+    },
+    "0086_disassemble_gun_3": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "separate"
+        }
+    },
+    "0087_pour_water_1": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0088_pour_beer_1": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0001_mv_cola_1": {},
+    "0002_mv_cola_2": {},
+    "0003_mv_cola_3": {},
+    "0004_mv_energy_1": {},
+    "0005_mv_energy_2": {},
+    "0006_mv_lime_1": {},
+    "0007_mv_lime_2": {},
+    "0008_mv_mark_1": {},
+    "0009_open_cup_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "separate"
+        }
+    },
+    "0010_open_cup_2": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "separate"
+        }
+    },
+    "0011_open_cup_3": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "separate"
+        }
+    },
+    "0012_mv_cup_4": {},
+    "0013_mv_cup_5": {},
+    "0014_open_cup_6": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "separate"
+        }
+    },
+    "0015_open_cup_7": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "separate"
+        }
+    },
+    "0016_open_redpen_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "separate"
+        }
+    },
+    "0017_mv_redpen_2": {},
+    "0018_mv_redpen_3": {},
+    "0019_use_measure_1": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "stretch"
+        }
+    },
+    "0021_use_measure_3": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "stretch"
+        }
+    },
+    "0022_use_measure_4": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "stretch"
+        }
+    },
+    "0023_open_mark_2": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "separate"
+        }
+    },
+    "0024_cut_blueberry_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "separate"
+        },
+        "2": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "separate"
+        }
+    },
+    "0025_mv_brocolli_1": {},
+    "0026_cut_brocolli_2": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "separate"
+        },
+        "2": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "separate"
+        }
+    },
+    "0027_break_brocolli_3": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "separate"
+        }
+    },
+    "0028_break_brocolli_4": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "separate"
+        }
+    },
+    "0029_cut&break_brocolli_5": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "separate"
+        }
+    },
+    "0030_cut_brocolli_6": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "separate"
+        }
+    },
+    "0031_cut_brocolli_7": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "separate"
+        }
+    },
+    "0032_mv_brocolli_8": {},
+    "0033_break_egg_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "liquid:viscous",
+            "phase transition": "flow out"
+        }
+    },
+    "0034_mv_egg_2": {},
+    "0035_break_egg_3": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "liquid:viscous",
+            "phase transition": "flow out"
+        }
+    },
+    "0036_mv_egg_4": {},
+    "0037_tear_pepper_1": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "break"
+        },
+        "2": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "break"
+        }
+    },
+    "0038_mv_pepper_2": {},
+    "0039_mv_pepper_3": {},
+    "0040_tear_pepper_4": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "break"
+        },
+        "2": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "break"
+        }
+    },
+    "0041_cut_pepper_5": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:particulate",
+            "phase transition": "break"
+        },
+        "2": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:particulate",
+            "phase transition": "break"
+        }
+    },
+    "0042_cut_pepper_6": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:particulate",
+            "phase transition": "break"
+        },
+        "2": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:particulate",
+            "phase transition": "break"
+        },
+        "3": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:particulate",
+            "phase transition": "break"
+        }
+    },
+    "0043_tear_green_pepper_1": {
+        "2": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "break"
+        }
+    },
+    "0044_cut_green_pepper_2": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:particulate",
+            "phase transition": "break"
+        },
+        "2": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "break"
+        }
+    },
+    "0045_cut_green_pepper_3": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "separate"
+        },
+        "2": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "separate"
+        }
+    },
+    "0046_cut_green_pepper_4": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "separate"
+        }
+    },
+    "0047_mv_green_pepper_5": {},
+    "0048_tear_green_pepper_6": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "separate"
+        }
+    },
+    "0152_break_cookies_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "separate"
+        }
+    },
+    "0160_erupting_liquid_1": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0161_erupting_liquid_2": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0165_knead_cheese_1": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "twist"
+        }
+    },
+    "0166_knead_cheese_2": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "stretch"
+        }
+    },
+    "0167_knead_cheese_3": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "twist"
+        }
+    },
+    "0169_Melting_cans_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "liquid:non viscous",
+            "phase transition": "melt"
+        }
+    },
+    "0171_pour_tea_2": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0172_pour_tea_3": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0173_pour_tea_4": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0175_pour_tea_6": {
+        "1": {
+            "phase transition": "flow",
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous"
+        }
+    },
+    "0176_pour_tea_7": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0177_solidify_gold_1": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "solidify"
+        }
+    },
+    "0178_puncture_balloon_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "split"
+        }
+    },
+    "0181_puncture_balloon_4": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:particulate",
+            "phase transition": "break"
+        }
+    },
+    "0182_Rubbing_sponge_1": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "twist"
+        }
+    },
+    "0184_solidify_aluminum_1": {
+        "1": {
+            "before_state": "liquid:viscous",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "solidify"
+        }
+    },
+    "0186_solidify_iron_1": {
+        "1": {
+            "before_state": "liquid",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "solidify"
+        }
+    },
+    "0187_solidify_water_1": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "solidify"
+        }
+    },
+    "0188_solidify_water_2": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "solidify"
+        }
+    },
+    "0190_solidify_water_4": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "solidify"
+        }
+    },
+    "0191_solidify_water_5": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "solidify"
+        }
+    },
+    "0192_solidify_water_6": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "solidify"
+        }
+    },
+    "0183_solder_wire_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "liquid:viscous",
+            "phase transition": "melt"
+        }
+    },
+    "0194_splash_water_1": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "splash"
+        }
+    },
+    "0189_solidify_water_3": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "solidify"
+        }
+    },
+    "0180_puncture_balloon_3": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:particulate",
+            "phase transition": "break"
+        }
+    },
+    "0193_solidify_water_7": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "solidify"
+        }
+    },
+    "0197_melt_glue_stick_2": {
+        "1": {
+            "before_state": "solid",
+            "after_state": "liquid",
+            "phase transition": "melt"
+        }
+    },
+    "0198_melt_glue_stick_3": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "liquid:viscous",
+            "phase transition": "melt"
+        }
+    },
+    "0199_melt_glue_stick_4": {
+        "1": {
+            "phase transition": "melt",
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "liquid:viscous"
+        }
+    },
+    "0203_splash_water_6": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "aerosol/gas",
+            "phase transition": "solidify"
+        }
+    },
+    "0204_crystallize_metal_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "crystallize"
+        }
+    },
+    "0205_crystallize_liquid_3": {
+        "1": {
+            "before_state": "solid",
+            "after_state": "solid",
+            "phase transition": "crystallize"
+        }
+    },
+    "0211_grow_rime_1": {
+        "1": {
+            "before_state": "aerosol/gas",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "deposition"
+        }
+    },
+    "0217_solify_liquid_2": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "solidify"
+        }
+    },
+    "0223_solify_liquid_1": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "solidify"
+        }
+    },
+    "0228_sublime_dryice_2": {
+        "1": {
+            "before_state": "solid:particulate",
+            "after_state": "aerosol/gas",
+            "phase transition": "sublimate"
+        }
+    },
+    "0229_soften_metal_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "soften"
+        }
+    },
+    "0230_crystallize_liquid_7": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "deposition"
+        }
+    },
+    "0231_sublime_dryice_3": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "aerosol/gas",
+            "phase transition": "sublimate"
+        }
+    },
+    "0232_sublime_dryice_4": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "aerosol/gas",
+            "phase transition": "sublimate"
+        }
+    },
+    "0233_generate_iodine_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "aerosol/gas",
+            "phase transition": "sublimate"
+        }
+    },
+    "0234_generate_iodine_2": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "aerosol/gas",
+            "phase transition": "sublimate"
+        }
+    },
+    "0237_condensation_water_5": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "deposition"
+        }
+    },
+    "0239_melt_chocolate_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "soften"
+        }
+    },
+    "0240_burn_plastic_3": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "aerosol/gas",
+            "phase transition": "sublimate"
+        }
+    },
+    "0238_dissolve_salt_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "dissolve"
+        }
+    },
+    "0212_vaporized_liquid_nitrogen_1": {
+        "1": {
+            "before_state": "aerosol/gas",
+            "after_state": "aerosol/gas",
+            "phase transition": "diffusion"
+        }
+    },
+    "0236_condensation_water_4": {
+        "1": {
+            "before_state": "aerosol/gas",
+            "after_state": "solid:non_particulate",
+            "phase transition": "deposition"
+        }
+    },
+    "0220_crystallize_liquid_4": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "solid:particulate",
+            "phase transition": "deposition"
+        }
+    },
+    "0215_condensation_water_3": {
+        "1": {
+            "before_state": "solid:particulate",
+            "after_state": "solid:particulate",
+            "phase transition": "deposition"
+        }
+    },
+    "0195_splash_water_2": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0196_melt_glue_block_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "liquid:viscous",
+            "phase transition": "melt"
+        }
+    },
+    "0206_crystallize_liquid_4": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "solid:non_particulate",
+            "phase transition": "crystallize"
+        }
+    },
+    "0207_crystallize_liquid_5": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "solid:non_particulate",
+            "phase transition": "crystallize"
+        }
+    },
+    "0222_crystallize_liquid_6": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "solid:particulate",
+            "phase transition": "crystallize"
+        }
+    },
+    "0168_Making_fibers_1": {
+        "1": {
+            "before_state": "liquid:viscous",
+            "after_state": "liquid:viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0170_pour_tea_1": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0179_puncture_balloon_2": {
+        "1": {
+            "before_state": "solid:non_particulate",
+            "after_state": "solid:particulate",
+            "phase transition": "break"
+        }
+    },
+    "0174_pour_tea_5": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0200_splash_water_3": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "aerosol/gas",
+            "phase transition": "vaporize"
+        }
+    },
+    "0202_splash_water_5": {
+        "1": {
+            "before_state": "liquid",
+            "after_state": "aerosol/gas",
+            "phase transition": "vaporize"
+        }
+    },
+    "0209_break_glass_5": {
+        "1": {
+            "before_state": "solid:non_particulate",
+            "after_state": "solid:particulate",
+            "phase transition": "split"
+        }
+    },
+    "0150_apply_glue_1": {
+        "1": {
+            "before_state": "liquid:viscous",
+            "after_state": "liquid:viscous",
+            "phase transition": "paint"
+        }
+    },
+    "0151_apply_glue_2": {
+        "1": {
+            "before_state": "liquid:viscous",
+            "after_state": "liquid:viscous",
+            "phase transition": "paint"
+        }
+    },
+    "0153_break_bubble_1": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "split"
+        }
+    },
+    "0154_break_bubble_2": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "split"
+        }
+    },
+    "0155_break_bubble_3": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "split"
+        }
+    },
+    "0156_break_bubble_4": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "split"
+        }
+    },
+    "0157_stir_cola_1": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0158_stir_cola_2": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0159_cut_glue_stickt_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "separate"
+        }
+    },
+    "0162_flow_water_1": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0163_hit_balloon_1": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "twist"
+        }
+    },
+    "0164_hit_balloon_2": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "twist"
+        }
+    },
+    "0216_evaporate_water_5": {
+        "1": {
+            "before_state": "aerosol/gas",
+            "after_state": "aerosol/gas",
+            "phase transition": "diffusion"
+        }
+    },
+    "0208_break_glass_4": {
+        "1": {
+            "before_state": "solid:non_particulate",
+            "after_state": "solid:particulate",
+            "phase transition": "split"
+        }
+    },
+    "0347_wrap_wire_1": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "twist"
+        }
+    },
+    "0348_make_pottery_1": {
+        "1": {
+            "before_state": "liquid:viscous",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "solidify"
+        }
+    },
+    "0349_top_cake_1": {
+        "1": {
+            "before_state": "liquid:viscous",
+            "after_state": "liquid:viscous",
+            "phase transition": "paint"
+        }
+    },
+    "0350_top_cake_2": {
+        "1": {
+            "before_state": "liquid:viscous",
+            "after_state": "liquid:viscous",
+            "phase transition": "paint"
+        }
+    },
+    "0351_top_cake_3": {
+        "1": {
+            "phase transition": "paint",
+            "before_state": "liquid:viscous",
+            "after_state": "liquid:viscous"
+        }
+    },
+    "0352_top_cake_4": {
+        "1": {
+            "before_state": "liquid:viscous",
+            "after_state": "liquid:viscous",
+            "phase transition": "paint"
+        }
+    },
+    "0353_peel_fruit_1": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "separate"
+        }
+    },
+    "0354_peel_fruit_2": {
+        "1": {
+            "before_state": "solid:non_particulate",
+            "after_state": "solid:non_particulate",
+            "phase transition": "separate"
+        }
+    },
+    "0355_peel_fruit_3": {
+        "1": {
+            "before_state": "solid:non_particulate",
+            "after_state": "solid:non_particulate",
+            "phase transition": "separate"
+        }
+    },
+    "0356_peel_fruit_4": {
+        "1": {
+            "before_state": "solid:non_particulate",
+            "after_state": "solid:non_particulate",
+            "phase transition": "separate"
+        }
+    },
+    "0357_cut_steel_1": {
+        "1": {
+            "before_state": "solid:particulate",
+            "after_state": "solid:particulate",
+            "phase transition": "separate"
+        }
+    },
+    "0358_paint_cream_1": {
+        "1": {
+            "before_state": "liquid:viscous",
+            "after_state": "liquid:viscous",
+            "phase transition": "paint"
+        }
+    },
+    "0359_make_cake_1": {
+        "1": {
+            "before_state": "liquid:viscous",
+            "after_state": "liquid:viscous",
+            "phase transition": "paint"
+        }
+    },
+    "0360_make_glass_13": {
+        "1": {
+            "before_state": "liquid:viscous",
+            "after_state": "liquid:viscous",
+            "phase transition": "stretch"
+        }
+    },
+    "0361_whish_egg_1": {
+        "1": {
+            "before_state": "liquid:viscous",
+            "after_state": "liquid:viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0363_whish_egg_2": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "mix"
+        }
+    },
+    "0364_whish_egg_3": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "mix"
+        }
+    },
+    "0370_make_glass_18": {
+        "1": {
+            "before_state": "liquid:viscous",
+            "after_state": "solid:particulate",
+            "phase transition": "solidify"
+        }
+    },
+    "0375_make_pottery_6": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "stretch"
+        }
+    },
+    "0379_paint_chocolate_1": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "paint"
+        }
+    },
+    "0380_paint_cream_10": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "paint"
+        }
+    },
+    "0381_paint_cream_4": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "paint"
+        }
+    },
+    "0382_paint_cream_5": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "paint"
+        }
+    },
+    "0386_paint_cream_9": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "paint"
+        }
+    },
+    "0387_paint_cream_2": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "paint"
+        }
+    },
+    "0388_paint_cream_3": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "paint"
+        }
+    },
+    "0391_peel_fruit_6": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "twist"
+        }
+    },
+    "0377_make_pottery_8": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:particulate",
+            "phase transition": "break"
+        }
+    },
+    "0378_make_pottery_9": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:particulate",
+            "phase transition": "break"
+        }
+    },
+    "0383_paint_cream_6": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "paint"
+        }
+    },
+    "0384_paint_cream_7": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "paint"
+        }
+    },
+    "0385_paint_cream_8": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "paint"
+        }
+    },
+    "0390_peel_fruit_5": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "twist"
+        }
+    },
+    "0389_paint_cream_11": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "paint"
+        }
+    },
+    "0362_peel_fruit_7": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "separate"
+        }
+    },
+    "0365_melt_gold_1": {
+        "1": {
+            "before_state": "liquid:viscous",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "solidify"
+        }
+    },
+    "0366_make_glass_14": {
+        "1": {
+            "before_state": "liquid:viscous",
+            "after_state": "solid:particulate",
+            "phase transition": "solidify"
+        }
+    },
+    "0367_make_glass_15": {
+        "1": {
+            "before_state": "liquid:viscous",
+            "after_state": "solid:particulate",
+            "phase transition": "solidify"
+        }
+    },
+    "0368_make_glass_16": {
+        "1": {
+            "before_state": "liquid:viscous",
+            "after_state": "solid:particulate",
+            "phase transition": "solidify"
+        }
+    },
+    "0369_make_glass_17": {
+        "1": {
+            "before_state": "liquid:viscous",
+            "after_state": "solid:particulate",
+            "phase transition": "solidify"
+        }
+    },
+    "0374_make_pottery_5": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "split"
+        }
+    },
+    "0376_make_pottery_7": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "stretch"
+        }
+    },
+    "0109_stri_milk_1": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0110_pour_water_4": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0111_drip_liquid_1": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "drip"
+        }
+    },
+    "0112_drip_liquid_2": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "drip"
+        }
+    },
+    "0113_carving_radish_1": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "separate"
+        }
+    },
+    "0114_curly_pile_1": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "twist"
+        }
+    },
+    "0115_sharpen_pencil_1": {
+        "1": {
+            "before_state": "solid:non_particulate",
+            "after_state": "solid:non_particulate",
+            "phase transition": "separate"
+        }
+    },
+    "0116_sheare_sheep_1": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "separate"
+        }
+    },
+    "0117_sheare_sheep_2": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "separate"
+        }
+    },
+    "0118_sheare_sheep_3": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "separate"
+        }
+    },
+    "0119_grind_powder_1": {
+        "1": {
+            "before_state": "solid:particulate",
+            "after_state": "solid:particulate",
+            "phase transition": "crush"
+        }
+    },
+    "0120_scoop_seeds_1": {
+        "1": {
+            "before_state": "solid:particulate",
+            "after_state": "solid:particulate",
+            "phase transition": "splash"
+        }
+    },
+    "0121_smash_cucumber_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non particulate:flexible body",
+            "phase transition": "compress"
+        }
+    },
+    "0122_smash_fruit_1": {
+        "1": {
+            "before_state": "solid:particulate",
+            "after_state": "solid:non particulate:flexible body",
+            "phase transition": "compress"
+        }
+    },
+    "0123_smash_fruit_2": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non particulate:flexible body",
+            "phase transition": "compress"
+        }
+    },
+    "0124_smash_garlic_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non particulate:flexible body",
+            "phase transition": "compress"
+        }
+    },
+    "0125_smash_herbs_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:particulate",
+            "phase transition": "crush"
+        }
+    },
+    "0126_smash_seeds_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "compress"
+        }
+    },
+    "0127_water_change_color_1": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0128_water_change_color_2": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0452_assemble_machinery_8": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "merge"
+        }
+    },
+    "0454_assemble_machinery_10": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "merge"
+        }
+    },
+    "0456_generate_crystals_2": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "solid:particulate",
+            "phase transition": "deposition"
+        }
+    },
+    "0460_generate_crystals_6": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "solid:particulate",
+            "phase transition": "deposition"
+        }
+    },
+    "0465_generate_crystals_1": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "solid:particulate",
+            "phase transition": "solidify"
+        }
+    },
+    "0466_generate_crystals_2": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "solid:particulate",
+            "phase transition": "deposition"
+        }
+    },
+    "0438_paint_chocolate_2": {
+        "1": {
+            "before_state": "liquid:viscous",
+            "after_state": "liquid:viscous",
+            "phase transition": "paint"
+        }
+    },
+    "0439_cut_cheese_3": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0440_dissemble_machinery_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "separate"
+        }
+    },
+    "0442_assemble_machinery_2": {
+        "3": {
+            "before_state": "solid:non_particulate",
+            "after_state": "solid:non_particulate",
+            "phase transition": "merge"
+        }
+    },
+    "0443_assemble_machinery_3": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "merge"
+        }
+    },
+    "0444_assemble_machinery_4": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "merge"
+        }
+    },
+    "0446_spread_sauce_1": {
+        "1": {
+            "before_state": "liquid:viscous",
+            "after_state": "liquid:viscous",
+            "phase transition": "paint"
+        }
+    },
+    "0447_melt_chocolate_3": {
+        "1": {
+            "before_state": "solid:non_particulate",
+            "after_state": "liquid:viscous",
+            "phase transition": "melt"
+        }
+    },
+    "0448_melt_chocolate_4": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "melt"
+        }
+    },
+    "0449_exhaust_smoke_4": {
+        "1": {
+            "before_state": "aerosol/gas",
+            "after_state": "aerosol/gas",
+            "phase transition": "diffusion"
+        }
+    },
+    "0450_crystallize_liquid_8": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "solid:non_particulate",
+            "phase transition": "crystallize"
+        }
+    },
+    "0437_melt_chocolate_3": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "liquid:viscous",
+            "phase transition": "melt"
+        }
+    },
+    "0441_assemble_machinery_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "merge"
+        }
+    },
+    "0451_assemble_machinery_7": {
+        "2": {
+            "phase transition": "merge",
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body"
+        },
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "merge"
+        }
+    },
+    "0445_assemble_machinery_5": {
+        "2": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "merge"
+        }
+    },
+    "0392_stretch_noodle_1": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "stretch"
+        }
+    },
+    "0395_stretch_noodle_4": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "stretch"
+        }
+    },
+    "0396_stretch_noodle_5": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "stretch"
+        }
+    },
+    "0399_make_ball_1": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "split"
+        }
+    },
+    "0404_cut_fruit_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "split"
+        }
+    },
+    "0405_cut_fruit_2": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "separate"
+        }
+    },
+    "0406_flip_roti_1": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "stretch"
+        }
+    },
+    "0422_knead_dough_2": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "stretch"
+        }
+    },
+    "0428_squeeze_dough_3": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "stretch"
+        }
+    },
+    "0432_cut_honeycomb_2": {
+        "1": {
+            "before_state": "solid:non_particulate",
+            "after_state": "solid:particulate",
+            "phase transition": "break"
+        }
+    },
+    "0433_cut_honeycomb_3": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "twist"
+        }
+    },
+    "0434_squeeze_honey_1": {
+        "1": {
+            "before_state": "liquid:viscous",
+            "after_state": "liquid:viscous",
+            "phase transition": "paint"
+        }
+    },
+    "0435_squeeze_honey_2": {
+        "1": {
+            "before_state": "liquid:viscous",
+            "after_state": "liquid:viscous",
+            "phase transition": "paint"
+        }
+    },
+    "0436_squeeze_bread_1": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0423_pile_dough_1": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "stretch"
+        }
+    },
+    "0424_pile_dough_2": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "stretch"
+        }
+    },
+    "0425_pour_syrup_1": {
+        "1": {
+            "before_state": "liquid:viscous",
+            "after_state": "liquid:viscous",
+            "phase transition": "stretch"
+        }
+    },
+    "0426_make_pancakes_2": {
+        "1": {
+            "before_state": "liquid",
+            "after_state": "solid:non_particulate",
+            "phase transition": "solidify"
+        }
+    },
+    "0427_make_pancakes_3": {
+        "1": {
+            "before_state": "liquid",
+            "after_state": "solid:non_particulate",
+            "phase transition": "solidify"
+        }
+    },
+    "0430_cut_aloe_1": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:particulate",
+            "phase transition": "break"
+        }
+    },
+    "0431_cut_honeycomb_1": {
+        "1": {
+            "before_state": "solid:non_particulate",
+            "after_state": "solid:particulate",
+            "phase transition": "break"
+        }
+    },
+    "0429_break_aloe_1": {
+        "1": {
+            "before_state": "liquid:viscous",
+            "after_state": "liquid:viscous",
+            "phase transition": "stretch"
+        }
+    },
+    "0409_squeeze_dough_2": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "stretch"
+        }
+    },
+    "0410_fry_omelet_1": {
+        "1": {
+            "before_state": "liquid:viscous",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "solidify"
+        }
+    },
+    "0411_fry_omelet_2": {
+        "1": {
+            "before_state": "liquid:viscous",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "solidify"
+        }
+    },
+    "0413_tear_cake_1": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "stretch"
+        }
+    },
+    "0414_tear_cake_2": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "stretch"
+        }
+    },
+    "0415_burn_sauce_1": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "solidify"
+        }
+    },
+    "0416_fry_omelet_3": {
+        "1": {
+            "before_state": "liquid:viscous",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "solidify"
+        }
+    },
+    "0417_pour_egg_1": {
+        "1": {
+            "before_state": "liquid:viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "solidify"
+        }
+    },
+    "0418_whish_egg_4": {
+        "1": {
+            "before_state": "liquid:viscous",
+            "after_state": "liquid:viscous",
+            "phase transition": "stretch"
+        }
+    },
+    "0407_fry_egg_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "solidify"
+        }
+    },
+    "0408_squeeze_dough_1": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "stretch"
+        }
+    },
+    "0412_roll_omelet_1": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "twist"
+        }
+    },
+    "0419_fry_dough_1": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "stretch"
+        }
+    },
+    "0420_fry_dough_3": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "stretch"
+        }
+    },
+    "0421_fry_dough_2": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "stretch"
+        }
+    },
+    "0469_dissolve_metal_2": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "liquid:viscous",
+            "phase transition": "melt"
+        }
+    },
+    "0472_merge_droplets_2": {
+        "1": {
+            "before_state": "liquid:viscous",
+            "after_state": "liquid:viscous",
+            "phase transition": "stretch"
+        }
+    },
+    "0481_break_glass_7": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "split"
+        }
+    },
+    "0455_generate_crystals_1": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "solid:particulate",
+            "phase transition": "deposition"
+        }
+    },
+    "0457_generate_crystals_3": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "solid:particulate",
+            "phase transition": "deposition"
+        }
+    },
+    "0459_generate_crystals_5": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "solid:particulate",
+            "phase transition": "deposition"
+        }
+    },
+    "0464_generate_precipitate_1": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "solid:particulate",
+            "phase transition": "solidify"
+        }
+    },
+    "0453_assemble_machinery_9": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "merge"
+        }
+    },
+    "0397_cut_dough_1": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "split"
+        }
+    },
+    "0401_apply_cream_1": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "paint"
+        }
+    },
+    "0402_apply_cream_2": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "paint"
+        }
+    },
+    "0403_apply_cream_3": {
+        "1": {
+            "phase transition": "paint",
+            "before_state": "liquid:viscous",
+            "after_state": "liquid:viscous"
+        }
+    },
+    "0129_make_pancakes_1": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "solidify"
+        }
+    },
+    "0130_make_omelet_1": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "solidify"
+        }
+    },
+    "0131_Brush_sauce_1": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "paint"
+        }
+    },
+    "0132_shave_beard_1": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "separate"
+        }
+    },
+    "0133_shave_beard_2": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "separate"
+        }
+    },
+    "0134_shave_fish_1": {
+        "1": {
+            "before_state": "solid:particulate",
+            "after_state": "solid:particulate",
+            "phase transition": "split"
+        }
+    },
+    "0135_shave_fish_2": {
+        "1": {
+            "before_state": "solid:particulate",
+            "after_state": "solid:particulate",
+            "phase transition": "split"
+        }
+    },
+    "0136_turn_screw_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "separate"
+        },
+        "2": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "separate"
+        }
+    },
+    "0137_turn_screw_2": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "separate"
+        }
+    },
+    "0138_turn_screw_3": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "separate"
+        },
+        "2": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "separate"
+        }
+    },
+    "0140_break_glass_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:particulate",
+            "phase transition": "split"
+        }
+    },
+    "0141_grow_plant_1": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "stretch"
+        }
+    },
+    "0142_pull_cataracts_1": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "twist"
+        }
+    },
+    "0143_pull_noodles_2": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "stretch"
+        }
+    },
+    "0144_pull_noodles_3": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "stretch"
+        }
+    },
+    "0145_suture_wound_1": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "twist"
+        }
+    },
+    "0146_suture_wound_2": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "twist"
+        }
+    },
+    "0147_tearing_cabbage_1": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:particulate",
+            "phase transition": "split"
+        }
+    },
+    "0148_tie_knot_1": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "twist"
+        },
+        "2": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "twist"
+        }
+    },
+    "0149_tie_knot_2": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "twist"
+        }
+    },
+    "0139_paint_plate_1": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "paint"
+        }
+    },
+    "0089_tie_shoelaces_1": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "twist"
+        }
+    },
+    "0090_cut_cigar_wrapper_1": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "twist"
+        }
+    },
+    "0091_warp_cigar_1": {
+        "1": {
+            "before_state": "solid",
+            "after_state": "solid",
+            "phase transition": "twist"
+        }
+    },
+    "0092_warp_cigar_2": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "twist"
+        }
+    },
+    "0093_warp_cigar_3": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "break"
+        }
+    },
+    "0094_make_chocolate_noddle_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "compress"
+        }
+    },
+    "0095_ground_herbal_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:particulate",
+            "phase transition": "crush"
+        }
+    },
+    "0096_pour_ground_herbal_2": {
+        "1": {
+            "before_state": "solid:particulate",
+            "after_state": "solid:particulate",
+            "phase transition": "split"
+        }
+    },
+    "0099_serve_dishes_1": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0100_pour_soup_1": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0101_pour_soup_2": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0102_chop_onion_1": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:particulate",
+            "phase transition": "break"
+        }
+    },
+    "0103_heat_water_1": {
+        "1": {
+            "before_state": "solid:particulate",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0104_assemble_puzzle_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "merge"
+        },
+        "2": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "merge"
+        },
+        "3": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "merge"
+        },
+        "4": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "merge"
+        }
+    },
+    "0105_assemble_puzzle_2": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "merge"
+        },
+        "2": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "merge"
+        }
+    },
+    "0106_break_puzzle_1": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "separate"
+        }
+    },
+    "0107_assemble_puzzle_3": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "merge"
+        },
+        "2": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "merge"
+        },
+        "3": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "merge"
+        },
+        "4": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "merge"
+        }
+    },
+    "0108_assemble_puzzle_4": {
+        "1": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "merge"
+        },
+        "2": {
+            "before_state": "solid:non_particulate:rigid body",
+            "after_state": "solid:non_particulate:rigid body",
+            "phase transition": "merge"
+        }
+    },
+    "0098_pour_water_3": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0483_falldown_smoke_1": {
+        "1": {
+            "before_state": "aerosol/gas",
+            "after_state": "aerosol/gas",
+            "phase transition": "diffusion"
+        }
+    },
+    "0484_cut_ice_cream_1": {
+        "3": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "seperate"
+        }
+    },
+    "0485_controller_magnetic_fluid_1": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0486_controller_magnetic_fluid_2": {
+        "3": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0487_cut_ice_cream_2": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "liquid:viscous",
+            "phase transition": "flow out"
+        }
+    },
+    "0488_controller_magnetic_fluid_4": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0489_pull_mucus_1": {
+        "1": {
+            "before_state": "liquid:viscous",
+            "after_state": "liquid:viscous",
+            "phase transition": "stretch"
+        }
+    },
+    "0490_syphon_liquid_1": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0491_create_waves_1": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0492_diffuse_pigment_1": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "diffusion"
+        }
+    },
+    "0493_diffuse_pigment_2": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "diffusion"
+        }
+    },
+    "0494_diffuse_smoke_1": {
+        "1": {
+            "before_state": "aerosol/gas",
+            "after_state": "aerosol/gas",
+            "phase transition": "diffusion"
+        }
+    },
+    "0496_diffuse_pigment_3": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0497_stir_milk_2": {
+        "1": {
+            "before_state": "solid:non_particulate:flexible body",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "twist"
+        }
+    },
+    "0498_pour_pigment_1": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0499_pour_pigment_2": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0500_pour_magnetic_particle_1": {
+        "1": {
+            "before_state": "solid:particulate",
+            "after_state": "solid:particulate",
+            "phase transition": "split"
+        }
+    },
+    "0501_drip_liquid_3": {
+        "1": {
+            "before_state": "liquid:viscous",
+            "after_state": "liquid:viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0503_pour_pigment_3": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0505_pour_tea_8": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0506_pour_tea_9": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0507_pour_tea_10": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0508_pour_tea_11": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0509_pour_tea_12": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0510_pour_tea_13": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0511_pour_tea_14": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0513_pour_tea_16": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0514_pour_tea_17": {
+        "1": {
+            "before_state": "liquid:non viscous",
+            "after_state": "liquid:non viscous",
+            "phase transition": "flow"
+        }
+    },
+    "0517_wrap_wire_2": {
+        "1": {
+            "before_state": "liquid:viscous",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "solidify"
+        }
+    },
+    "0519_wrap_wire_4": {
+        "1": {
+            "before_state": "liquid:viscous",
+            "after_state": "solid:non_particulate:flexible body",
+            "phase transition": "stretch"
+        }
+    }
+}

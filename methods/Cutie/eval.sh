@@ -3,7 +3,7 @@ source activate zixuan
 module load compilers/cuda/11.6
 
 dataset="roves"
-week_num=6
+week_num=10
 
 if [ "$dataset" == "roves" ]; then
     python cutie/eval_vos.py dataset=roves-val size=480 \
@@ -16,6 +16,3 @@ elif [ "$dataset" == "vost" ]; then
 else
     echo "data is neither 'roves' nor 'vost'"
 fi
-
-
-
