@@ -1,5 +1,5 @@
-# DeformVOS
-
+# M3-VOS: Multi-Phase, Multi-Transition, and Multi-Scenery Video Object Segmentation
+### 📝[Paper](https://arxiv.org/abs/2412.13803) | 🌍[Project Page](https://zixuan-chen.github.io/M-cube-VOS.github.io/) | 🤗[Tools](https://github.com/Lijiaxin0111/SemiAuto-Multi-Level-Annotation-Tool) | 🛢️[Data](https://drive.google.com/drive/folders/1qNSvE6dpkCHSs_8eZRo6vruLScCHl7oI?usp=sharing)
 
 
 ## datasets prepare 
