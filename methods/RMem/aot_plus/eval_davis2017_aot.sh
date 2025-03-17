@@ -1,9 +1,6 @@
 #!/bin/bash
 
 
-source activate LLMSeg_cp310
-module load compilers/cuda/11.8
-
 exp="aotplus"
 gpu_num="1"
 devices="0"

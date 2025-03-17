@@ -10,14 +10,14 @@ import concurrent.futures
 from tqdm import tqdm
 
 def calculate_lbp_entropy(image):
-    # 计算局部二值模式
+    # calculate local binary pattern
     radius = 4
     n_points = 8 * radius
     lbp = local_binary_pattern(image, P=n_points, R=radius, method="uniform")
-    # 计算LBP的直方图
+    # calculate histogram of LBP
     hist, _ = np.histogram(lbp.ravel(), bins=n_points+3, density=True)
 
-    # 计算熵
+    # calculate entropy
     lbp_entropy = shannon_entropy(hist)
 
     return lbp_entropy, lbp, hist
@@ -37,20 +37,20 @@ def get_entropy_for_p_image(image_path):
             entropy, lbp, lbp_hist = calculate_lbp_entropy(binary_image)
             # print("LBP Entropy (Measure of Chaos):", entropy)
 
-            # # 可视化二值图、LBP 图和直方图
+            # # visualize binary image, LBP image and histogram image
             # fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(15, 5))
 
-            # # 显示原始二值图
+            # # show Original Binary Image
             # ax1.imshow(binary_image, cmap='gray')
             # ax1.set_title("Original Binary Image")
             # ax1.axis("off")
 
-            # # 显示 LBP 图
+            # # show LBP Image
             # ax2.imshow(lbp, cmap='gray')
             # ax2.set_title("LBP Image")
             # ax2.axis("off")
 
-            # # 绘制 LBP 直方图
+            # # plot LBP Histogram
             # ax3.bar(range(len(lbp_hist)), lbp_hist, color='gray')
             # ax3.set_title("LBP Histogram")
             # ax3.set_xlabel("LBP Pattern")
@@ -79,7 +79,7 @@ def get_entropy_for_dir(dir_path):
             if match:
                 num = int(match.group())
                 entropy = get_entropy_for_p_image(os.path.join(dir_path, filename))
-                # 输出熵值
+                # output entropy
                 if not np.isnan(entropy):
                     file_num_to_entropy[num] = entropy
             else:
@@ -95,8 +95,8 @@ def get_entropy_for_dir(dir_path):
         first_half_avg = np.mean(sorted_entropy[:midpoint])
         second_half_avg = np.mean(sorted_entropy[midpoint:])
     
-        # print(f"前50%随机数的平均值: {first_half_avg}")
-        # print(f"后50%随机数的平均值: {second_half_avg}")
+        # print(f"First half random average: {first_half_avg}")
+        # print(f"Second half random average: {second_half_avg}")
 
         return first_half_avg, second_half_avg
     else:
@@ -105,7 +105,7 @@ def get_entropy_for_dir(dir_path):
 
 def get_entropy_for_folders(subfolder_paths):
     with concurrent.futures.ThreadPoolExecutor() as executor:
-    # 使用map函数，它会自动处理线程的启动和返回值的收集
+    # Using the map function, it automatically handles the initiation of threads and the collection of return values.
         results = list(executor.map(get_entropy_for_dir, subfolder_paths))
     
     first_half_avgs = [result[0] for result in results]
@@ -116,24 +116,19 @@ def get_entropy_for_folders(subfolder_paths):
 def get_entropy_for_dataset(dataset_name):
     assert dataset_name in ["roves", "vost", "d17", "y19"]
     if dataset_name == "roves":
-        valid_weeks = [0, 1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13]
-        subfolder_paths = []
-        for week in valid_weeks:
-            print("collecting week", week)
-            base_dir = f"/home/bingxing2/home/scx8ah2/dataset/ROVES_summary/ROVES_week_{week}/Annotations"
-            
-            subfolder_paths.extend([os.path.join(base_dir, d) for d in os.listdir(base_dir) if os.path.isdir(os.path.join(base_dir, d))])
+        base_dir = "/path/to/REVOS/Annotations"
+        subfolder_paths = [os.path.join(base_dir, d) for d in os.listdir(base_dir) if os.path.isdir(os.path.join(base_dir, d))]
 
     elif dataset_name == "vost":
-        base_dir = "/home/bingxing2/home/scx8ah2/dataset/VOST/Annotations"
+        base_dir = "/path/to/VOST/Annotations"
         subfolder_paths = [os.path.join(base_dir, d) for d in os.listdir(base_dir) if os.path.isdir(os.path.join(base_dir, d))]
     
     elif dataset_name == "d17":
-        base_dir = "/home/bingxing2/home/scx8ah2/dataset/DAVIS/2017/Annotations/480p"
+        base_dir = "/path/to/DAVIS/2017/Annotations/480p"
         subfolder_paths = [os.path.join(base_dir, d) for d in os.listdir(base_dir) if os.path.isdir(os.path.join(base_dir, d))]
     
     elif dataset_name == "y19":
-        base_dir = "/home/bingxing2/home/scx8ah2/dataset/YouTube/valid/Annotations"
+        base_dir = "/path/to/YouTube/valid/Annotations"
         subfolder_paths = [os.path.join(base_dir, d) for d in os.listdir(base_dir) if os.path.isdir(os.path.join(base_dir, d))]
 
 
@@ -185,31 +180,16 @@ def paint_entrogy_zhexian(dir_path):
 
 
 if __name__ == "__main__":
-    # print("start state")
-    # get_entropy_for_p_image("/home/bingxing2/home/scx8ah2/dataset/ROVES_summary/ROVES_week_6/Annotations/coagulate_water_1/0000000.png")
-    # image_path = "/home/bingxing2/home/scx8ah2/dataset/ROVES_summary/ROVES_week_3/Annotations/break_puzzle_1/0000099.png"
-    # print(image_path)
-    # get_entropy_for_p_image(image_path)
-    # dir_path = "/home/bingxing2/home/scx8ah2/dataset/ROVES_summary/ROVES_week_6/Annotations"
-    # first_halfs, second_halfs = get_entropy_for_dataset(dir_path)
-    # first_half_mean = np.mean(first_halfs)
-    # second_half_mean = np.mean(second_halfs)
+    print("start state")
+    get_entropy_for_p_image("/path/to/ROVES/Annotations/coagulate_water_1/0000000.png")
+    image_path = "/path/to/ROVES/Annotations/break_puzzle_1/0000099.png"
+    print(image_path)
+    get_entropy_for_p_image(image_path)
+    dir_path = "/path/to/ROVES/ROVES_week_6/Annotations"
+    first_halfs, second_halfs = get_entropy_for_dataset(dir_path)
+    first_half_mean = np.mean(first_halfs)
+    second_half_mean = np.mean(second_halfs)
 
-    # print("--------------------Result for ROVES week 6: ----------------------------")
-    # print(f"first half:{first_half_mean}, second half: {second_half_mean}")
-    # get_entropy_for_dataset("roves")
-
-    print("half entropy for DAVIS 2017")
-    # print(get_entropy_for_dir("/home/bingxing2/home/scx8ah2/jiaxin/DeformVOS/methods/TAM-VT-main/datasets/DAVIS/2017/Annotations/480p/gold-fish"))
-    # paint_entrogy_zhexian("/home/bingxing2/home/scx8ah2/jiaxin/DeformVOS/methods/TAM-VT-main/datasets/DAVIS/2017/Annotations/480p/gold-fish")
-
-
-    print("11.png")
-    print(get_entropy_for_p_image("/home/bingxing2/home/scx8ah2/jiaxin/DeformVOS/methods/TAM-VT-main/datasets/DAVIS/2017/Annotations/480p/gold-fish/00011.png"))
-
-    print("45.png")
-    print(get_entropy_for_p_image("/home/bingxing2/home/scx8ah2/jiaxin/DeformVOS/methods/TAM-VT-main/datasets/DAVIS/2017/Annotations/480p/gold-fish/00045.png"))
-j
-    print("77.png")
-    print(get_entropy_for_p_image("/home/bingxing2/home/scx8ah2/jiaxin/DeformVOS/methods/TAM-VT-main/datasets/DAVIS/2017/Annotations/480p/gold-fish/00077.png"))
-    
+    print("--------------------Result for ROVES week 6: ----------------------------")
+    print(f"first half:{first_half_mean}, second half: {second_half_mean}")
+    get_entropy_for_dataset("roves")

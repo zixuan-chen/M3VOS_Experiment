@@ -11,7 +11,7 @@ conda activate activate tam_vt
 week=2
 export MASTER_PORT=$((29500 + week % 7))  # 将端口号设置为 29500 + (week % 7)
 echo $MASTER_PORT
-cd /home/bingxing2/home/scx8ah2/jiaxin/DeformVOS/methods/TAM-VT-main
+cd /path/to/TAM-VT-main
 
 export OUTPUT_DIR_CHECKPOINT="checkpoints/pretrain_vost/roves_eval_week_${week}"
 

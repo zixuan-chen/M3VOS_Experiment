@@ -123,4 +123,27 @@ class VOSTTestDataset:
                 path.join(self.mask_dir, video),
                 size=self.size,
             )
-   
+
+class ROVESTestDataset:
+    def __init__(self, data_root, split, size=-1):
+
+        self.image_dir = path.join(data_root, 'JPEGImages')
+        self.mask_dir = path.join(data_root, 'Annotations')
+        seq_names = []
+        self.size = size
+        with open(os.path.join(data_root, 'ImageSets', split + '.txt')) as f:
+            seqs_tmp = f.readlines()
+        seqs_tmp = list(map(lambda elem: elem.strip(), seqs_tmp))
+        seq_names.extend(seqs_tmp)
+        self.seqs = list(np.unique(seq_names))
+    
+    def __len__(self):
+        return len(self.seqs)
+    
+    def get_datasets(self):
+        for video in self.seqs:
+            yield VideoReader(video, 
+                path.join(self.image_dir, video), 
+                path.join(self.mask_dir, video),
+                size=self.size,
+            )

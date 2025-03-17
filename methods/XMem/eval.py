@@ -9,7 +9,7 @@ from torch.utils.data import DataLoader
 import numpy as np
 from PIL import Image
 
-from inference.data.test_datasets import LongTestDataset, DAVISTestDataset, YouTubeVOSTestDataset, VOSTTestDataset
+from inference.data.test_datasets import LongTestDataset, DAVISTestDataset, YouTubeVOSTestDataset, VOSTTestDataset, ROVESTestDataset
 from inference.data.mask_mapper import MaskMapper
 from model.network import XMem
 from inference.inference_core import InferenceCore
@@ -34,11 +34,12 @@ parser.add_argument('--d17_path', default='../DAVIS/2017')
 parser.add_argument('--y18_path', default='../YouTube2018')
 parser.add_argument('--y19_path', default='../YouTube')
 parser.add_argument('--lv_path', default='../long_video_set')
-parser.add_argument('--vost_path', default='/home/chenzixuan/datasets/VOST')
+parser.add_argument('--vost_path', default='../VOST')
+parser.add_argument('--roves_path', default='../ROVES')
 # For generic (G) evaluation, point to a folder that contains "JPEGImages" and "Annotations"
 parser.add_argument('--generic_path')
 
-parser.add_argument('--dataset', help='D16/D17/Y18/Y19/LV1/LV3/G/VOST', default='D17')
+parser.add_argument('--dataset', help='D16/D17/Y18/Y19/LV1/LV3/G/VOST/ROVES', default='D17')
 parser.add_argument('--split', help='val/test', default='val')
 parser.add_argument('--output', default=None)
 parser.add_argument('--save_all', action='store_true', 
@@ -81,6 +82,7 @@ is_youtube = args.dataset.startswith('Y')
 is_davis = args.dataset.startswith('D')
 is_lv = args.dataset.startswith('LV')
 is_vost = args.dataset.startswith('VOST')
+is_roves = args.dataset.startswith('ROVES')
 
 if is_youtube or args.save_scores:
     out_path = path.join(args.output, 'Annotations')
@@ -131,6 +133,8 @@ elif args.dataset == 'G':
         print('save_all is forced to be true in generic evaluation mode.')
 elif args.dataset == "VOST":
     meta_dataset = VOSTTestDataset(args.vost_path, split=args.split, size=args.size)
+elif args.dataset == "ROVES":
+    meta_dataset = ROVESTestDataset(args.roves_path, split=args.split, size=args.size)
 else:
     raise NotImplementedError
 
@@ -156,6 +160,8 @@ for vid_reader in progressbar(meta_loader, max_value=len(meta_dataset), redirect
 
     loader = DataLoader(vid_reader, batch_size=1, shuffle=False, num_workers=2)
     vid_name = vid_reader.vid_name
+    # if vid_name == "5253_open_package":
+    #         continue
     vid_length = len(loader)
     # no need to count usage for LT if the video is not that long anyway
     config['enable_long_term_count_usage'] = (

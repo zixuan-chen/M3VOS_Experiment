@@ -148,9 +148,9 @@ datasets:
     use_long_term: True
     mem_every: 5
   vost-val: 
-    image_directory: /home/bingxing2/home/scx7kwl/dataset/VOST/JPEGImages
-    mask_directory: /home/bingxing2/home/scx7kwl/dataset/VOST/Annotations
-    subset: /home/bingxing2/home/scx7kwl/dataset/VOST/ImageSets/val.txt
+    image_directory: ../VOST/JPEGImages
+    mask_directory: ../VOST/Annotations
+    subset: ../VOST/ImageSets/val.txt
     size: -1
     save_all: True
     use_all_masks: False
