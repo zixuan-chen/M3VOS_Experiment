@@ -1,7 +1,37 @@
 # M3-VOS: Multi-Phase, Multi-Transition, and Multi-Scenery Video Object Segmentation
 ### 📝[Paper](https://arxiv.org/abs/2412.13803) | 🌍[Project Page](https://zixuan-chen.github.io/M-cube-VOS.github.io/) | 🤗[Tools](https://github.com/Lijiaxin0111/SemiAuto-Multi-Level-Annotation-Tool) | 🛢️[Data](https://drive.google.com/drive/folders/1qNSvE6dpkCHSs_8eZRo6vruLScCHl7oI?usp=sharing)
 
+![alt text](./assets/teaser.png)
 
+We only introduce the full precedure of reimplementing ReVOS_Cutie cause the others' are well written in their README.md files:
+![Cutie-base](methods\Cutie\README.md)
+RMem and DeAOT -> methods\RMem\README.md
+SAM2 -> methods\segment-anything-2\README.md
+XMem -> methods\XMem\README.md
+
+## Installation
+
+1. Clone this repo and install prerequisites:
+
+    ```bash
+    # Clone this repo
+    git clone https://github.com/zixuan-chen/M3VOS_Experiment.git
+    cd M3VOS_Experiment
+    
+    # Create a Conda environment
+    conda create -n mvos python=3.10.0
+    conda activate mvos
+    
+    # Install pytorch
+    # Look up https://pytorch.org/get-started/previous-versions/ with your cuda version for a correct command
+    pip install torch==2.1.2 torchvision==0.16.2  --index-url https://download.pytorch.org/whl/cu121
+
+    
+    # Install other prequisites
+    pip install -r requirements.txt
+    ```
+2. Download the model parameters
+   download
 ## datasets prepare 
 
 We unify the file structure of file like `VOST` , as follow in `./datasets`:

@@ -172,9 +172,9 @@ datasets:
     use_reverse_prop: True
     polish_every: ${reverse_polish.polish_frames}
   roves-val:
-    image_directory: /home/bingxing2/home/scx8ah2/dataset/ROVES_summary/ROVES_week_${roves_week}/JPEGImages
-    mask_directory:  /home/bingxing2/home/scx8ah2/dataset/ROVES_summary/ROVES_week_${roves_week}/Annotations
-    subset:          /home/bingxing2/home/scx8ah2/dataset/ROVES_summary/ROVES_week_${roves_week}/ImageSets/val.txt
+    image_directory: ../ROVES/JPEGImages
+    mask_directory:  ../ROVES/Annotations
+    subset:          ../ROVES/ImageSets/val.txt
     size: 480
     save_all: True
     use_all_masks: False

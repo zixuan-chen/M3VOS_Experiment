@@ -1,13 +1,12 @@
 #!/bin/bash
-source activate zixuan
-module load compilers/cuda/11.6
+# source activate zixuan
+# module load compilers/cuda/11.6
 
 dataset="roves" # vost, roves, d17
 set="val"
 week_num=13
-# exp_id=${dataset}_week${week_num}_booster_2.0
-exp_id=${dataset}_${set}_booster_2.0_only_forward
-weights=output/mega_v4/mega_v4_main_training_72800.pth
+exp_id=${dataset}_${set}
+weights=weights/mega_v4_main_training_72800.pth
 
 
 python cutie/eval_vos.py dataset=${dataset}-${set} size=480 \
