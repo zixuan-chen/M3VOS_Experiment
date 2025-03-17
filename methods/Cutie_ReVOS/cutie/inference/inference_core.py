@@ -160,11 +160,9 @@ class InferenceCore:
         memory_readout = self.memory.read(pix_feat, key, selection, self.last_mask, self.network)
         memory_readout = self.object_manager.realize_dict(memory_readout)
 
-        # if backward and (forward_readout is not None) and forward_readout.shape == memory_readout.shape:
-        #     memory_readout = self.network.readout_fuser(memory_readout, forward_readout)
+        if backward and (forward_readout is not None) and forward_readout.shape == memory_readout.shape:
+            memory_readout = self.network.readout_fuser(memory_readout, forward_readout)
         
-
-
         sensory, _, pred_prob_with_bg, tmp_pred_prob_with_bg = self.network.segment(ms_features,
                                                              memory_readout,
                                                              self.memory.get_sensory(

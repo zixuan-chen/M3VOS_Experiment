@@ -13,11 +13,11 @@ week_num=11
 # results_path="./RMem/aot_plus/results/aotplus_R50_AOTL/pre_vost/eval/roves/test_roves_in_aot_week_${week_num}/per-sequence_results-val.csv"
 
 # XMemPont-Tuset_arXiv_2017
-# result_path="/home/bingxing2/home/scx8ah2/zixuan/DeformVOS/methods/XMem/output/roves/per-sequence_results-val.csv" # week_0
-# results_path="/home/bingxing2/home/scx8ah2/zixuan/DeformVOS/methods/XMem/output/roves_week${week_num}/per-sequence_results-val.csv"
+# result_path="/path/to/XMem/output/roves/per-sequence_results-val.csv" # week_0
+# results_path="/path/to/XMem/output/roves_week${week_num}/per-sequence_results-val.csv"
 
 # Cutie
-# results_path="/home/bingxing2/home/scx8ah2/zixuan/DeformVOS/methods/Cutie/cutie_output/roves_week${week_num}/roves-val/Annotations/per-sequence_results-val.csv" # week_0
+# results_path="/path/to/Cutie/cutie_output/roves_week${week_num}/roves-val/Annotations/per-sequence_results-val.csv" # week_0
 
 
 # DeAOT + RMEM

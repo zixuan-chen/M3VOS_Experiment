@@ -22,7 +22,7 @@ pip install -r requirements.txt
 # for other methods you should look for their requirements in their respective folders.
 ```
 
-## 2. Annotation Tools
+## 2. Annotation Tool
 We put our annotation tool in [an independent GitHub repository](https://github.com/Lijiaxin0111/SemiAuto-Multi-Level-Annotation-Tool).
 
 ## 3. Evaluation

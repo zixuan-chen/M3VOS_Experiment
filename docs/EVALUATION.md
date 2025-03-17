@@ -7,7 +7,7 @@ Download [Cutie_ReVOS parameters](https://drive.google.com/file/d/1fItxsooXXO0VV
 ### 2. Download datasets
 tip: we recommend you soft link all datasets under `./methods`, and configure the path for every method according to their requiements.
 #### 2.1 M$^3$VOS dataset
-https://drive.google.com/drive/folders/1qNSvE6dpkCHSs_8eZRo6vruLScCHl7oI?usp=sharing
+download M$^3$VOS dataset at [this link](https://drive.google.com/drive/folders/1qNSvE6dpkCHSs_8eZRo6vruLScCHl7oI?usp=sharing).
 We unify the file structure of file like `VOST`:
 ```
 - M3VOS
@@ -36,83 +36,26 @@ We unify the file structure of file like `VOST`:
 For Cutie_ReVOS, configure arguments of `roves-val` in `methods\Cutie_ReVOS\cutie\config\eval_config.yaml`
 
 #### 2.2 other datasets
-For VOST, DAVIS and YouTubeVOS, configure it as required in [EVALUATION of Cutie](../methods/Cutie/docs/EVALUATION.md)
+For VOST, DAVIS and YouTubeVOS, download and configure it as required in [EVALUATION of Cutie](../methods/Cutie/docs/EVALUATION.md)
 
 ### 3. Run evaluation
 For Cutie and Cutie_ReVOS, run evaluation as shown in [EVALUATION of Cutie](../methods/Cutie/docs/EVALUATION.md)
-For DeAOT, 
+
+For DeAOT, run [this file]()
+
+For RMem+DeAOT, run [this file]()
+
+For XMem, run [this file](../methods/XMem/eval.sh)
+
+For SAM2, run [this file](../methods/segment-anything-2/eval.sh)
 
 ### 4. calculate scores
-#### get  $J_st$ and $J$ for each instance and global average
+First, you need set dataset path on `methods\evaluation\evaluation_method.py`
 
-```
-#  modify the week_num in ./methods/evaluation/eval.sh 
-# choose the result path of model
-cd /methods
-sbatch --gpus=1 evaluation/eval.sh 
-```
+For REVOS, configure and run [this file](../methods/evaluation/eval_roves.sh)
 
+For VOST, configure and run [this file](../methods/evaluation/eval_vost.sh)
 
+For DAVIS, configure and run [this file](../methods/evaluation/eval_davis2017.sh)
 
-#### get $J_st$ and $J$ for each challenge
-
-```
-#  modify the week_num in ./methods/evaluation/cal_challenge_score.sh 
-# choose the result path of model
-cd /methods
-sbatch --gpus=1 evaluation/cal_challenge_score.sh 
-```
-
-:rocket: TIP: Three result `csv` will be store in the `result_path`
-
-
-
-## predict segment
-
-### AOT
-
-```
-#  modify the week_num in ./methods/RMem/aot_plus/eval_roves.sh
-cd methods/RMem/aot_plus
-sbatch --gpus=1 eval_roves.sh
-```
-
-- the prediction result in `methods/RMem/aot_plus/results/aotplus_R50_AOTL/pre_vost/eval/roves/test_roves_in_aot_week_${week_num}`
-
-
-
-### DeAOT + Rmem
-
-tips: the key parameter to decide whether use Rmem is `cfg.USE_TEMPORAL_POSITIONAL_EMBEDDING = True`
-
-```
-#  modify the week_num in ./methods/RMem/aot_plus/eval_roves_deaot.sh
-cd methods/RMem/aot_plus
-sbatch --gpus=1 eval_roves_deaot.sh
-```
-
-the prediction result in `methods/RMem/aot_plus/results/aotplus_R50_DeAOTL_Temp_pe_Slot_4/pre_vost/eval/roves/test_roves_week_in_deaotRmem_${week_num}`
-
-
-### XMem
-```
-# modify the week_num in ./methods/XMem/eval.sh
-cd methods/XMem
-sbatch --gpus=1 -o eval.out eval.sh
-```
-the prediction result in `methods/XMem/output/roves_week${week_num}`
-
-### Cutie
-```
-# modify the week_num in ./methods/Cutie/eval.sh
-cd methods/Cutie
-sbatch --gpus=1 -o eval.out eval.sh
-```
-the prediction result in `methods/Cutie/cutie_output/roves_week${week_num}`
-
-### SAM2
-```
-# modify the week_num in ./methods/segment-anything-2/eval_roves.sh
-cd methods/segment-anything-2
-
-```
+For YouTube, you need to submit the output file to [online evaluation page]().

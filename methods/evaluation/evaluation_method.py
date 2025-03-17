@@ -25,12 +25,12 @@ parser.add_argument('--origin_Jcc', action='store_true')
 args, _ = parser.parse_known_args()
 
 dataset_path_dict = {
-    'vost': '/home/bingxing2/home/scx8ah2/dataset/VOST',
+    'vost': '../VOST',
     'long_videos': '../aot_plus/datasets/long_videos',
     'roves': '../datasets/ROVES_summary',
     "roves_debug_cfbi": "./CFBI/tmp/ROVES_debug",
-    'davis2017': "/home/bingxing2/home/scx8ah2/jiaxin/DeformVOS/datasets/2017",
-    'youtube19': "/home/bingxing2/home/scx8ah2/dataset/YouTube",
+    'davis2017': "/path/to/2017",
+    'youtube19': "/path/to/YouTube",
 }
 args.dataset_path = dataset_path_dict[args.dataset_path]
 if 'ROVES' in args.dataset_path :

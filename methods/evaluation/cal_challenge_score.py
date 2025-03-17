@@ -5,44 +5,43 @@ import sys
 
 
 def pause_or_exit():
-    print("程序已暂停，按回车键继续，按'q'键退出程序。")
+    print("The program is paused. Press Enter to continue or 'q' to exit.")
     try:
-        # 等待用户输入，如果输入的是'q'，则退出循环和程序
+        # Wait for user input; if 'q' is entered, exit the loop and program
         if input().lower() == 'q':
-            print("程序已退出。")
+            print("The program has exited.")
             sys.exit()
     except KeyboardInterrupt:
-        # 如果用户使用Ctrl+C中断，也允许退出
-        print("程序已退出。")
+        # If the user interrupts with Ctrl+C, allow exit
+        print("The program has exited.")
         sys.exit()
 
 def merge_dataframes(*dataframes):
-    # 首先，将所有DataFrame转换为列表，如果它们不是列表的话
+    # First, convert all DataFrames to a list if they are not already
     if not isinstance(dataframes, list):
         dataframes = list(dataframes)
     
-    # 检查是否至少有一个DataFrame
+    # Check if at least one DataFrame is provided
     if not dataframes:
         raise ValueError("No dataframes provided for merging.")
     
-    # 将所有DataFrame按'Sequence'列排序，确保每个'Sequence'的最后一行是来自最后一个DataFrame
+    # Sort all DataFrames by the 'Sequence' column to ensure the last row for each 'Sequence' comes from the last DataFrame
     sorted_dataframes = [df.sort_values('Sequence') for df in dataframes]
     
-    # 合并所有DataFrame，ignore_index=True会重新索引
+    # Merge all DataFrames, with ignore_index=True to reindex
     combined_df = pd.concat(sorted_dataframes, ignore_index=True)
     
-    # 根据'Sequence'列去重，保留最后一个DataFrame中的行
+    # Remove duplicates based on the 'Sequence' column, keeping the last row from the last DataFrame
     unique_df = combined_df.drop_duplicates(subset='Sequence', keep='last')
     
     return unique_df
 
 
 def calculate_subset_average(df, subset):
-
-    # 过滤DataFrame，只保留subset中的行
+    # Filter the DataFrame to only include rows in the subset
     filtered_df = df[df['Sequence'].isin(subset)]
     
-    # 计算J-Mean和J_last-Mean的平均值
+    # Calculate the averages of J-Mean, J_last-Mean, and J_cc-Mean
     j_mean_average = filtered_df['J-Mean'].mean()
     j_last_mean_average = filtered_df['J_last-Mean'].mean()
     j_cc_mean_average = filtered_df['J_cc-Mean'].mean()
@@ -52,33 +51,33 @@ def calculate_subset_average(df, subset):
 
 
 def calculate_averages_from_dir(dir_path, csv_file_path):
-    # 读取CSV文件
+    # Read the CSV file
     df = pd.read_csv(csv_file_path)
     
-    # 检查输入的DataFrame是否包含必要的列
+    # Check if the input DataFrame contains the necessary columns
     if 'Sequence' not in df.columns or 'J-Mean' not in df.columns or 'J_last-Mean' not in df.columns or "J_cc-Mean" not in df.columns:
-        raise ValueError("CSV file must contain 'Sequence', 'J-Mean', and 'J_last-Mean' , and 'J_cc-Mean' columns.")
+        raise ValueError("CSV file must contain 'Sequence', 'J-Mean', 'J_last-Mean', and 'J_cc-Mean' columns.")
     
     
-    # 初始化一个空列表来存储结果
+    # Initialize an empty list to store the results
     results = []
     
-    # 遍历文件夹中的每个文件
+    # Iterate through each file in the directory
     for filename in os.listdir(dir_path):
         if filename == "val.txt":
             continue
-        # 构建文件的完整路径
+        # Construct the full path to the file
         file_path = os.path.join(dir_path, filename)
         
-        # 确保是文件而不是文件夹
+        # Ensure it is a file and not a directory
         if os.path.isfile(file_path):
-            # 读取文件中的subset，这里假设每行一个Sequence名
+            # Read the subset from the file, assuming each line contains a Sequence name
             with open(file_path, 'r') as f:
                 subset = [line.strip().replace('_id', '') for line in f.readlines()]
-            # 计算该subset的J-Mean和J_last-Mean的平均值
+            # Calculate the averages of J-Mean, J_last-Mean, and J_cc-Mean for this subset
             j_mean_average, j_last_mean_average, j_cc_mean_average = calculate_subset_average(df, subset)
             
-            # 将结果添加到列表中
+            # Add the results to the list
             results.append({
                 'subset': filename,
                 'j_mean_average': j_mean_average,
@@ -87,15 +86,15 @@ def calculate_averages_from_dir(dir_path, csv_file_path):
             })
             
             
-    # 将结果列表转换为DataFrame
+    # Convert the results list to a DataFrame
     results_df = pd.DataFrame(results)
 
     directory = os.path.dirname(csv_file_path)
 
-    # 构建新的文件路径
+    # Construct the new file path
     new_csv_path = os.path.join(directory, "challenge_score.csv")
 
-    # 保存 results_df 到新的文件路径
+    # Save the results_df to the new file path
     results_df.to_csv(new_csv_path, index=False)
     
     return results_df
@@ -109,16 +108,13 @@ if __name__ == "__main__":
     args, _ = parser.parse_known_args()
 
     if "ROVES" in args.datasets_root:
-        args.ImageSets_path = os.path.join(args.datasets_root , "ROVES_week_" + str(args.week_num), "ImageSets"  ) 
+        args.ImageSets_path = os.path.join(args.datasets_root, "ROVES_week_" + str(args.week_num), "ImageSets")
     else:
-        args.ImageSets_path = os.path.join(args.datasets_root ,"ImageSets"  ) 
+        args.ImageSets_path = os.path.join(args.datasets_root, "ImageSets")
     
 
-
-    week_filename =  args.result_csv_path
-    subset_dir =args.ImageSets_path 
-    # week1_5_filename = "/home/bingxing2/home/scx8ah2/jiaxin/DeformVOS/methods/RMem/aot_plus/results/aotplus_R50_AOTL/pre_vost/eval/roves/aot_week_1_5/per-sequence_results-val.csv"
-    # subset_dir = "/home/bingxing2/home/scx8ah2/zixuan/DeformVOS/tmp"
+    week_filename = args.result_csv_path
+    subset_dir = args.ImageSets_path
 
     result_df = calculate_averages_from_dir(subset_dir, week_filename)
     
