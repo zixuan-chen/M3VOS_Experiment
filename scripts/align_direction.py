@@ -4,48 +4,39 @@ import os
 
 def rotate_and_save_image_if_tall(image_path):
     """
-    如果图片的宽度小于高度，则逆时针旋转90度并替换原图。
+    If the image's width is less than its height, rotate it counterclockwise by 90 degrees and overwrite the original image.
     
-    参数:
-    image_path: 图片的路径。
+    Parameters:
+    image_path: Path to the image.
     """
-    # 打开图片
+    # Open the image
     img = Image.open(image_path)
     
-    # 检查图片的宽度是否大于高度
+    # Check if the image's height is greater than its width
     if img.height > img.width:
-        # 如果是，逆时针旋转90度
+        # If true, rotate the image counterclockwise by 90 degrees
         img = img.rotate(90, expand=True)
-        # 保存替换原图
+        # Save and overwrite the original image
         img.save(image_path)
 
 
 def rotate_video_if_tall(video_path):
     """
-    如果视频的宽度小于高度，则逆时针旋转90度。
+    If the video's width is less than its height, rotate it counterclockwise by 90 degrees.
     
-    参数:
-    video_path: 视频的路径。
+    Parameters:
+    video_path: Path to the video.
     """
-    # 使用moviepy打开视频
+    # Open the video using moviepy
     clip = VideoFileClip(video_path)
     
-    # 检查视频的宽度是否小于高度
+    # Check if the video's width is less than its height
     if clip.size[0] < clip.size[1]:
-        # 如果是，逆时针旋转90度
+        # If true, rotate the video counterclockwise by 90 degrees
         rotated_clip = clip.rotate(90)
         video_path_tmp = video_path.split('.')[0] + '_tmp' + '.mp4'
         print("ROTA the video:",  video_path_tmp)
-        # 保存修改后的视频到原路径，也可以选择新路径
+        # Save the modified video to the original path or a new path
         rotated_clip.write_videofile(video_path_tmp, codec="libx264", audio_codec="aac")
 
 # def main_worker():
-
-
-
-if __name__ == "__main__":
-    # rotate_and_save_image_if_tall("/home/chenzixuan/jiaxin/DeformVOS/tmp/mask_v.png")
-    rotate_video_if_tall("/home/chenzixuan/jiaxin/DeformVOS/tmp/seq_5_cup.mp4")
-
- 
- 
