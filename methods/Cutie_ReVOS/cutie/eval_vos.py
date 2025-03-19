@@ -195,6 +195,7 @@ def eval_vos(cfg: DictConfig):
                                                       forward_readout=rdata['forward_readout'],
                                                       )
                                 end.record()
+                                torch.cuda.synchronize()
                                 total_process_time += (start.elapsed_time(end) / 1000)
 
                                 if save_all or info['save']:
