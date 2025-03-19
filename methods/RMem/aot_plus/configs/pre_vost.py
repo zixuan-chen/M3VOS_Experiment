@@ -24,5 +24,4 @@ class EngineConfig(DefaultEngineConfig):
             self.PRETRAIN_MODEL = os.path.join('pretrain_models', 'R50_DeAOTL_PRE_YTB_DAV.pth')
         else:
             raise NotImplementedError
-        # self.ORACLE = True   # 预先知道每一帧的mask,编码img的时候，只编码目标object
         self.DEBUG_FIX_RANDOM = False

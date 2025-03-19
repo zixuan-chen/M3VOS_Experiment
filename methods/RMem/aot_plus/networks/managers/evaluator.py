@@ -393,7 +393,6 @@ class Evaluator(object):
                     all_preds = []
                     new_obj_label = None
 
-                    # ??? batch_size = 1 应该不会有aug_idx >= 1的时候吧(确实，写的太傻逼了)
                     for aug_idx in range(len(samples)):
                         if len(all_engines) <= aug_idx:
                             all_engines.append(
@@ -462,7 +461,7 @@ class Evaluator(object):
                                 if self.cfg.PREV_PROBE:
                                     pred_logit = engine.match_propogate_one_frame(
                                         current_img, mask=pred_prob, output_size=(ori_height, ori_width))
-                                elif self.cfg.ORACLE:  # 预先知道每一帧的mask,编码img的时候，只编码目标object
+                                elif self.cfg.ORACLE: 
                                     _current_label = F.interpolate(
                                         current_label,
                                         size=current_img.size()[2:],

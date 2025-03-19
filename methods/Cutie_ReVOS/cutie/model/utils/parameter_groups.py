@@ -81,10 +81,10 @@ def get_parameter_groups_readout_fuser(model, stage_cfg, print_log=False):
     base_lr = stage_cfg.learning_rate
     weight_decay = stage_cfg.weight_decay
 
-    # 存储 readout_fuser 参数
+
     readout_fuser_params = []
     
-    # 冻结所有参数，并仅让 "readout_fuser" 开头的参数可训练
+
     for name, param in model.named_parameters():
         if name.startswith("module.readout_fuser"):
             param.requires_grad = True
@@ -92,11 +92,11 @@ def get_parameter_groups_readout_fuser(model, stage_cfg, print_log=False):
             if print_log:
                 log.info(f'{name} counted as a readout_fuser parameter and set to requires_grad=True.')
         else:
-            param.requires_grad = False  # 冻结其他参数
+            param.requires_grad = False  
             if print_log:
                 log.info(f'{name} is frozen (requires_grad=False).')
 
-    # 定义 parameter_groups 只包含 readout_fuser 参数
+
     parameter_groups = [
         {
             'params': readout_fuser_params,

@@ -741,24 +741,11 @@ def evaluate_roves(
 
         outputs_wrt_reference_crops = []
 
-        # 打印CPU的内存大小, 以及内存的使用率
-        # print("----------------------------")
-        # print("i_batch: ", i_batch)
-        # print("CPU Memory: ", psutil.virtual_memory())
-        # print("CPU Memory Usage: ", psutil.virtual_memory().percent)
 
 
         for _i_mem in range(batch_dict["memory_masks"].tensors.shape[1]):
-            # reference_crop = NestedTensor(
-            #     reference_crops.tensors[_i_mem][None, ...],
-            #     reference_crops.mask[_i_mem][None, ...]
-            # )
 
-            # memory initialization
-            # kwargs = {}
-
-            
-
+        
             memory_encoded = OrderedDict()
             # memory = OrderedDict({0: reference_crop.to(device)})
 
@@ -1088,34 +1075,21 @@ def evaluate_roves(
             obj_ids =  range(batch_dict["memory_masks"].tensors.shape[1] + 1)
             
 
-            # 我希望把pred_masks_for_eval (Obj_num, Frame, h,w) 转化为 pred_masks_squeeze (Frame, h,w) 其中每个像素值为对应的obj_id
 
             for i in range(pred_masks_for_eval.shape[1]):
 
-                # background 是 所有物体对应的logit都小于阈值的像素,0
-                # 把第一个维度的所有物体对应的logit都小于阈值的像素设置为0
-
-                # print("Frame: ", i)
-                # print("CPU Memory: ", psutil.virtual_memory())
-                # print("CPU Memory Usage: ", psutil.virtual_memory().percent)
 
                 max_objs = torch.argmax(pred_masks_for_eval[:,i], dim=0)
                 all_obj_masks = (pred_masks_for_eval[:,i].sigmoid() > args.eval_flags.vost.confidence_threshold).cpu().numpy()
-
-                # all_obj_masks (Obj_num, h, w) 转化为 (h,w) 0代表背景, 1代表物体1, 2代表物体2,...
-                # 如果存在多个物体, 那么对应的像素值取max_objs对应的obj_id
-
-                # 创建一个全零的数组来表示最终的物体id图像
                 
                 background = np.sum(all_obj_masks, axis=0) == 0
                 multi_obj = np.sum(all_obj_masks, axis=0) > 1
                 final_mask = np.zeros_like(max_objs, dtype=np.int32)
 
-                # 遍历每个物体，如果该物体的掩码在当前位置为True，则更新final_mask对应位置的物体编号
+
                 for obj_id in range(all_obj_masks.shape[0]):
-                    # 获取当前物体的掩码
+
                     obj_mask = all_obj_masks[obj_id]
-                    # 找到掩码中为True的位置，并将这些位置的final_mask值设置为obj_id + 1（物体编号从1开始）
                     final_mask[obj_mask] =  obj_id  + 1
 
                 final_mask[multi_obj] = max_objs[multi_obj] + 1

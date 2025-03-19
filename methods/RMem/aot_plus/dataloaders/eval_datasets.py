@@ -191,7 +191,7 @@ class YOUTUBEVOS_Test(object):
                  result_root=None):
         if split == 'val':
             split = 'valid'
-        root = os.path.join(root,  split) # 这里为了适配文件结构去掉了year
+        root = os.path.join(root,  split) 
         self.db_root_dir = root
         self.result_root = result_root
         self.rgb = rgb

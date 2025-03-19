@@ -611,7 +611,7 @@ class AOTInferEngine(nn.Module):
 
         
         if len(mask.size()) == 3 or mask.size()[0] == 1:
-        # mask里面物体数量超过AOT的极限（ID的极限）,就把mask分成多个mask
+
             separated_masks = []
             for idx in range(len(self.aot_engines)):
                 start_id = idx * self.max_aot_obj_num + 1
@@ -621,7 +621,7 @@ class AOTInferEngine(nn.Module):
                 separated_masks.append(separated_mask)
             return separated_masks
         else:
-            # 输入的是prob的时候，也按照相同的方式划分prob(在batch维度上)
+
             prob = mask
             separated_probs = []
             for idx in range(len(self.aot_engines)):
