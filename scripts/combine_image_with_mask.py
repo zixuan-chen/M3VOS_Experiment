@@ -38,21 +38,18 @@ def combine_image_with_mask(image_path, mask_path, output_path):
             new_palette.extend((255, 0, 0))  # Red
             new_palette.append(128)  # 50% transparency
         else:
-            new_palette.extend(palette[i:i+4])  # Copy the original color
+            new_palette.extend(palette[i:i+4])  
 
-    # Apply the new palette
+
     mask.putpalette(new_palette)
 
-    # Convert the mask to RGBA mode
+
     mask = mask.convert("RGBA")
 
-    # Create a new transparent image with the same size as the original image
     new_image = Image.new("RGBA", image.size)
 
-    # Composite the original image and mask onto the new image
     new_image.paste(image, (0, 0), mask)
 
-    # Save the composited image
     new_image.save(output_path, "PNG")
     
 if __name__ == "__main__":
