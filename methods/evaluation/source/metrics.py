@@ -59,7 +59,7 @@ def db_eval_blob_origin(annotations, segmentations, void_pixels=None):
 
 
 def db_eval_blob_torch(annotations, segmentations, void_pixels=None):
-    """ Compute instance similarity as the Blob Index. By Li jiaxin 
+    """ Compute instance similarity as the Blob Index. 
     Arguments:
         annotation   (ndarray): binary annotation map.
         segmentation (ndarray): binary segmentation map.

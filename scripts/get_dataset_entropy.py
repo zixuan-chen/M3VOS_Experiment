@@ -35,32 +35,9 @@ def get_entropy_for_p_image(image_path):
             # print("i=", i)
             binary_image = (image_array == i).astype(np.uint8)
             entropy, lbp, lbp_hist = calculate_lbp_entropy(binary_image)
-            # print("LBP Entropy (Measure of Chaos):", entropy)
 
-            # # visualize binary image, LBP image and histogram image
-            # fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(15, 5))
-
-            # # show Original Binary Image
-            # ax1.imshow(binary_image, cmap='gray')
-            # ax1.set_title("Original Binary Image")
-            # ax1.axis("off")
-
-            # # show LBP Image
-            # ax2.imshow(lbp, cmap='gray')
-            # ax2.set_title("LBP Image")
-            # ax2.axis("off")
-
-            # # plot LBP Histogram
-            # ax3.bar(range(len(lbp_hist)), lbp_hist, color='gray')
-            # ax3.set_title("LBP Histogram")
-            # ax3.set_xlabel("LBP Pattern")
-            # ax3.set_ylabel("Frequency")
-
-            # plt.tight_layout()
-            # plt.savefig(f"lbp_for_{i}.png")
-            # plt.close()
             entropy_list.append(entropy)
-    # print("entropy list: ", entropy_list)
+
     if entropy_list:
         return np.mean(entropy_list)
     else:
@@ -73,7 +50,6 @@ def get_entropy_for_dir(dir_path):
     pbar = tqdm(os.listdir(dir_path), desc=f"processing {dir_path.split('/')[-1]}")
     num = 0
     for filename in pbar:
-        # print("calculating", filename)
         if filename.endswith(".png"):
             match = re.search(r"\d+", filename)
             if match:
@@ -95,8 +71,6 @@ def get_entropy_for_dir(dir_path):
         first_half_avg = np.mean(sorted_entropy[:midpoint])
         second_half_avg = np.mean(sorted_entropy[midpoint:])
     
-        # print(f"First half random average: {first_half_avg}")
-        # print(f"Second half random average: {second_half_avg}")
 
         return first_half_avg, second_half_avg
     else:
@@ -148,7 +122,6 @@ def get_entropy_for_dataset(dataset_name):
     print(f"first half:{first_half_mean}, second half: {second_half_mean}")
 
 def paint_entrogy_zhexian(dir_path):
-    # 画出熵值随时间的变化，得到一个折线图
     file_num_to_entropy = {}
     pbar = tqdm(os.listdir(dir_path), desc=f"processing {dir_path.split('/')[-1]}")
     num = 0
@@ -159,7 +132,6 @@ def paint_entrogy_zhexian(dir_path):
             if match:
                 num = int(match.group())
                 entropy = get_entropy_for_p_image(os.path.join(dir_path, filename))
-                # 输出熵值
                 if not np.isnan(entropy):
                     file_num_to_entropy[num] = entropy
             else:
@@ -175,7 +147,6 @@ def paint_entrogy_zhexian(dir_path):
         plt.xlabel("frame number")
         plt.ylabel("entropy")
         plt.title(f"entropy change for {dir_path.split('/')[-1]}")
-        # 保存图片
         plt.savefig(f"{dir_path.split('/')[-1]}_entropy.png")
 
 

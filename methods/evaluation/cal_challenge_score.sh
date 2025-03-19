@@ -1,6 +1,4 @@
 #!/bin/bash
-source activate zixuan
-module load compilers/cuda/11.6
 
 dataset_root=" ../datasets/ROVES_summary"
 week_num=11

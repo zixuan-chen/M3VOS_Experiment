@@ -3,7 +3,7 @@ _BASE_: ./config/BASE.yaml
 data:
   vost:
 
-    path: /home/bingxing2/home/scx8ah2/jiaxin/DeformVOS/methods/TAM-VT-main/datasets/VOST/VOST
+    path: path/to/datasets/VOST/VOST
     path_test: ../datasets/DAVIS/DAVIS/VOST_test
     path_unique_mask_ids_train_set: ./datasets/vost/dict_mask_unique_ids_train.pkl
     fps_jittering_file: null

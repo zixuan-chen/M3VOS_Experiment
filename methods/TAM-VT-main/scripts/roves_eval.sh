@@ -1,15 +1,9 @@
 #!/bin/sh
 
-module load compilers/cuda/11.6
-module load compilers/gcc/9.3.0
-module load cudnn/8.6.0.163_cuda11.x
-module load nccl/2.17.1-1_cuda11.6
-module load anaconda/2021.11
 
-conda activate activate tam_vt
 
-week=2
-export MASTER_PORT=$((29500 + week % 7))  # 将端口号设置为 29500 + (week % 7)
+
+export MASTER_PORT=$((29500 + week % 7)) 
 echo $MASTER_PORT
 cd /path/to/TAM-VT-main
 

@@ -10,7 +10,7 @@ device: cuda # device used for processing [cuda, mps, cpu]
 num_objects: -1 # number of objects to be used for segmentation. If <1 then number of objects found in first mask is used
 
 # Cutie model weights
-weights: /home/chenzixuan/Cutie/weights/cutie-base-mega.pth
+weights: path/to/Cutie/weights/cutie-base-mega.pth
 
 mem_every: 10 # how often to update working memory; higher number speeds up processing
 
