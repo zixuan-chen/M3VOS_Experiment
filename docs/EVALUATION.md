@@ -41,14 +41,6 @@ For VOST, DAVIS and YouTubeVOS, download and configure it as required in [EVALUA
 ### 3. Run evaluation
 For Cutie and Cutie_ReVOS, run evaluation as shown in [EVALUATION of Cutie](../methods/Cutie/docs/EVALUATION.md)
 
-For DeAOT, run [this file]()
-
-For RMem+DeAOT, run [this file]()
-
-For XMem, run [this file](../methods/XMem/eval.sh)
-
-For SAM2, run [this file](../methods/segment-anything-2/eval.sh)
-
 ### 4. calculate scores
 First, you need set dataset path on `methods\evaluation\evaluation_method.py`
 
