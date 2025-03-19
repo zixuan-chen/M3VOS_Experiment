@@ -6,3 +6,6 @@ tqdm
 pyyaml 
 pandas
 opencv-python
+einops
+tensorboard
+gitpython

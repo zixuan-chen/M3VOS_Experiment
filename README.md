@@ -17,6 +17,7 @@ conda activate mvos
 # Look up https://pytorch.org/get-started/previous-versions/ with your cuda version for a correct command
 pip install torch==2.1.2 torchvision==0.16.2  --index-url https://download.pytorch.org/whl/cu121
 
+pip install git+git://github.com/cheind/py-thin-plate-spline
 # Install other prequisites
 pip install -r requirements.txt
 # for other methods you should look for their requirements in their respective folders.
