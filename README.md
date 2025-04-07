@@ -31,7 +31,7 @@ We put our annotation tool in [an independent GitHub repository](https://github.
 [Running Cutie_ReVOS and other methods on video object segmentation data.](docs/EVALUATION.md)
 
 ## 4. Training
-Training Cutie_ReVOS are similar to [training Cutie](]/methods/Cutie/docs/TRAINING.md)
+Training Cutie_ReVOS are similar to [training Cutie](/methods/Cutie/docs/TRAINING.md)
 
 
 ## 5. Useful scripts
