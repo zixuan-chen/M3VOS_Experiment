@@ -2,7 +2,7 @@
 We only introduce the full precedure of reimplementing ReVOS_Cutie cause the others' are well written in their README files: ([Cutie-base](../methods/Cutie/README.md),[RMem and DeAOT](../methods/RMem/README.md), [SAM2](../methods/segment-anything-2/README.md), [XMem](../methods/XMem/README.md))
 
 ### 1. Download the model parameters
-Download [Cutie_ReVOS parameters](https://drive.google.com/file/d/1fItxsooXXO0VVODyxYKVFRdtZrp-HANR/view?usp=sharing) and configure `weights` in `methods\Cutie_ReVOS\cutie\config\eval_config.yaml` or set `weights` as an argument in `methods\Cutie_ReVOS\eval.sh`
+Download [Cutie_ReVOS parameters](https://huggingface.co/datasets/Lijiaxin0111/M3_VOS/blob/main/mega_v4_main_training_72800.pth) and configure `weights` in `methods\Cutie_ReVOS\cutie\config\eval_config.yaml` or set `weights` as an argument in `methods\Cutie_ReVOS\eval.sh`
 
 ### 2. Download datasets
 tip: we recommend you soft link all datasets under `./methods`, and configure the path for every method according to their requiements.
